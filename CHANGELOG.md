@@ -4,6 +4,7 @@
 Enhancements:
 
 * Moved the update command to module-generator:update
+* Add how to update to the readme
 
 0.1.1 (2017-01-19)
 ------------------

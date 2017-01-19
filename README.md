@@ -12,3 +12,8 @@ Or you could use the installer, do this (the installer will allow you to use a p
 
 You can now run the `module-generator` command from your command line.
 
+## Update
+
+run the following command
+
+    module-generator module-generator:update
