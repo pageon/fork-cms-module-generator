@@ -1,0 +1,16 @@
+{
+    "name": "justcarakas/fork-cms-module-generator",
+    "description": "A generator for Fork modules",
+    "type": "application",
+    "require": {
+        "symfony/console": "^3.2",
+        "nette/php-generator": "^2.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jelmer Prins",
+            "email": "fork@carakas.be"
+        }
+    ]
+}
