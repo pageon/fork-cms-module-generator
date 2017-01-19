@@ -3,7 +3,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use ModuleGenerator\Service\Update as UpdateService;
+use ModuleGenerator\CLI\Service\Update as UpdateService;
 use ModuleGenerator\CLI\Command\Update;
 use Symfony\Component\Console\Application;
 

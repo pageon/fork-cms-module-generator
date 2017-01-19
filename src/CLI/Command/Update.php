@@ -3,7 +3,7 @@
 namespace ModuleGenerator\CLI\Command;
 
 use Symfony\Component\Console\Command\Command;
-use ModuleGenerator\Service\Update as UpdateService;
+use ModuleGenerator\CLI\Service\Update as UpdateService;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

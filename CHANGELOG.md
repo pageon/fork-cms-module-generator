@@ -4,6 +4,7 @@
 Bugfixes:
 
 * Fixed execute permissions
+* Update service namespace fix
 
 
 0.1.0 (2017-01-19)
