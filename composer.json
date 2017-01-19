@@ -6,7 +6,8 @@
         "symfony/console": "^3.2",
         "nette/php-generator": "^2.5",
         "matthiasnoback/symfony-console-form": "^2.1",
-        "symfony/dependency-injection": "^3.2"
+        "symfony/dependency-injection": "^3.2",
+        "symfony/form": "^3.2"
     },
     "autoload": {
         "psr-4": {
