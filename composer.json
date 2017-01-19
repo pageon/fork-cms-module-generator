@@ -4,7 +4,8 @@
     "type": "application",
     "require": {
         "symfony/console": "^3.2",
-        "nette/php-generator": "^2.5"
+        "nette/php-generator": "^2.5",
+        "matthiasnoback/symfony-console-form": "^2.1"
     },
     "autoload": {
         "psr-4": {
