@@ -1,7 +1,9 @@
-0.x.x (2017-xx-xx)
+0.2.0 (2017-xx-xx)
 ------------------
 
+Enhancements:
 
+* Moved the update command to module-generator:update
 
 0.1.1 (2017-01-19)
 ------------------

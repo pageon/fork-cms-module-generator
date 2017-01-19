@@ -1,9 +1,9 @@
 <?php
 
-namespace ModuleGenerator\CLI\Command;
+namespace ModuleGenerator\CLI\Command\ModuleGenerator;
 
 use Symfony\Component\Console\Command\Command;
-use ModuleGenerator\CLI\Service\Update as UpdateService;
+use ModuleGenerator\CLI\Service\ModuleGenerator\Update as UpdateService;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -15,11 +15,17 @@ final class Update extends Command
     /**
      * @param string $name The name for this command
      */
-    public function __construct($name, UpdateService $update)
+    public function __construct(UpdateService $update)
     {
-        parent::__construct($name);
+        parent::__construct();
 
         $this->update = $update;
+    }
+
+    protected function configure()
+    {
+        $this->setName('module-generator:update')
+            ->setDescription('Updates the module-generator');
     }
 
     /**
