@@ -6,6 +6,9 @@
         "symfony/console": "^3.2",
         "nette/php-generator": "^2.5"
     },
+    "psr-4": {
+        "ModuleGenerator\\": ["src/"]
+    },
     "license": "MIT",
     "authors": [
         {
