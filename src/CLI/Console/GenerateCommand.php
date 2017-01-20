@@ -1,7 +1,8 @@
 <?php
 
-namespace ModuleGenerator\CLI\Command;
+namespace ModuleGenerator\CLI\Console;
 
+use Matthias\SymfonyConsoleForm\Console\Helper\FormHelper;
 use ModuleGenerator\CLI\Exception\SrcDirectoryNotFound;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

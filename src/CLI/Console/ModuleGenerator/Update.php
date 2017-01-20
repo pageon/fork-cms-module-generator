@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\CLI\Command\ModuleGenerator;
+namespace ModuleGenerator\CLI\Console\ModuleGenerator;
 
 use Symfony\Component\Console\Command\Command;
 use ModuleGenerator\CLI\Service\ModuleGenerator\Update as UpdateService;

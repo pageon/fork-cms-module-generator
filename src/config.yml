@@ -8,9 +8,16 @@ services:
       - '%kernel.root_dir%/..'
 
   module-generator_update:
-    class: ModuleGenerator\CLI\Command\ModuleGenerator\Update
+    class: ModuleGenerator\CLI\Console\ModuleGenerator\Update
     arguments:
       - '@module-generator_update_service'
+    tags:
+      - { name: console.command }
+
+  domain_Value-object:
+    class: ModuleGenerator\CLI\Console\Domain\ValueObject
+    arguments:
+      - '%cwd%'
     tags:
       - { name: console.command }
 
