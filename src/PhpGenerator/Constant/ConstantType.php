@@ -1,8 +1,8 @@
 <?php
 
-namespace ModuleGenerator\PhpGenerator\Form;
+namespace ModuleGenerator\PhpGenerator\Constant;
 
-use ModuleGenerator\PhpGenerator\DataTransferObject\ConstantDataTransferObject;
+use ModuleGenerator\PhpGenerator\Member\MemberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\PhpGenerator\DataTransferObject;
+namespace ModuleGenerator\PhpGenerator\Namespaces;
 
 class NamespaceDataTransferObject
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\PhpGenerator\Form;
+namespace ModuleGenerator\PhpGenerator\Common;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;

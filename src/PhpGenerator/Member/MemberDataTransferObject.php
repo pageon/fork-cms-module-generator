@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\PhpGenerator\DataTransferObject;
+namespace ModuleGenerator\PhpGenerator\Member;
 
 abstract class MemberDataTransferObject
 {

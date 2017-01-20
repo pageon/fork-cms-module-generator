@@ -1,8 +1,8 @@
 <?php
 
-namespace ModuleGenerator\PhpGenerator\Form;
+namespace ModuleGenerator\PhpGenerator\Member;
 
-use ModuleGenerator\PhpGenerator\DataTransferObject\MemberDataTransferObject;
+use ModuleGenerator\PhpGenerator\Common\VisibilityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

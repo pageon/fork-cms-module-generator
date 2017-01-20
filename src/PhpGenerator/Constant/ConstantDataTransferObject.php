@@ -1,6 +1,8 @@
 <?php
 
-namespace ModuleGenerator\PhpGenerator\DataTransferObject;
+namespace ModuleGenerator\PhpGenerator\Constant;
+
+use ModuleGenerator\PhpGenerator\Member\MemberDataTransferObject;
 
 class ConstantDataTransferObject extends MemberDataTransferObject
 {

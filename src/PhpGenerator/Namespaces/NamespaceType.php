@@ -1,8 +1,7 @@
 <?php
 
-namespace ModuleGenerator\PhpGenerator\Form;
+namespace ModuleGenerator\PhpGenerator\Namespaces;
 
-use ModuleGenerator\PhpGenerator\DataTransferObject\NamespaceDataTransferObject;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +24,12 @@ final class NamespaceType extends AbstractType
                 'required' => true,
                 'constraints' => [
                     new NotBlank(),
-                    new Regex(['pattern' => '/^(?:\\\\\\w+|\\w+\\\\)(?:\\w+\\\\?\\w+)+$/', 'message' => 'Invalid namespace']),
+                    new Regex(
+                        [
+                            'pattern' => '/^(?:\\\\\\w+|\\w+\\\\)(?:\\w+\\\\?\\w+)+$/',
+                            'message' => 'Invalid namespace',
+                        ]
+                    ),
                 ],
                 'error_bubbling' => true,
             ]

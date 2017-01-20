@@ -24,8 +24,8 @@ services:
     tags:
       - { name: console.command }
 
-  domain_Value-object:
-    class: ModuleGenerator\CLI\Console\Domain\ValueObject
+  generate_Value-object:
+    class: ModuleGenerator\CLI\Console\Generate\ValueObject
     arguments:
       - '%cwd%'
     tags:
