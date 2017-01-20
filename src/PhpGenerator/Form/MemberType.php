@@ -28,7 +28,7 @@ abstract class MemberType extends AbstractType
                 ]
             )
             ->add(
-                'Visibility',
+                'visibility',
                 VisibilityType::class,
                 ['data' => $options['default_visibility']]
             );
