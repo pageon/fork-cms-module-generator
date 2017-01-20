@@ -3,19 +3,12 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Symfony\Component\Console\Application;
+use ModuleGenerator\AppKernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Debug\Debug;
 
-// Create new application
-$application = new Application();
+Debug::enable();
 
-// Add commands
-$application->addCommands(
-    [
-        new \ModuleGenerator\CLI\Command\ModuleGenerator\Update(
-            new \ModuleGenerator\CLI\Service\ModuleGenerator\Update(__DIR__)
-        ),
-    ]
-);
-
-// Run the application
+$kernel = new AppKernel('prod', false);
+$application = new Application($kernel);
 $application->run();

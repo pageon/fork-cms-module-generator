@@ -1,0 +1,23 @@
+parameters:
+  secret: secret
+
+services:
+  module-generator_update_service:
+    class: ModuleGenerator\CLI\Service\ModuleGenerator\Update
+    arguments:
+      - '%kernel.root_dir%/..'
+
+  module-generator_update:
+    class: ModuleGenerator\CLI\Command\ModuleGenerator\Update
+    arguments:
+      - '@module-generator_update_service'
+    tags:
+      - { name: console.command }
+
+framework:
+  form:
+    csrf_protection: true
+  secret: "%secret%"
+  csrf_protection: ~
+  session:
+    handler_id: ~
