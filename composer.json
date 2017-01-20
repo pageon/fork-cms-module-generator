@@ -24,5 +24,8 @@
             "name": "Jelmer Prins",
             "email": "fork@carakas.be"
         }
-    ]
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^3.2"
+    }
 }
