@@ -7,7 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\Valid;
 
 final class NamespaceType extends AbstractType
 {
@@ -22,8 +24,10 @@ final class NamespaceType extends AbstractType
                 'label' => 'Namespace (i.e.: \\Console\\ValueObject)',
                 'required' => true,
                 'constraints' => [
-                    new Regex(['pattern' => '/^(?:\\\w+|\w+\\)(?:\w+\\?\w+)+$/', 'message' => 'Invalid namespace']),
+                    new NotBlank(),
+                    new Regex(['pattern' => '/^(?:\\\\\\w+|\\w+\\\\)(?:\\w+\\\\?\\w+)+$/', 'message' => 'Invalid namespace']),
                 ],
+                'error_bubbling' => true,
             ]
         );
     }
@@ -34,8 +38,12 @@ final class NamespaceType extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => NamespaceDataTransferObject::class,
-                'label' => false,
+                'label' => '',
                 'required' => true,
+                'constraints' => [
+                    new Valid(),
+                ],
+                'error_bubbling' => false,
             ]
         );
     }

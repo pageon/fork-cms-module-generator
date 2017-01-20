@@ -50,6 +50,7 @@ class FormHelper extends ParentFormHelper
         $validFormFields = [];
 
         do {
+            dump($validFormFields);
             $form = $this->formFactory->create($formType, $input, $options);
             $form->setData($data);
 
@@ -65,6 +66,7 @@ class FormHelper extends ParentFormHelper
             // save the current data
             $data = $form->getData();
 
+            dump($data);
             if (!$form->isValid()) {
                 $output->write(sprintf('Invalid data provided: %s', $form->getErrors(true, false)));
                 array_map(

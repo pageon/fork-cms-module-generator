@@ -6,7 +6,8 @@ use ModuleGenerator\PhpGenerator\DataTransferObject\ConstantDataTransferObject;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Valid;
 
 final class ConstantType extends MemberType
 {
@@ -36,7 +37,7 @@ final class ConstantType extends MemberType
                 'required' => true,
                 'value_label' => 'Value',
                 'value_constraints' => [
-                    new NotNull(),
+                    new NotBlank(),
                 ],
             ]
         );
