@@ -41,9 +41,4 @@ final class ConstantType extends MemberType
             ]
         );
     }
-
-    public function getParent()
-    {
-        return MemberType::class;
-    }
 }

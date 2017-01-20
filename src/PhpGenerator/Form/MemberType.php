@@ -50,7 +50,6 @@ abstract class MemberType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => MemberDataTransferObject::class,
                 'ask_comment' => false,
                 'default_visibility' => VisibilityType::VISIBILITY_PRIVATE,
             ]
