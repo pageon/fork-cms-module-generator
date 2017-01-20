@@ -26,7 +26,7 @@ final class Update
             'cd ' . realpath($this->basedir)
             . ' && git pull origin master'
             . ' && curl -sS https://getcomposer.org/installer | php'
-            . ' && php composer.phar install'
+            . ' && php composer.phar install -q'
             . ' && git remote update'
             . ' && cd -'
         );
