@@ -24,11 +24,17 @@ final class Update
     {
         passthru(
             'cd ' . realpath($this->basedir)
-            . ' && git pull origin master'
-            . ' && curl -sS https://getcomposer.org/installer | php'
-            . ' && php composer.phar install -q'
-            . ' && git remote update'
+            . ' && echo "Start updating"'
+            . ' && git pull origin master --quiet'
+            . ' && echo "updating: 1/4"'
+            . ' && curl -sS https://getcomposer.org/installer | php  > /dev/null'
+            . ' && echo "updating: 2/4"'
+            . ' && php composer.phar install --no-dev --quiet'
+            . ' && echo "updating: 3/4"'
+            . ' && git remote update  > /dev/null'
+            . ' && echo "updating: 4/4"'
             . ' && cd -'
+            . ' && echo "Finished updating"'
         );
     }
 }
