@@ -7,7 +7,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Valid;
 
 final class ConstantType extends MemberType
 {
@@ -15,6 +14,8 @@ final class ConstantType extends MemberType
     {
         parent::buildForm($builder, $options);
 
+        // constants only get visibility in php 7.1 and fork runs on 7.0
+        $builder->remove('visibility');
         $builder->add(
             'value',
             $options['type_class_name'],
