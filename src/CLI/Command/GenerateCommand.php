@@ -4,6 +4,8 @@ namespace ModuleGenerator\CLI\Command;
 
 use ModuleGenerator\CLI\Exception\SrcDirectoryNotFound;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class GenerateCommand extends Command
 {
@@ -12,6 +14,12 @@ abstract class GenerateCommand extends Command
 
     /** @var string the src directory */
     private $generateDirectory;
+
+    /** @var InputInterface */
+    private $input;
+
+    /** @var OutputInterface */
+    private $output;
 
     /**
      * @param string $currentWorkingDirectory
@@ -51,5 +59,23 @@ abstract class GenerateCommand extends Command
         }
 
         throw SrcDirectoryNotFound::forDirectory($this->currentWorkingDirectory);
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $this->input = $input;
+        $this->output = $output;
+    }
+
+    /**
+     * @param string $className
+     *
+     * @return mixed
+     */
+    public function getFormData($className)
+    {
+        $formHelper = $this->getHelper('form');
+
+        return $formHelper->interactUsingForm($className, $this->input, $this->output);
     }
 }
