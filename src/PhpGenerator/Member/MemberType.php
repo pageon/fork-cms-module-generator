@@ -56,7 +56,7 @@ abstract class MemberType extends AbstractType
                 'error_bubbling' => false,
                 'constraints' => [
                     new Valid(),
-                ]
+                ],
             ]
         );
     }
