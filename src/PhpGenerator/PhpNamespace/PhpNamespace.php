@@ -23,7 +23,7 @@ final class PhpNamespace
         return $this->name;
     }
 
-    public static function root(): PHPNamespace
+    public static function root(): self
     {
         return new self('');
     }
@@ -35,7 +35,13 @@ final class PhpNamespace
 
     public static function fromDataTransferObject(
         PhpNamespaceDataTransferObject $phpNamespaceDataTransferObject
-    ): PhpNamespace {
+    ): self {
+        if ($phpNamespaceDataTransferObject->hasExistingPhpNamespace()) {
+            $phpNamespaceDataTransferObject->getPhpNamespaceClass()->name = $phpNamespaceDataTransferObject->name;
+
+            return $phpNamespaceDataTransferObject->getPhpNamespaceClass();
+        }
+
         return new self($phpNamespaceDataTransferObject->name);
     }
 }

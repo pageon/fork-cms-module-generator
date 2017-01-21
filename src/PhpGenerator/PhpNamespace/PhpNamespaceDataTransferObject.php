@@ -7,7 +7,7 @@ final class PhpNamespaceDataTransferObject
     /** @var string */
     public $name;
 
-    /** @var PhpNamespace */
+    /** @var PhpNamespace|null */
     private $phpNamespaceClass;
 
     public function __construct(PhpNamespace $phpNamespace = null)
@@ -19,5 +19,15 @@ final class PhpNamespaceDataTransferObject
         }
 
         $this->name = $this->phpNamespaceClass->getName();
+    }
+
+    public function hasExistingPhpNamespace(): bool
+    {
+        return $this->phpNamespaceClass instanceof PhpNamespace;
+    }
+
+    public function getPhpNamespaceClass(): PhpNamespace
+    {
+        return $this->phpNamespaceClass;
     }
 }

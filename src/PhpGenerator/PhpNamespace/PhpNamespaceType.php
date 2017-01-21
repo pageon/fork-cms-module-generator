@@ -3,6 +3,7 @@
 namespace ModuleGenerator\PhpGenerator\PhpNamespace;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,6 +32,15 @@ final class PhpNamespaceType extends AbstractType
                 ],
                 'error_bubbling' => true,
             ]
+        )->addModelTransformer(
+            new CallbackTransformer(
+                function (PhpNamespace $phpNamespace = null) {
+                    return new PhpNamespaceDataTransferObject($phpNamespace);
+                },
+                function (PhpNamespaceDataTransferObject $phpNamespaceDataTransferObject) {
+                    return PhpNamespace::fromDataTransferObject($phpNamespaceDataTransferObject);
+                }
+            )
         );
     }
 
