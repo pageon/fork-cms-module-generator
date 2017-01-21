@@ -3,11 +3,11 @@
 namespace ModuleGenerator\PhpGenerator\Constant;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
 
 final class ConstantType extends AbstractType
 {
@@ -20,7 +20,7 @@ final class ConstantType extends AbstractType
                 'label' => 'Name',
                 'required' => true,
                 'constraints' => [
-                    new NotNull(),
+                    new NotBlank(),
                 ],
             ]
         )->add(
@@ -31,6 +31,15 @@ final class ConstantType extends AbstractType
                 'required' => true,
                 'constraints' => $options['value_constraints'],
             ]
+        )->addModelTransformer(
+            new CallbackTransformer(
+                function (Constant $constant = null) {
+                    return new ConstantDataTransferObject($constant);
+                },
+                function (ConstantDataTransferObject $constantDataTransferObject) {
+                    return Constant::fromDataTransferObject($constantDataTransferObject);
+                }
+            )
         );
     }
 

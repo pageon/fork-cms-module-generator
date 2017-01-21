@@ -10,18 +10,34 @@ use Nette\PhpGenerator\ClassType;
 final class ValueObject extends ClassType
 {
     /**
+     * @param string $name
+     * @param PhpNamespace $namespace
+     * @param Constant[] $constants
+     */
+    public function __construct($name, PhpNamespace $namespace, array $constants)
+    {
+        $namespace->addClass()
+        parent::__construct($name, $namespace);
+        $this->setConstants($constants);
+
+        $this->generateMethods();
+    }
+
+    private function generateMethods()
+    {
+
+    }
+
+    /**
      * @param ValueObjectDataTransferObject $valueObjectDataTransferObject
      *
      * @return ValueObject
      */
     public static function fromDataTransferObject(ValueObjectDataTransferObject $valueObjectDataTransferObject)
     {
-        $valueObject = new self(
+        return new self(
             $valueObjectDataTransferObject->className,
-            PhpNamespace::fromDataTransferObject($valueObjectDataTransferObject->namespace)
-        );
-
-        $valueObject->setConstants(
+            PhpNamespace::fromDataTransferObject($valueObjectDataTransferObject->namespace),
             array_map(
                 function (ConstantDataTransferObject $constantDataTransferObject) {
                     return Constant::fromDataTransferObject($constantDataTransferObject);
@@ -29,7 +45,5 @@ final class ValueObject extends ClassType
                 $valueObjectDataTransferObject->constants
             )
         );
-
-        return $valueObject;
     }
 }

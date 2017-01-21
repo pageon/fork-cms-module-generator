@@ -3,9 +3,11 @@
 namespace ModuleGenerator\CLI\Console;
 
 use ModuleGenerator\CLI\Exception\SrcDirectoryNotFound;
+use Nette\PhpGenerator\ClassType;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 abstract class GenerateCommand extends Command
 {
@@ -77,5 +79,16 @@ abstract class GenerateCommand extends Command
         $formHelper = $this->getHelper('form');
 
         return $formHelper->interactUsingForm($className, $this->input, $this->output);
+    }
+
+    protected function generateClass(ClassType $class)
+    {
+        $filename = str_replace('\\', '/', $class->getNamespace()->getName()) . '/' . $class->getName() . '.php';
+        $fileSystem = new Filesystem();
+
+        $fileSystem->dumpFile(
+            $this->getGenerateDirectory() . $filename,
+            sprintf('<?php'.PHP_EOL.PHP_EOL.$class->getNamespace().$class)
+        );
     }
 }
