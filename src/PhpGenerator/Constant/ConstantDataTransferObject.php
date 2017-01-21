@@ -2,10 +2,11 @@
 
 namespace ModuleGenerator\PhpGenerator\Constant;
 
-use ModuleGenerator\PhpGenerator\Member\MemberDataTransferObject;
-
-class ConstantDataTransferObject extends MemberDataTransferObject
+final class ConstantDataTransferObject
 {
+    /** @var string */
+    public $name;
+
     /** @var mixed */
     public $value;
 }

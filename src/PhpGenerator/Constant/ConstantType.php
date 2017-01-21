@@ -2,21 +2,28 @@
 
 namespace ModuleGenerator\PhpGenerator\Constant;
 
-use ModuleGenerator\PhpGenerator\Member\MemberType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
-final class ConstantType extends MemberType
+final class ConstantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options);
-
-        // constants only get visibility in php 7.1 and fork runs on 7.0
-        $builder->remove('visibility');
         $builder->add(
+            'name',
+            TextType::class,
+            [
+                'label' => 'Name',
+                'required' => true,
+                'constraints' => [
+                    new NotNull(),
+                ],
+            ]
+        )->add(
             'value',
             $options['type_class_name'],
             [
@@ -29,12 +36,10 @@ final class ConstantType extends MemberType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        parent::configureOptions($resolver);
         $resolver->setDefaults(
             [
                 'data_class' => ConstantDataTransferObject::class,
                 'label' => 'Constant',
-                'type_class_name' => TextType::class,
                 'required' => true,
                 'value_label' => 'Value',
                 'value_constraints' => [
