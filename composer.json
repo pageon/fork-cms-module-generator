@@ -3,6 +3,7 @@
     "description": "A generator for Fork modules",
     "type": "application",
     "require": {
+        "php": "^7.0",
         "nette/php-generator": "^2.5",
         "matthiasnoback/symfony-console-form": "^2.1",
         "symfony/framework-bundle": "^3.2",
