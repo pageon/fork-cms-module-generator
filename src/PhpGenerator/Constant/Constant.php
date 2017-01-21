@@ -2,10 +2,30 @@
 
 namespace ModuleGenerator\PhpGenerator\Constant;
 
-use Nette\PhpGenerator\Constant as NetteConstant;
+use InvalidArgumentException;
 
-final class Constant extends NetteConstant
+final class Constant
 {
+    /** @var string */
+    private $name;
+
+    /** @var string|int|bool|float */
+    private $value;
+
+    /**
+     * @param string $name
+     * @param bool|float|int|string $value
+     */
+    public function __construct($name, $value)
+    {
+        $this->name = mb_strtoupper($name);
+
+        if (!is_scalar($value)) {
+            throw new InvalidArgumentException('The constant needs to have a scalar value');
+        }
+        $this->value = $value;
+    }
+
     /**
      * @param ConstantDataTransferObject $constantDataTransferObject
      *
@@ -13,10 +33,39 @@ final class Constant extends NetteConstant
      */
     public static function fromDataTransferObject(ConstantDataTransferObject $constantDataTransferObject)
     {
-        return (new self($constantDataTransferObject->name))
-            ->setValue($constantDataTransferObject->value)
-            ->setComment($constantDataTransferObject->comment)
-            ->setVisibility($constantDataTransferObject->visibility);
+        return new self($constantDataTransferObject->name, $constantDataTransferObject->value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return bool|float|int|string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @return bool|float|int|string
+     */
+    public function getValueForTemplate()
+    {
+        if (is_string($this->value)) {
+            return '\'' . $this->value . '\'';
+        }
+
+        if (is_bool($this->value)) {
+            return $this->value ? 'true' : 'false';
+        }
+
+        return $this->value;
     }
 
     /**
