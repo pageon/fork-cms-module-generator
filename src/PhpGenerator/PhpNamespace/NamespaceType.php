@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\PhpGenerator\Namespaces;
+namespace ModuleGenerator\PhpGenerator\PhpNamespace;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,13 +20,13 @@ final class NamespaceType extends AbstractType
             'name',
             TextType::class,
             [
-                'label' => 'Namespace (i.e.: \\Console\\ValueObject)',
+                'label' => 'Namespace (i.e.: Console\\ValueObject)',
                 'required' => true,
                 'constraints' => [
                     new NotBlank(),
                     new Regex(
                         [
-                            'pattern' => '/^(?:\\\\\\w+|\\w+\\\\)(?:\\w+\\\\?\\w+)+$/',
+                            'pattern' => '/^(?:\\w+|\\w+\\\\)(?:\\w+\\\\?\\w+)+$/',
                             'message' => 'Invalid namespace',
                         ]
                     ),
