@@ -19,7 +19,7 @@ final class VisibilityType extends ChoiceType
                     function ($visibility) {
                         return Visibility::fromString($visibility);
                     },
-                    Visibility::getPossibleValues()
+                    Visibility::POSSIBLE_VALUES
                 ),
                 'choices_as_values' => true,
                 'choice_value' => function (Visibility $visibility) {

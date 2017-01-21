@@ -10,42 +10,32 @@ final class Visibility
     const VISIBILITY_PROTECTED = 'protected';
     const VISIBILITY_PRIVATE = 'private';
 
-    /**
-     * @param string $visibility
-     */
-    private function __construct($visibility)
+    const POSSIBLE_VALUES = [
+        self::VISIBILITY_PUBLIC,
+        self::VISIBILITY_PROTECTED,
+        self::VISIBILITY_PRIVATE,
+    ];
+
+    private function __construct(string $visibility)
     {
-        if (!in_array($visibility, self::getPossibleValues(), true)) {
+        if (!in_array($visibility, self::POSSIBLE_VALUES, true)) {
             throw new InvalidArgumentException('Invalid value');
         }
 
         $this->visibility = $visibility;
     }
 
-    /**
-     * @param string $visibility
-     *
-     * @return Visibility
-     */
-    public static function fromString($visibility)
+    public static function fromString(string $visibility): self
     {
         return new self($visibility);
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->visibility;
     }
 
-    /**
-     * @param Visibility $visibility
-     *
-     * @return bool
-     */
-    public function equals(Visibility $visibility)
+    public function equals(Visibility $visibility): bool
     {
         if (!($visibility instanceof $this)) {
             return false;
@@ -54,10 +44,7 @@ final class Visibility
         return $visibility == $this;
     }
 
-    /**
-     * @return array
-     */
-    public static function getPossibleValues()
+    public static function getPossibleValues(): array
     {
         return [
             self::VISIBILITY_PUBLIC,
@@ -66,50 +53,32 @@ final class Visibility
         ];
     }
 
-    /**
-     * @return self
-     */
-    public static function visibilityPublic()
+    public static function visibilityPublic(): self
     {
         return new self(self::VISIBILITY_PUBLIC);
     }
 
-    /**
-     * @return bool
-     */
-    public function isPublic()
+    public function isPublic(): bool
     {
         return $this->equals(self::visibilityPublic());
     }
 
-    /**
-     * @return self
-     */
-    public static function visibilityProtected()
+    public static function visibilityProtected(): self
     {
         return new self(self::VISIBILITY_PROTECTED);
     }
 
-    /**
-     * @return bool
-     */
-    public function isProtected()
+    public function isProtected(): bool
     {
         return $this->equals(self::visibilityProtected());
     }
 
-    /**
-     * @return self
-     */
-    public static function visibilityPrivate()
+    public static function visibilityPrivate(): self
     {
         return new self(self::VISIBILITY_PRIVATE);
     }
 
-    /**
-     * @return bool
-     */
-    public function isPrivate()
+    public function isPrivate(): bool
     {
         return $this->equals(self::visibilityPrivate());
     }
