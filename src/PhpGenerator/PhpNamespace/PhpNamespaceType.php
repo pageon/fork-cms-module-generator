@@ -10,12 +10,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Valid;
 
-final class NamespaceType extends AbstractType
+final class PhpNamespaceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options);
-
         $builder->add(
             'name',
             TextType::class,
@@ -38,10 +36,9 @@ final class NamespaceType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        parent::configureOptions($resolver);
         $resolver->setDefaults(
             [
-                'data_class' => NamespaceDataTransferObject::class,
+                'data_class' => PhpNamespaceDataTransferObject::class,
                 'label' => '',
                 'required' => true,
                 'constraints' => [
