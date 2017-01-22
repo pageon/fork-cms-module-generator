@@ -2,14 +2,14 @@
 
 namespace ModuleGenerator\PhpGenerator\ClassName;
 
-use ModuleGenerator\PhpGenerator\PhpNamespace\PhpNamespace;
+use ModuleGenerator\PhpGenerator\PhpNamespace\PhpNamespaceDataTransferObject;
 
 final class ClassNameDataTransferObject
 {
     /** @var string */
     public $name;
 
-    /** @var PhpNamespace */
+    /** @var PhpNamespaceDataTransferObject */
     public $namespace;
 
     /** @var string|null */
@@ -27,7 +27,7 @@ final class ClassNameDataTransferObject
         }
 
         $this->name = $this->classNameClass->getName();
-        $this->namespace = $this->classNameClass->getNamespace();
+        $this->namespace = new PhpNamespaceDataTransferObject($this->classNameClass->getNamespace());
         $this->alias = $this->classNameClass->getAlias();
     }
 

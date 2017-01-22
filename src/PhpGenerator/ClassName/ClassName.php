@@ -22,7 +22,7 @@ final class ClassName
         $this->alias = empty($alias) ? null : ucfirst($alias);
     }
 
-    public function getRealName(): null
+    public function getRealName(): string
     {
         return $this->name;
     }
@@ -34,7 +34,7 @@ final class ClassName
 
     public function getAlias(): string
     {
-        return $this->alias;
+        return (string) $this->alias;
     }
 
     public function getFullyQualifiedName(): string
@@ -72,9 +72,10 @@ final class ClassName
     public static function fromDataTransferObject(
         ClassNameDataTransferObject $classNameDataTransferObject
     ): self {
+        $namespace = PhpNamespace::fromDataTransferObject($classNameDataTransferObject->namespace);
         if ($classNameDataTransferObject->hasExistingClassName()) {
             $classNameDataTransferObject->getClassNameClass()->name = ucfirst($classNameDataTransferObject->name);
-            $classNameDataTransferObject->getClassNameClass()->namespace = $classNameDataTransferObject->namespace;
+            $classNameDataTransferObject->getClassNameClass()->namespace = $namespace;
             $classNameDataTransferObject->getClassNameClass()->alias = empty($classNameDataTransferObject->alias)
                 ? null : ucfirst($classNameDataTransferObject->alias);
 
@@ -83,7 +84,7 @@ final class ClassName
 
         return new self(
             $classNameDataTransferObject->name,
-            $classNameDataTransferObject->namespace,
+            $namespace,
             $classNameDataTransferObject->alias
         );
     }

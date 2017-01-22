@@ -4,6 +4,7 @@ namespace ModuleGenerator\Domain\ValueObject;
 
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\Constant\Constant;
+use ModuleGenerator\PhpGenerator\Constant\ConstantDataTransferObject;
 
 final class ValueObject
 {
@@ -27,8 +28,13 @@ final class ValueObject
     public static function fromDataTransferObject(ValueObjectDataTransferObject $valueObjectDataTransferObject)
     {
         return new self(
-            $valueObjectDataTransferObject->className,
-            $valueObjectDataTransferObject->constants
+            ClassName::fromDataTransferObject($valueObjectDataTransferObject->className),
+            array_map(
+                function (ConstantDataTransferObject $constantDataTransferObject) {
+                    return Constant::fromDataTransferObject($constantDataTransferObject);
+                },
+                $valueObjectDataTransferObject->constants
+            )
         );
     }
 }
