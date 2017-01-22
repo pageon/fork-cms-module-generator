@@ -1,9 +1,7 @@
 <?php
 
-namespace ModuleGenerator\PhpGenerator\Common;
+namespace ModuleGenerator\PhpGenerator\ClassName;
 
-use ModuleGenerator\PhpGenerator\ClassName\ClassName;
-use ModuleGenerator\PhpGenerator\ClassName\ClassNameDataTransferObject;
 use ModuleGenerator\PhpGenerator\PhpNamespace\PhpNamespaceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;

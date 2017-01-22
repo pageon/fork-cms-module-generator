@@ -2,9 +2,8 @@
 
 namespace ModuleGenerator\Domain\ValueObject;
 
-use ModuleGenerator\PhpGenerator\Common\ClassNameType;
+use ModuleGenerator\PhpGenerator\ClassName\ClassNameType;
 use ModuleGenerator\PhpGenerator\Constant\ConstantType;
-use ModuleGenerator\PhpGenerator\Namespaces\NamespaceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,10 +16,6 @@ final class ValueObjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add(
-                'namespace',
-                NamespaceType::class
-            )
             ->add(
                 'className',
                 ClassNameType::class

@@ -2,30 +2,21 @@
 
 namespace ModuleGenerator\Domain\ValueObject;
 
+use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\Constant\Constant;
-use ModuleGenerator\PhpGenerator\Constant\ConstantDataTransferObject;
-use ModuleGenerator\PhpGenerator\Namespaces\PhpNamespace;
-use Nette\PhpGenerator\ClassType;
 
-final class ValueObject extends ClassType
+final class ValueObject
 {
-    /**
-     * @param string $name
-     * @param PhpNamespace $namespace
-     * @param Constant[] $constants
-     */
-    public function __construct($name, PhpNamespace $namespace, array $constants)
+    /** @var ClassName */
+    private $className;
+
+    /** @var Constant[] */
+    private $constants;
+
+    public function __construct(ClassName $className, array $constants)
     {
-        $namespace->addClass()
-        parent::__construct($name, $namespace);
-        $this->setConstants($constants);
-
-        $this->generateMethods();
-    }
-
-    private function generateMethods()
-    {
-
+        $this->className = $className;
+        $this->constants = $constants;
     }
 
     /**
@@ -37,13 +28,7 @@ final class ValueObject extends ClassType
     {
         return new self(
             $valueObjectDataTransferObject->className,
-            PhpNamespace::fromDataTransferObject($valueObjectDataTransferObject->namespace),
-            array_map(
-                function (ConstantDataTransferObject $constantDataTransferObject) {
-                    return Constant::fromDataTransferObject($constantDataTransferObject);
-                },
-                $valueObjectDataTransferObject->constants
-            )
+            $valueObjectDataTransferObject->constants
         );
     }
 }

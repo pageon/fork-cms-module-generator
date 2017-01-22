@@ -2,18 +2,13 @@
 
 namespace ModuleGenerator\Domain\ValueObject;
 
+use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\Constant\ConstantDataTransferObject;
-use ModuleGenerator\PhpGenerator\Namespaces\NamespaceDataTransferObject;
 
 final class ValueObjectDataTransferObject
 {
     /**
-     * @var NamespaceDataTransferObject
-     */
-    public $namespace;
-
-    /**
-     * @var string
+     * @var ClassName
      */
     public $className;
 
