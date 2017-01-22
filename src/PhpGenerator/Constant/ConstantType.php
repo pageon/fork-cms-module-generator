@@ -3,7 +3,6 @@
 namespace ModuleGenerator\PhpGenerator\Constant;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,15 +30,6 @@ final class ConstantType extends AbstractType
                 'required' => true,
                 'constraints' => $options['value_constraints'],
             ]
-        )->addModelTransformer(
-            new CallbackTransformer(
-                function (Constant $constant = null) {
-                    return new ConstantDataTransferObject($constant);
-                },
-                function (ConstantDataTransferObject $constantDataTransferObject) {
-                    return Constant::fromDataTransferObject($constantDataTransferObject);
-                }
-            )
         );
     }
 

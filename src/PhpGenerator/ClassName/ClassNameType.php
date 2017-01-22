@@ -4,7 +4,6 @@ namespace ModuleGenerator\PhpGenerator\ClassName;
 
 use ModuleGenerator\PhpGenerator\PhpNamespace\PhpNamespaceType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -34,15 +33,6 @@ final class ClassNameType extends AbstractType
         )->add(
             'namespace',
             PhpNamespaceType::class
-        )->addModelTransformer(
-            new CallbackTransformer(
-                function (ClassName $className = null) {
-                    return new ClassNameDataTransferObject($className);
-                },
-                function (ClassNameDataTransferObject $classNameDataTransferObject) {
-                    return ClassName::fromDataTransferObject($classNameDataTransferObject);
-                }
-            )
         );
         if ($options['ask_alias']) {
             $builder->add(
