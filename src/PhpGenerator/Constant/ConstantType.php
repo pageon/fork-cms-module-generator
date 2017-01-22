@@ -24,7 +24,7 @@ final class ConstantType extends AbstractType
             ]
         )->add(
             'value',
-            $options['type_class_name'],
+            $options['value_type_class_name'],
             [
                 'label' => $options['value_label'],
                 'required' => true,
@@ -40,6 +40,7 @@ final class ConstantType extends AbstractType
                 'data_class' => ConstantDataTransferObject::class,
                 'label' => 'Constant',
                 'required' => true,
+                'value_type_class_name' => TextType::class,
                 'value_label' => 'Value',
                 'value_constraints' => [
                     new NotBlank(),
