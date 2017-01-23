@@ -27,7 +27,6 @@ services:
   generate_generate_service:
     class: ModuleGenerator\CLI\Service\Generate\Generate
     arguments:
-      - '%cwd%'
       - '@templating'
 
   generate_Value-object:
