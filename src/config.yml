@@ -24,10 +24,16 @@ services:
     tags:
       - { name: console.command }
 
+  generate_generate_service:
+    class: ModuleGenerator\CLI\Service\Generate\Generate
+    arguments:
+      - '%cwd%'
+      - '@twig'
+
   generate_Value-object:
     class: ModuleGenerator\CLI\Console\Generate\ValueObject
     arguments:
-      - '%cwd%'
+      - '@generate_generate_service'
     tags:
       - { name: console.command }
 

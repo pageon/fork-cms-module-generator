@@ -2,11 +2,12 @@
 
 namespace ModuleGenerator\Domain\ValueObject;
 
+use ModuleGenerator\CLI\Service\GeneratableClass;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\Constant\Constant;
 use ModuleGenerator\PhpGenerator\Constant\ConstantDataTransferObject;
 
-final class ValueObject
+final class ValueObject implements GeneratableClass
 {
     /** @var ClassName */
     private $className;
