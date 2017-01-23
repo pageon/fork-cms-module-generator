@@ -75,4 +75,21 @@ final class Constant
 
         return $value;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getValueForTemplate()
+    {
+        switch (true) {
+            case is_null($this->value):
+                return 'null';
+            case is_string($this->value):
+                return '\'' . $this->value . '\'';
+            case is_bool($this->value):
+                return $this->value ? 'true' : 'false';
+            default:
+                return $this->value;
+        }
+    }
 }
