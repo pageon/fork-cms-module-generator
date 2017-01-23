@@ -43,4 +43,9 @@ final class ValueObject implements GeneratableClass
     {
         return $this->constants;
     }
+
+    public function getTemplatePath(): string
+    {
+        return __DIR__ . '/ValueObject.html.twig';
+    }
 }
