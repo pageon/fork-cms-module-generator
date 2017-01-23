@@ -4,6 +4,7 @@ namespace ModuleGenerator;
 
 use Matthias\SymfonyConsoleForm\Bundle\SymfonyConsoleFormBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
@@ -14,6 +15,7 @@ class AppKernel extends Kernel
     {
         return [
             new FrameworkBundle(),
+            new TwigBundle(),
             new SymfonyConsoleFormBundle(),
         ];
     }

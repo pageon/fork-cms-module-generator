@@ -9,7 +9,8 @@
         "symfony/finder": "^3.2",
         "symfony/validator": "^3.2",
         "symfony/yaml": "^3.2",
-        "symfony/security": "^3.2"
+        "symfony/security": "^3.2",
+        "symfony/twig-bundle": "^3.2"
     },
     "autoload": {
         "psr-4": {
