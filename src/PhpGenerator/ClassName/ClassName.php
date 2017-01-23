@@ -55,6 +55,11 @@ final class ClassName
         return $this->namespace . '\\' . $this->name . (($this->alias === null) ? '' : ' as ' . $this->alias);
     }
 
+    public function getForParameter(): string
+    {
+        return lcfirst($this->name);
+    }
+
     public function getName(): string
     {
         if ($this->alias === null) {
