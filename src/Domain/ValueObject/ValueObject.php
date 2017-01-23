@@ -20,12 +20,7 @@ final class ValueObject
         $this->constants = $constants;
     }
 
-    /**
-     * @param ValueObjectDataTransferObject $valueObjectDataTransferObject
-     *
-     * @return ValueObject
-     */
-    public static function fromDataTransferObject(ValueObjectDataTransferObject $valueObjectDataTransferObject)
+    public static function fromDataTransferObject(ValueObjectDataTransferObject $valueObjectDataTransferObject): self
     {
         return new self(
             ClassName::fromDataTransferObject($valueObjectDataTransferObject->className),
@@ -36,5 +31,15 @@ final class ValueObject
                 $valueObjectDataTransferObject->constants
             )
         );
+    }
+
+    public function getClassName(): ClassName
+    {
+        return $this->className;
+    }
+
+    public function getConstants(): array
+    {
+        return $this->constants;
     }
 }
