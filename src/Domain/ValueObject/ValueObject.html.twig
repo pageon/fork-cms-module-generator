@@ -7,7 +7,7 @@ use InvalidArgumentException;
 final class {{ class.className.name }}
 {
     {% for constant in class.constants %}const {{ constant.name }} = {{ constant.valueForTemplate|raw }};
-    {% endfor %}
+    {% endfor -%}
 
     const POSSIBLE_VALUES = [
     {% for constant in class.constants %}
