@@ -2,6 +2,8 @@
 
 namespace ModuleGenerator\PhpGenerator\Constant;
 
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
+
 final class Constant
 {
     /** @var string */
@@ -12,7 +14,8 @@ final class Constant
 
     public function __construct(string $name, $value)
     {
-        $this->name = mb_strtoupper($name);
+        $converter = new CamelCaseToSnakeCaseNameConverter();
+        $this->name = mb_strtoupper($converter->normalize($name));
         $this->value = $this->castToCorrectType($value);
     }
 
@@ -40,6 +43,16 @@ final class Constant
     public function getValue()
     {
         return $this->value;
+    }
+
+    public function getCamelCasedName(bool $ucfirst = false): string
+    {
+        $converter = new CamelCaseToSnakeCaseNameConverter();
+        if ($ucfirst) {
+            return ucfirst($converter->denormalize(mb_strtolower($this->name)));
+        }
+
+        return $converter->denormalize(mb_strtolower($this->name));
     }
 
     public function getType(): string
