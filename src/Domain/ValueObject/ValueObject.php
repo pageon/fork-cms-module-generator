@@ -7,7 +7,7 @@ use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\Constant\Constant;
 use ModuleGenerator\PhpGenerator\Constant\ConstantDataTransferObject;
 
-final class ValueObject implements GeneratableClass
+final class ValueObject extends GeneratableClass
 {
     /** @var ClassName */
     private $className;
@@ -42,10 +42,5 @@ final class ValueObject implements GeneratableClass
     public function getConstants(): array
     {
         return $this->constants;
-    }
-
-    public function getTemplatePath(): string
-    {
-        return __DIR__ . '/ValueObject.html.twig';
     }
 }

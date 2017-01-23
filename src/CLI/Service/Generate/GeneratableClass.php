@@ -3,9 +3,18 @@ namespace ModuleGenerator\CLI\Service\Generate;
 
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 
-interface GeneratableClass
+abstract class GeneratableClass
 {
-    public function getClassName(): ClassName;
+    abstract public function getClassName(): ClassName;
 
-    public function getTemplatePath(): string;
+    public function getTemplatePath(): string
+    {
+        return realpath(
+            __DIR__ . '/../../../' . preg_replace(
+                '/^ModuleGenerator/',
+                '',
+                str_replace('\\', '/', static::class) . '.html.twig'
+            )
+        );
+    }
 }
