@@ -2,7 +2,7 @@
 
 namespace ModuleGenerator\Domain\ValueObject;
 
-use ModuleGenerator\CLI\Service\GeneratableClass;
+use ModuleGenerator\CLI\Service\Generate\GeneratableClass;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\Constant\Constant;
 use ModuleGenerator\PhpGenerator\Constant\ConstantDataTransferObject;

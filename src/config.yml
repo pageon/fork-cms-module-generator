@@ -28,7 +28,7 @@ services:
     class: ModuleGenerator\CLI\Service\Generate\Generate
     arguments:
       - '%cwd%'
-      - '@twig'
+      - '@templating'
 
   generate_Value-object:
     class: ModuleGenerator\CLI\Console\Generate\ValueObject
@@ -44,3 +44,5 @@ framework:
   csrf_protection: ~
   session:
     handler_id: ~
+  templating:
+    engines: ['twig']
