@@ -14,6 +14,9 @@ final class {{ class.className.name }}
     self::{{ constant.name }},
     {% endfor -%}];
 
+    /**
+     * @param string ${{ class.className.forParameter }}
+     */
     private function __construct(string ${{ class.className.forParameter }})
     {
         if (!in_array(${{ class.className.forParameter }}, self::POSSIBLE_VALUES, true)) {
@@ -23,16 +26,29 @@ final class {{ class.className.name }}
         $this->{{ class.className.forParameter }} = ${{ class.className.forParameter }};
     }
 
+    /**
+     * @param string ${{ class.className.forParameter }}
+     *
+     * @return self
+     */
     public static function fromString(string ${{ class.className.forParameter }}): self
     {
         return new self(${{ class.className.forParameter }});
     }
 
+    /**
+     * @return string
+     */
     public function __toString(): string
     {
         return (string) $this->{{ class.className.forParameter }};
     }
 
+    /**
+     * @param self ${{ class.className.forParameter }}
+     *
+     * @return bool
+     */
     public function equals(self ${{ class.className.forParameter }}): bool
     {
         if (!(${{ class.className.forParameter }} instanceof $this)) {
@@ -43,11 +59,17 @@ final class {{ class.className.name }}
     }
 {% for constant in class.constants %}
 
+    /**
+     * @return self
+     */
     public static function {{ constant.camelCasedName }}(): self
     {
         return new self(self::{{ constant.name }});
     }
 
+    /**
+     * @return bool
+     */
     public function is{{ constant.camelCasedName(true) }}(): bool
     {
         return $this->equals(self::{{ constant.camelCasedName }}());
