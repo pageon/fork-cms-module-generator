@@ -34,18 +34,4 @@ class AppKernel extends Kernel
     {
         return __DIR__.'/temp/logs';
     }
-
-    /**
-     * @throws \RuntimeException
-     *
-     * @return ContainerBuilder The compiled service container
-     */
-    protected function buildContainer()
-    {
-        $container = parent::buildContainer();
-
-        $container->setParameter('cwd', getcwd());
-
-        return $container;
-    }
 }

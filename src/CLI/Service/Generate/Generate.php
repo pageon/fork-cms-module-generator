@@ -18,12 +18,11 @@ final class Generate
     private $templating;
 
     /**
-     * @param string $currentWorkingDirectory
      * @param TwigEngine $templating
      */
-    public function __construct($currentWorkingDirectory, TwigEngine $templating)
+    public function __construct(TwigEngine $templating)
     {
-        $this->currentWorkingDirectory = $currentWorkingDirectory;
+        $this->currentWorkingDirectory = getcwd();
         $this->templating = $templating;
     }
 
