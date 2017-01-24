@@ -12,6 +12,8 @@ final class ValueObject extends GenerateCommand
 {
     protected function configure()
     {
+        parent::configure();
+
         $this->setName('generate:value-object')
             ->setDescription('Generates a value object');
     }
