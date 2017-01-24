@@ -1,3 +1,4 @@
 composer.phar
 /vendor/*
-/src/temp/*
+/app/cache/*
+/app/logs/*
