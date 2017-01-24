@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator;
+namespace App;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application as FrameworkApplication;
 use Symfony\Component\Console\Command\Command;
