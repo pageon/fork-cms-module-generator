@@ -1,4 +1,5 @@
 <?php
+
 namespace ModuleGenerator\CLI\Service\Generate;
 
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;

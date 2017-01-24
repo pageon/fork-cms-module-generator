@@ -2,13 +2,10 @@
 
 namespace ModuleGenerator\CLI\Console;
 
-use ModuleGenerator\CLI\Exception\SrcDirectoryNotFound;
 use ModuleGenerator\CLI\Service\Generate\Generate;
-use Nette\PhpGenerator\ClassType;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Filesystem\Filesystem;
 
 abstract class GenerateCommand extends Command
 {
