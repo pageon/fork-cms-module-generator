@@ -23,6 +23,6 @@ final class ValueObject extends GenerateCommand
         parent::execute($input, $output);
 
         $valueObject = ValueObjectClass::fromDataTransferObject($this->getFormData(ValueObjectType::class));
-        $this->generateService->generateClass($valueObject);
+        $this->generateService->generateClass($valueObject, $this->getTargetPhpVersion());
     }
 }

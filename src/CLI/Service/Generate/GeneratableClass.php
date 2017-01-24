@@ -8,13 +8,13 @@ abstract class GeneratableClass
 {
     abstract public function getClassName(): ClassName;
 
-    public function getTemplatePath(): string
+    public function getTemplatePath($targetPhpVersion): string
     {
         return realpath(
             __DIR__ . '/../../../' . preg_replace(
                 '/^ModuleGenerator/',
                 '',
-                str_replace('\\', '/', static::class) . '.html.twig'
+                str_replace('\\', '/', static::class) . '.php' . $targetPhpVersion * 10 . '.html.twig'
             )
         );
     }

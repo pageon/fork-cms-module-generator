@@ -57,7 +57,7 @@ final class Generate
         throw SrcDirectoryNotFound::forDirectory($this->currentWorkingDirectory);
     }
 
-    public function generateClass(GeneratableClass $class)
+    public function generateClass(GeneratableClass $class, float $targetPhpVersion)
     {
         $fileDirectory = '/' . str_replace('\\', '/', $class->getClassName()->getNamespace()->getName());
         $filename = $fileDirectory . '/' . $class->getClassName()->getName() . '.php';
@@ -65,7 +65,7 @@ final class Generate
 
         $fileSystem->dumpFile(
             $this->getGenerateDirectory() . $filename,
-            $this->templating->render($class->getTemplatePath(), ['class' => $class])
+            $this->templating->render($class->getTemplatePath($targetPhpVersion), ['class' => $class])
         );
     }
 }
