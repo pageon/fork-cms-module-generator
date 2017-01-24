@@ -16,7 +16,7 @@ curl -sS https://getcomposer.org/installer | php
 php composer.phar install
 
 # Symlink to $PREFIX/bin
-ln -s $PREFIX/fork-cms-module-generator/ModuleGenerator.php $PREFIX/bin/module-generator
+ln -s $PREFIX/fork-cms-module-generator/app/console $PREFIX/bin/module-generator
 
 # Get back to where we once belonged
 cd -
