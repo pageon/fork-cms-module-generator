@@ -20,12 +20,3 @@ ln -s $PREFIX/fork-cms-module-generator/app/console $PREFIX/bin/module-generator
 
 # Get back to where we once belonged
 cd -
-
-if [ -e ~/.bash_profile ]
-then
-    echo "eval \$(module-generator _completion --generate-hook --shell-type=bash)" >> ~/.bash_profile
-fi
-if [ -e ~/.zshrc ]
-then
-    echo "eval \$(module-generator _completion --generate-hook --shell-type=zsh)" >> ~/.zshrc
-fi

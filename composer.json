@@ -13,8 +13,7 @@
         "symfony/twig-bundle": "^3.2",
         "symfony/asset": "^3.2",
         "symfony/templating": "^3.2",
-        "symfony/serializer": "^3.2",
-        "stecman/symfony-console-completion": "^0.7.0"
+        "symfony/serializer": "^3.2"
     },
     "autoload": {
         "psr-4": {
