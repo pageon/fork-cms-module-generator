@@ -20,3 +20,12 @@ ln -s $PREFIX/fork-cms-module-generator/app/console $PREFIX/bin/module-generator
 
 # Get back to where we once belonged
 cd -
+
+if [ -e ~/.bash_profile ]
+then
+    echo "source $PREFIX/fork-cms-module-generator/console_completion.sh" >> ~/.bash_profile
+fi
+if [ -e ~/.zshrc ]
+then
+    echo "source $PREFIX/fork-cms-module-generator/console_completion.sh" >> ~/.zshrc
+fi
