@@ -36,6 +36,13 @@ services:
     tags:
       - { name: console.command }
 
+  generate_module_bootstrap:
+    class: ModuleGenerator\CLI\Console\Generate\Module\Bootstrap
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_migration_blog-to-news:
     class: ModuleGenerator\CLI\Console\Generate\Migration\BlogToNews
     arguments:
