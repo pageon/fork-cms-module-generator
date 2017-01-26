@@ -14,7 +14,7 @@ abstract class GeneratableClass
             __DIR__ . '/../../../' . preg_replace(
                 '/^ModuleGenerator/',
                 '',
-                str_replace('\\', '/', static::class) . '.php' . $targetPhpVersion * 10 . '.html.twig'
+                str_replace('\\', '/', static::class) . '.php' . $targetPhpVersion * 10 . '.php.twig'
             )
         );
     }
