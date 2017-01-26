@@ -65,7 +65,6 @@ final class Generate
     {
         array_map(
             function (GeneratableClass $class) use ($targetPhpVersion) {
-                $this->generateClass($class, $targetPhpVersion);
                 $fileDirectory = '/' . str_replace('\\', '/', $class->getClassName()->getNamespace()->getName());
                 $filename = $fileDirectory . '/' . $class->getClassName()->getName() . '.php';
 

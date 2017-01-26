@@ -36,7 +36,7 @@ final class ModuleNameType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_module' => ModuleNameDataTransferObject::class,
+                'data_class' => ModuleNameDataTransferObject::class,
                 'label' => false,
                 'required' => true,
             ]
