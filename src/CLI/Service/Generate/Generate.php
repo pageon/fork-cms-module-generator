@@ -68,4 +68,14 @@ final class Generate
             $this->templating->render($class->getTemplatePath($targetPhpVersion), ['class' => $class])
         );
     }
+
+    public function generateFile(GeneratableFile $file, float $targetPhpVersion)
+    {
+        $fileSystem = new Filesystem();
+
+        $fileSystem->dumpFile(
+            $this->getGenerateDirectory() . '/' . $file->getTemplatePath($targetPhpVersion),
+            $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file])
+        );
+    }
 }
