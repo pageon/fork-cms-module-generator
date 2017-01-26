@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\Module\Bootstrap\Backend\Config;
+namespace ModuleGenerator\Module\Frontend\Config;
 
 use ModuleGenerator\CLI\Service\Generate\GeneratableModuleClass;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
@@ -10,6 +10,6 @@ final class Config extends GeneratableModuleClass
 {
     public function getClassName(): ClassName
     {
-        return new ClassName('Config', new PhpNamespace('Backend\\Modules\\' . $this->getModuleName()));
+        return new ClassName('Config', new PhpNamespace('Frontend\\Modules\\' . $this->getModuleName()));
     }
 }
