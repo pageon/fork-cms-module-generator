@@ -54,4 +54,14 @@ final class Info extends GeneratableModuleFile
     {
         return __DIR__ . '/info.xml.twig';
     }
+
+    public static function fromDataTransferObject(InfoDataTransferObject $infoDataTransferObject): self
+    {
+        return new self(
+            ModuleName::fromDataTransferObject($infoDataTransferObject->moduleName),
+            $infoDataTransferObject->moduleVersion,
+            $infoDataTransferObject->minimumForkVersion,
+            $infoDataTransferObject->moduleDescription
+        );
+    }
 }
