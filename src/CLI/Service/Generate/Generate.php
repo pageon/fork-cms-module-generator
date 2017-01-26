@@ -17,6 +17,9 @@ final class Generate
     /** @var TwigEngine */
     private $templating;
 
+    /** @var Filesystem */
+    private $filesystem;
+
     /**
      * @param TwigEngine $templating
      */
@@ -24,6 +27,7 @@ final class Generate
     {
         $this->currentWorkingDirectory = getcwd();
         $this->templating = $templating;
+        $this->filesystem = new Filesystem();
     }
 
     /**
@@ -57,25 +61,43 @@ final class Generate
         throw SrcDirectoryNotFound::forDirectory($this->currentWorkingDirectory);
     }
 
+    public function generateClasses(array $classes, float $targetPhpVersion)
+    {
+        array_map(
+            function (GeneratableClass $class) use ($targetPhpVersion) {
+                $this->generateClass($class, $targetPhpVersion);
+                $fileDirectory = '/' . str_replace('\\', '/', $class->getClassName()->getNamespace()->getName());
+                $filename = $fileDirectory . '/' . $class->getClassName()->getName() . '.php';
+
+                $this->filesystem->dumpFile(
+                    $this->getGenerateDirectory() . $filename,
+                    $this->templating->render($class->getTemplatePath($targetPhpVersion), ['class' => $class])
+                );
+            },
+            $classes
+        );
+    }
+
+    public function generateFiles(array $files, float $targetPhpVersion)
+    {
+        array_map(
+            function (GeneratableFile $file) use ($targetPhpVersion) {
+                $this->filesystem->dumpFile(
+                    $this->getGenerateDirectory() . '/' . $file->getFilePath($targetPhpVersion),
+                    $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file])
+                );
+            },
+            $files
+        );
+    }
+
     public function generateClass(GeneratableClass $class, float $targetPhpVersion)
     {
-        $fileDirectory = '/' . str_replace('\\', '/', $class->getClassName()->getNamespace()->getName());
-        $filename = $fileDirectory . '/' . $class->getClassName()->getName() . '.php';
-        $fileSystem = new Filesystem();
-
-        $fileSystem->dumpFile(
-            $this->getGenerateDirectory() . $filename,
-            $this->templating->render($class->getTemplatePath($targetPhpVersion), ['class' => $class])
-        );
+        $this->generateClasses([$class], $targetPhpVersion);
     }
 
     public function generateFile(GeneratableFile $file, float $targetPhpVersion)
     {
-        $fileSystem = new Filesystem();
-
-        $fileSystem->dumpFile(
-            $this->getGenerateDirectory() . '/' . $file->getFilePath($targetPhpVersion),
-            $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file])
-        );
+        $this->generateClasses([$file], $targetPhpVersion);
     }
 }
