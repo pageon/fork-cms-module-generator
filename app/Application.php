@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Application as FrameworkApplication;
 use Symfony\Component\Console\Command\Command;
 
@@ -31,5 +32,13 @@ final class Application extends FrameworkApplication
         }
 
         parent::add($command);
+    }
+
+    protected function getDefaultCommands(): array
+    {
+        $commands = parent::getDefaultCommands();
+        $commands[] = new CompletionCommand();
+
+        return $commands;
     }
 }
