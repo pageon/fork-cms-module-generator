@@ -23,9 +23,9 @@ cd -
 
 if [ -e ~/.bash_profile ]
 then
-    "eval \$(module-generator _completion --generate-hook)" >> ~/.bash_profile
+    echo "eval \$(module-generator _completion --generate-hook)" >> ~/.bash_profile
 fi
 if [ -e ~/.zshrc ]
 then
-    "eval \$(module-generator _completion --generate-hook)" >> ~/.zshrc
+    echo "eval \$(module-generator _completion --generate-hook)" >> ~/.zshrc
 fi
