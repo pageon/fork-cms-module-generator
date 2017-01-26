@@ -24,4 +24,4 @@ _complete_sf2_app_console() {
 }
 
 export COMP_WORDBREAKS="\ \"\\'><=;|&("
-complete -F _complete_sf2_app_console generator
+complete -F _complete_sf2_app_console module-generator
