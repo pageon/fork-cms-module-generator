@@ -1,0 +1,16 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Backend\Core\Engine\Model;
+use Backend\Core\Installer\ModuleInstaller;
+
+class {{ class.className.name }} extends ModuleInstaller
+{
+    public function install()
+    {
+        $this->addModule('{{ class.moduleName }}');
+
+        $this->importLocale(__DIR__ . '/Data/locale.xml');
+    }
+}
