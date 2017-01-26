@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\CLI\Console\Generate;
+namespace ModuleGenerator\CLI\Console\Generate\Domain;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
 use ModuleGenerator\Domain\ValueObject\ValueObject as ValueObjectClass;
@@ -14,7 +14,7 @@ final class ValueObject extends GenerateCommand
     {
         parent::configure();
 
-        $this->setName('generate:value-object')
+        $this->setName('generate:domain:value-object')
             ->setDescription('Generates a value object');
     }
 
