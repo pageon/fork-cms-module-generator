@@ -29,8 +29,15 @@ services:
     arguments:
       - '@templating'
 
-  generate_Value-object:
-    class: ModuleGenerator\CLI\Console\Generate\ValueObject
+  generate_domain_value-object:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\ValueObject
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
+  generate_migration_blog-to-news:
+    class: ModuleGenerator\CLI\Console\Generate\Migration\BlogToNews
     arguments:
       - '@generate_generate_service'
     tags:

@@ -74,7 +74,7 @@ final class Generate
         $fileSystem = new Filesystem();
 
         $fileSystem->dumpFile(
-            $this->getGenerateDirectory() . '/' . $file->getTemplatePath($targetPhpVersion),
+            $this->getGenerateDirectory() . '/' . $file->getFilePath($targetPhpVersion),
             $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file])
         );
     }
