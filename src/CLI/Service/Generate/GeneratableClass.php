@@ -8,7 +8,7 @@ abstract class GeneratableClass
 {
     abstract public function getClassName(): ClassName;
 
-    public function getTemplatePath($targetPhpVersion): string
+    public function getTemplatePath(float $targetPhpVersion): string
     {
         return realpath(
             __DIR__ . '/../../../' . preg_replace(
