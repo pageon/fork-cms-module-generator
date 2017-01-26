@@ -3,8 +3,6 @@
 namespace ModuleGenerator\CLI\Console\Generate\Migration;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
-use ModuleGenerator\Domain\ValueObject\ValueObject as ValueObjectClass;
-use ModuleGenerator\Domain\ValueObject\ValueObjectType;
 use ModuleGenerator\Migration\BlogToNews\BlogToNewsMigration;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
