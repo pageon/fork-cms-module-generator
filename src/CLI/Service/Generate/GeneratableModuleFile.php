@@ -1,8 +1,7 @@
 <?php
 
-namespace ModuleGenerator\Module;
+namespace ModuleGenerator\CLI\Service\Generate;
 
-use ModuleGenerator\CLI\Service\Generate\GeneratableFile;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
 
 abstract class GeneratableModuleFile extends GeneratableFile
