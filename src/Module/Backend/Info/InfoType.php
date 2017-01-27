@@ -27,7 +27,9 @@ final class InfoType extends AbstractType
         )->add(
             'moduleVersion',
             SemVerType::class,
-            ['label' => 'Module version']
+            [
+                'label' => 'Module version',
+            ]
         )->add(
             'minimumForkVersion',
             SemVerType::class,

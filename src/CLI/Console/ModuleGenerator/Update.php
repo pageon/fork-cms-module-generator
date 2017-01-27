@@ -12,9 +12,6 @@ final class Update extends Command
     /** @var UpdateService */
     protected $update;
 
-    /**
-     * @param string $name The name for this command
-     */
     public function __construct(UpdateService $update)
     {
         parent::__construct();
@@ -29,10 +26,6 @@ final class Update extends Command
             ->setAliases(['self:update']);
     }
 
-    /**
-     * @param InputInterface $input The input
-     * @param OutputInterface $output The output
-     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->update->run();
