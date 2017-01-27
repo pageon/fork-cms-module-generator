@@ -57,7 +57,7 @@ final class ClassName
 
     public function getForParameter(): string
     {
-        return lcfirst($this->name);
+        return lcfirst($this->getName());
     }
 
     public function getName(): string
