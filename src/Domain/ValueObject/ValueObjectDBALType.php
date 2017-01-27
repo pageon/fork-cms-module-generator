@@ -2,9 +2,10 @@
 
 namespace ModuleGenerator\Domain\ValueObject;
 
+use ModuleGenerator\CLI\Service\Generate\GeneratableClass;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 
-final class ValueObjectDBALType
+final class ValueObjectDBALType extends GeneratableClass
 {
     /** @var ClassName */
     private $className;
