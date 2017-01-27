@@ -10,25 +10,15 @@ final class {{ class.className.name }}
     {% endfor %}
 
     /**
-     * @param string ${{ class.className.forParameter }}
+     * @param {{ class.constants|first.type }} ${{ class.className.forParameter }}
      */
-    private function __construct(${{ class.className.forParameter }})
+    public function __construct(${{ class.className.forParameter }})
     {
         if (!in_array(${{ class.className.forParameter }}, self::getPossibleValues(), true)) {
             throw new InvalidArgumentException('Invalid value');
         }
 
         $this->{{ class.className.forParameter }} = ${{ class.className.forParameter }};
-    }
-
-    /**
-     * @param string ${{ class.className.forParameter }}
-     *
-     * @return self
-     */
-    public static function fromString(${{ class.className.forParameter }})
-    {
-        return new self(${{ class.className.forParameter }});
     }
 
     /**
