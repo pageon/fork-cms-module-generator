@@ -28,6 +28,7 @@ final class ValueObjectDBALType extends GeneratableClass
     public function __construct(ClassName $className, ClassName $valueObjectClassName, $type, $name)
     {
         $this->className = $className;
+        $this->valueObjectClassName = $valueObjectClassName;
         $this->type = $type;
         $this->name = $name;
     }
