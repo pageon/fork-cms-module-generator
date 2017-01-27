@@ -19,25 +19,45 @@ final class Image extends GeneratableClass
     /** @var string */
     private $mimeTypeErrorMessage;
 
+    /** @var string */
+    private $uploadDirectory;
+
     public function __construct(
         ClassName $className,
         string $maxFileSize,
         string $mimeTypes,
-        string $mimeTypeErrorMessage
+        string $mimeTypeErrorMessage,
+        string $uploadDirectory
     ) {
         $this->className = $className;
         $this->maxFileSize = $maxFileSize;
         $this->mimeTypes = $mimeTypes;
         $this->mimeTypeErrorMessage = $mimeTypeErrorMessage;
+        $this->uploadDirectory = $uploadDirectory;
     }
 
     public static function fromDataTransferObject(ImageDataTransferObject $imageDataTransferObject): self
     {
+        $className = ClassName::fromDataTransferObject($imageDataTransferObject->className);
+        $matches = 0;
+        $uploadDirectory = preg_replace(
+            "|\\\\Backend\\\\Modules\\\\(.+?)\\\\Domain\\\\(.+?)\\\\(.+?)$|",
+            "$1/$2/$3",
+            $className->getFullyQualifiedName(),
+            -1,
+            $matches
+        );
+
+        if ($matches === 0) {
+            $uploadDirectory = $className->getRealName();
+        }
+
         return new self(
-            ClassName::fromDataTransferObject($imageDataTransferObject->className),
+            $className,
             $imageDataTransferObject->maxFileSize,
             $imageDataTransferObject->mimeTypes,
-            $imageDataTransferObject->mimeTypeErrorMessage
+            $imageDataTransferObject->mimeTypeErrorMessage,
+            $uploadDirectory
         );
     }
 
@@ -59,5 +79,10 @@ final class Image extends GeneratableClass
     public function getMimeTypeErrorMessage(): string
     {
         return $this->mimeTypeErrorMessage;
+    }
+
+    public function getUploadDirectory(): string
+    {
+        return $this->uploadDirectory;
     }
 }
