@@ -3,14 +3,10 @@
 namespace ModuleGenerator\Domain\Image;
 
 use ModuleGenerator\PhpGenerator\ClassName\ClassNameType;
-use ModuleGenerator\PhpGenerator\Constant\ConstantType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Count;
-use Symfony\Component\Validator\Constraints\Valid;
 
 final class ImageType extends AbstractType
 {

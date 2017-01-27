@@ -37,8 +37,8 @@ final class ValueObjectDBALType extends GeneratableClass
     {
         $matches = 0;
         $name = preg_replace(
-            "|\\\\Backend\\\\Modules\\\\(.+?)\\\\Domain\\\\(.+?)\\\\(.+?)$|",
-            "$1_$2_$3",
+            '|\\\\Backend\\\\Modules\\\\(.+?)\\\\Domain\\\\(.+?)\\\\(.+?)$|',
+            '$1_$2_$3',
             $valueObject->getClassName()->getFullyQualifiedName(),
             -1,
             $matches

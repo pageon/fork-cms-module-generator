@@ -41,8 +41,8 @@ final class Image extends GeneratableClass
         $className = ClassName::fromDataTransferObject($imageDataTransferObject->className);
         $matches = 0;
         $uploadDirectory = preg_replace(
-            "|\\\\Backend\\\\Modules\\\\(.+?)\\\\Domain\\\\(.+?)\\\\(.+?)$|",
-            "$1/$2/$3",
+            '|\\\\Backend\\\\Modules\\\\(.+?)\\\\Domain\\\\(.+?)\\\\(.+?)$|',
+            '$1/$2/$3',
             $className->getFullyQualifiedName(),
             -1,
             $matches
