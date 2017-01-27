@@ -1,0 +1,39 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\Type;
+
+final class {{ class.className.name }} extends Type
+{
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return {{ class.name }};
+    }
+
+    /**
+     * @param {{ class.type }} ${{ class.className.forParameter }}
+     * @param AbstractPlatform $platform
+     *
+     * @return Province
+     */
+    public function convertToPHPValue(${{ class.className.forParameter }}, AbstractPlatform $platform)
+    {
+        return new {{ class.valueObjectClassName.name }}(${{ class.className.forParameter }});
+    }
+
+    /**
+     * @param Province $province
+     * @param AbstractPlatform $platform
+     *
+     * @return string
+     */
+    public function convertToDatabaseValue($province, AbstractPlatform $platform)
+    {
+        return ${{ class.className.forParameter }}->getValue();
+    }
+}
