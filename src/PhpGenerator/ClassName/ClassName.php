@@ -78,14 +78,6 @@ final class ClassName
         ClassNameDataTransferObject $classNameDataTransferObject
     ): self {
         $namespace = PhpNamespace::fromDataTransferObject($classNameDataTransferObject->namespace);
-        if ($classNameDataTransferObject->hasExistingClassName()) {
-            $classNameDataTransferObject->getClassNameClass()->name = ucfirst($classNameDataTransferObject->name);
-            $classNameDataTransferObject->getClassNameClass()->namespace = $namespace;
-            $classNameDataTransferObject->getClassNameClass()->alias = empty($classNameDataTransferObject->alias)
-                ? null : ucfirst($classNameDataTransferObject->alias);
-
-            return $classNameDataTransferObject->getClassNameClass();
-        }
 
         return new self(
             $classNameDataTransferObject->name,

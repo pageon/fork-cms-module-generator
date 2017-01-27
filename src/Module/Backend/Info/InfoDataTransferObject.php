@@ -22,20 +22,6 @@ final class InfoDataTransferObject
     /** @var Info|null */
     private $infoClass;
 
-    public function __construct(Info $info = null)
-    {
-        $this->infoClass = $info;
-
-        if (!$this->infoClass instanceof Info) {
-            return;
-        }
-
-        $this->moduleName = $this->infoClass->getModuleName();
-        $this->moduleVersion = $this->infoClass->getModuleVersion();
-        $this->minimumForkVersion = $this->infoClass->getMinimumForkVersion();
-        $this->moduleDescription = $this->infoClass->getModuleDescription();
-    }
-
     public function hasExistingInfo(): bool
     {
         return $this->infoClass instanceof Info;
