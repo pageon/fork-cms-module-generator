@@ -35,7 +35,7 @@ final class Generate
      *
      * @return string The src directory
      */
-    final protected function getGenerateDirectory()
+    protected function getGenerateDirectory()
     {
         if ($this->generateDirectory !== null) {
             return $this->generateDirectory;
