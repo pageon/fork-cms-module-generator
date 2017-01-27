@@ -43,4 +43,9 @@ final class ValueObject extends GeneratableClass
     {
         return $this->constants;
     }
+
+    public function getType(): string
+    {
+        return reset($this->constants)->getType();
+    }
 }

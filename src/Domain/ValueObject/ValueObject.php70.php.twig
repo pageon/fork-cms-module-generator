@@ -14,16 +14,27 @@ final class {{ class.className.name }}
     self::{{ constant.name }},
     {% endfor -%}];
 
+    /** @var {{ class.type }} */
+    private ${{ class.className.forParameter }};
+
     /**
-     * @param {{ class.constants|first.type }} ${{ class.className.forParameter }}
+     * @param {{ class.type }} ${{ class.className.forParameter }}
      */
-    public function __construct({{ class.constants|first.type }} ${{ class.className.forParameter }})
+    public function __construct({{ class.type }} ${{ class.className.forParameter }})
     {
         if (!in_array(${{ class.className.forParameter }}, self::POSSIBLE_VALUES, true)) {
             throw new InvalidArgumentException('Invalid value');
         }
 
         $this->{{ class.className.forParameter }} = ${{ class.className.forParameter }};
+    }
+
+    /**
+     * @return {{ class.type }}
+     */
+    public function getValue(): {{ class.type }}
+    {
+        return $this->{{ class.className.forParameter }};
     }
 
     /**

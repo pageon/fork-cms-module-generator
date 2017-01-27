@@ -9,8 +9,11 @@ final class {{ class.className.name }}
     {% for constant in class.constants %}const {{ constant.name }} = {{ constant.valueForTemplate|raw }};
     {% endfor %}
 
+    /** @var {{ class.type }} */
+    private ${{ class.className.forParameter }};
+
     /**
-     * @param {{ class.constants|first.type }} ${{ class.className.forParameter }}
+     * @param {{ class.type }} ${{ class.className.forParameter }}
      */
     public function __construct(${{ class.className.forParameter }})
     {
@@ -30,6 +33,14 @@ final class {{ class.className.name }}
         {% for constant in class.constants %}
     self::{{ constant.name }},
         {% endfor -%}];
+    }
+
+    /**
+     * @return {{ class.type }}
+     */
+    public function getValue()
+    {
+        return $this->{{ class.className.forParameter }};
     }
 
     /**
