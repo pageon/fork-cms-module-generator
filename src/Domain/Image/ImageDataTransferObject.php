@@ -10,11 +10,11 @@ final class ImageDataTransferObject
     public $className;
 
     /** @var string */
-    public $maxFileSize = '2M';
+    public $maxFileSize;
 
     /** @var string */
-    public $mimeTypes = '{"image/jpeg", "image/gif", "image/png"}';
+    public $mimeTypes;
 
     /** @var string */
-    public $mimeTypeErrorMessage = 'err.JPGGIFAndPNGOnly';
+    public $mimeTypeErrorMessage;
 }

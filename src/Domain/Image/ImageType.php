@@ -25,18 +25,21 @@ final class ImageType extends AbstractType
                 TextType::class,
                 [
                     'label' => 'Max file size',
+                    'data' => $options['max_file_size'],
                 ]
             )->add(
                 'mimeTypes',
                 TextType::class,
                 [
                     'label' => 'Allowed mime types',
+                    'data' => $options['mime_types'],
                 ]
             )->add(
                 'mimeTypeErrorMessage',
                 TextType::class,
                 [
                     'label' => 'Error message when wrong mime type is passed',
+                    'data' => $options['mime_type_error_message'],
                 ]
             );
     }
@@ -46,6 +49,9 @@ final class ImageType extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => ImageDataTransferObject::class,
+                'max_file_size' => '2M',
+                'mime_types' => '{"image/jpeg", "image/gif", "image/png"}',
+                'mime_type_error_message' => 'err.JPGGIFAndPNGOnly',
             ]
         );
     }
