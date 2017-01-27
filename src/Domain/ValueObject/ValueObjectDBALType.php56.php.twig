@@ -12,14 +12,14 @@ final class {{ class.className.name }} extends Type
      */
     public function getName()
     {
-        return {{ class.name }};
+        return '{{ class.name }}';
     }
 
     /**
      * @param {{ class.type }} ${{ class.className.forParameter }}
      * @param AbstractPlatform $platform
      *
-     * @return Province
+     * @return {{ class.valueObjectClassName.name }}
      */
     public function convertToPHPValue(${{ class.className.forParameter }}, AbstractPlatform $platform)
     {
@@ -27,12 +27,12 @@ final class {{ class.className.name }} extends Type
     }
 
     /**
-     * @param Province $province
+     * @param {{ class.valueObjectClassName.name }} ${{ class.className.forParameter }}
      * @param AbstractPlatform $platform
      *
      * @return string
      */
-    public function convertToDatabaseValue($province, AbstractPlatform $platform)
+    public function convertToDatabaseValue(${{ class.className.forParameter }}, AbstractPlatform $platform)
     {
         return ${{ class.className.forParameter }}->getValue();
     }

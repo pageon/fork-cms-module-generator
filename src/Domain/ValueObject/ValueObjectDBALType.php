@@ -35,6 +35,19 @@ final class ValueObjectDBALType extends GeneratableClass
 
     public static function fromValueObject(ValueObject $valueObject): self
     {
+        $matches = 0;
+        $name = preg_replace(
+            "|\\\\Backend\\\\Modules\\\\(.+?)\\\\Domain\\\\(.+?)\\\\(.+?)$|",
+            "$1_$2_$3",
+            $valueObject->getClassName()->getFullyQualifiedName(),
+            -1,
+            $matches
+        );
+
+        if ($matches === 0) {
+            $name = $valueObject->getClassName()->getRealName();
+        }
+
         return new self(
             new ClassName(
                 $valueObject->getClassName()->getRealName() . 'DBALType',
@@ -42,13 +55,7 @@ final class ValueObjectDBALType extends GeneratableClass
             ),
             $valueObject->getClassName(),
             $valueObject->getType(),
-            mb_strtolower(
-                preg_replace(
-                    '/Backend\\\\Modules\\\\(.+?)\\\\Domain\\\\(.+?)\\\\(.+?)$/',
-                    '$1_$2_$3',
-                    $valueObject->getClassName()->getFullyQualifiedName()
-                )
-            )
+            mb_strtolower($name)
         );
     }
 
