@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
-final class ClassNameType extends AbstractType
+class ClassNameType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
