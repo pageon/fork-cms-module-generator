@@ -20,7 +20,7 @@ cd $PREFIX/fork-cms-module-generator
 curl -sS https://getcomposer.org/installer | php
 
 # Install dependencies using composer
-php composer.phar require "justcarakas/fork-cms-module-generator:*"
+php composer.phar require "justcarakas/fork-cms-module-generator:*" --quiet
 
 # Symlink to $PREFIX/bin
 ln -s $PREFIX/$GENERATOR_DIRECTORY/app/console $PREFIX/bin/module-generator
