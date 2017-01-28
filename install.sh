@@ -35,7 +35,7 @@ ln -s $PREFIX/$GENERATOR_DIRECTORY/app/console $PREFIX/bin/module-generator
 cd - > /dev/null
 
 # check if the command is available already
-if ! type "module-generator" > /dev/null
+if [type "module-generator" = "module-generator not found"]
 then
     # make sure you can use it without opening a new tab
     echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh"
