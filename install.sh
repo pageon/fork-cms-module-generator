@@ -16,11 +16,17 @@ mkdir -p $PREFIX/fork-cms-module-generator
 # cd to the fork-cms-module-generator directory
 cd $PREFIX/fork-cms-module-generator
 
+echo "install: 0/3"
+
 # Get composer
 curl -sS https://getcomposer.org/installer | php
 
+echo "install: 1/3"
+
 # Install dependencies using composer
 php composer.phar require "justcarakas/fork-cms-module-generator:*" --quiet
+
+echo "install: 2/3"
 
 # Symlink to $PREFIX/bin
 ln -s $PREFIX/$GENERATOR_DIRECTORY/app/console $PREFIX/bin/module-generator
@@ -40,3 +46,5 @@ then
         echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh" >> ~/.zshrc
     fi
 fi
+
+echo "install: 3/3"
