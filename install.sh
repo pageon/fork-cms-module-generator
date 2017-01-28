@@ -37,9 +37,6 @@ cd - > /dev/null
 # check if the command is available already
 if [type "module-generator" = "module-generator not found"]
 then
-    # make sure you can use it without opening a new tab
-    echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh"
-
     if [ -e ~/.bash_profile ]
     then
         echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh" >> ~/.bash_profile
