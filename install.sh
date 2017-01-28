@@ -4,7 +4,7 @@
 PREFIX=${PREFIX:='/usr/local'}
 
 # The directory where composer will install this stuff
-GENERATOR_DIRECTORY='fork-cms-module-generator/vendor/justcarakas/fork-cms-module-generator/'
+GENERATOR_DIRECTORY='fork-cms-module-generator/vendor/justcarakas/fork-cms-module-generator'
 
 # Cleanup if it already exists
 rm -rf $PREFIX/fork-cms-module-generator
