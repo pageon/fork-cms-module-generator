@@ -1,0 +1,30 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use {{ class.entityClassName.forUseStatement }};
+use {{ class.repositoryClassName.forUseStatement }};
+
+final class {{ class.className.name }}
+{
+    /** @var {{ class.repositoryClassName.name }} */
+    private ${{ class.repositoryClassName.forParameter }};
+
+    /**
+     * @param {{ class.repositoryClassName.name }} ${{ class.repositoryClassName.forParameter }}
+     */
+    public function __construct({{ class.repositoryClassName.name }} ${{ class.repositoryClassName.forParameter }})
+    {
+        $this->{{ class.repositoryClassName.forParameter }} = ${{ class.repositoryClassName.forParameter }};
+    }
+
+    /**
+     * @param {{ class.commandClassName.name }} ${{ class.commandClassName.forParameter }}
+     */
+    public function handle({{ class.commandClassName.name }} ${{ class.commandClassName.forParameter }})
+    {
+        $this->{{ class.repositoryClassName.forParameter }}->add(
+            {{ class.entityClassName.name }}::fromDataTransferObject(${{ class.commandClassName.forParameter }})
+        );
+    }
+}
