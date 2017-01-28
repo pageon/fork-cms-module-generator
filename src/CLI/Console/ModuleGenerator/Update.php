@@ -21,9 +21,8 @@ final class Update extends Command
 
     protected function configure()
     {
-        $this->setName('module-generator:update')
-            ->setDescription('Updates the module-generator')
-            ->setAliases(['self:update']);
+        $this->setName('self:update')
+            ->setDescription('Updates the module-generator');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

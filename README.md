@@ -13,7 +13,7 @@ If you use bash or zsh you also should have autocomplete once you restart the se
 
 run the following command
 
-    module-generator module-generator:update
+    module-generator self:update
     
 ## Settings
 
