@@ -18,7 +18,7 @@ final class PhpNamespaceType extends AbstractType
             'name',
             TextType::class,
             [
-                'label' => 'Namespace (i.e.: Console\\ValueObject)',
+                'label' => $options['name_label'],
                 'required' => true,
                 'constraints' => [
                     new NotBlank(),
@@ -45,6 +45,7 @@ final class PhpNamespaceType extends AbstractType
                     new Valid(),
                 ],
                 'error_bubbling' => false,
+                'name_label' => 'Namespace (i.e.: Console\\ValueObject)',
             ]
         );
     }

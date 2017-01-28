@@ -18,7 +18,7 @@ final class ClassNameType extends AbstractType
             'name',
             TextType::class,
             [
-                'label' => 'Class name (i.e.: Status)',
+                'label' => $options['name_label'],
                 'required' => true,
                 'constraints' => [
                     new NotBlank(),
@@ -32,7 +32,10 @@ final class ClassNameType extends AbstractType
             ]
         )->add(
             'namespace',
-            PhpNamespaceType::class
+            PhpNamespaceType::class,
+            [
+                'name_label' => $options['namespace_label'],
+            ]
         );
         if ($options['ask_alias']) {
             $builder->add(
@@ -63,6 +66,8 @@ final class ClassNameType extends AbstractType
                 'label' => 'Class name',
                 'required' => true,
                 'ask_alias' => false,
+                'name_label' => 'Class name (i.e.: Status)',
+                'namespace_label' => 'Namespace (i.e.: Console\\ValueObject)',
             ]
         );
     }

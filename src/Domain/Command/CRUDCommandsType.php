@@ -17,13 +17,15 @@ final class CRUDCommandsType extends AbstractType
                 'commandNamespace',
                 PhpNamespaceType::class,
                 [
-                    'label' => 'Command namespace',
+                    'name_label' => 'Command namespace (i.e.: Backend\\Modules\MyModule\Domain\MyEntity\Command)',
                 ]
             )->add(
                 'entityClassName',
                 ClassNameType::class,
                 [
                     'label' => 'Entity class name',
+                    'name_label' => 'Entity class name',
+                    'namespace_label' => 'Entity namespace (i.e.: Backend\\Modules\MyModule\Domain\MyEntity)',
                 ]
             );
     }
