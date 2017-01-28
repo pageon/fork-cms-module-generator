@@ -43,6 +43,13 @@ services:
     tags:
       - { name: console.command }
 
+  generate_domain_repository:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\Repository
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_domain_file:
     class: ModuleGenerator\CLI\Console\Generate\Domain\File
     arguments:
