@@ -14,7 +14,7 @@ class Kernel extends SymfonyKernel
     /** @var string */
     private $vendorDirectory;
 
-    public function __construct(string $environment, string $debug, string $vendorDirectory)
+    public function __construct(string $environment, bool $debug, string $vendorDirectory)
     {
         parent::__construct($environment, $debug);
         $this->vendorDirectory = $vendorDirectory;
