@@ -35,5 +35,10 @@
     ],
     "require-dev": {
         "symfony/var-dumper": "^3.2"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "cd vendor/justcarakas/fork-cms-module-generator && mkdir vendor && cd vendor && ln -s ../../autoload.php autoload.php"
+        ]
     }
 }
