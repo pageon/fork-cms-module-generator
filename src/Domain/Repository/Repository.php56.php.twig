@@ -7,11 +7,11 @@ use Doctrine\ORM\EntityRepository;
 class {{ class.className.name }} extends EntityRepository
 {
     /**
-     * @param Appeal $appeal
+     * @param {{ class.entityClassName.name }} ${{ class.entityClassName.forParameter }}
      */
-    public function add(Appeal $appeal)
+    public function add({{ class.entityClassName.name }} ${{ class.entityClassName.forParameter }})
     {
-        $this->getEntityManager()->persist($appeal);
+        $this->getEntityManager()->persist(${{ class.entityClassName.forParameter }});
     }
 
     /**

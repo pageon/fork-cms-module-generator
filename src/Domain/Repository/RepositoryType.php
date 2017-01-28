@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\Domain\Command;
+namespace ModuleGenerator\Domain\Repository;
 
 use ModuleGenerator\PhpGenerator\ClassName\ClassNameType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -9,6 +9,8 @@ final class RepositoryType extends ClassNameType
 {
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
+
         $resolver->setDefaults(
             [
                 'label' => 'Entity class name',
