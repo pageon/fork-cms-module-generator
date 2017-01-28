@@ -34,17 +34,13 @@ ln -s $PREFIX/$GENERATOR_DIRECTORY/app/console $PREFIX/bin/module-generator
 # Get back to where we once belonged
 cd - > /dev/null
 
-# check if the command is available already
-if [ type "module-generator" == "module-generator not found" ]
+if [ -e ~/.bash_profile ]
 then
-    if [ -e ~/.bash_profile ]
-    then
-        echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh" >> ~/.bash_profile
-    fi
-    if [ -e ~/.zshrc ]
-    then
-        echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh" >> ~/.zshrc
-    fi
+    echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh" >> ~/.bash_profile
+fi
+if [ -e ~/.zshrc ]
+then
+    echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh" >> ~/.zshrc
 fi
 
 echo "install: 3/3"
