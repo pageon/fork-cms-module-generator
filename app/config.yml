@@ -50,6 +50,13 @@ services:
     tags:
       - { name: console.command }
 
+  generate_domain_crud-commands:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\CRUDCommands
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_module_bootstrap:
     class: ModuleGenerator\CLI\Console\Generate\Module\Bootstrap
     arguments:
