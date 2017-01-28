@@ -25,14 +25,11 @@ final class Update
         passthru(
             'cd ' . realpath($this->basedir)
             . ' && echo "Start updating"'
-            . ' && git pull origin master --quiet'
-            . ' && echo "updating: 1/4"'
+            . ' && echo "updating: 0/2"'
             . ' && curl -sS https://getcomposer.org/installer | php  > /dev/null'
-            . ' && echo "updating: 2/4"'
-            . ' && php composer.phar install --no-dev --quiet'
-            . ' && echo "updating: 3/4"'
-            . ' && git remote update  > /dev/null'
-            . ' && echo "updating: 4/4"'
+            . ' && echo "updating: 1/2"'
+            . ' && php composer.phar update justcarakas/fork-cms-module-generator--no-dev --quiet'
+            . ' && echo "updating: 2/2"'
             . ' && cd -'
             . ' && echo "Finished updating"'
         );

@@ -15,7 +15,7 @@ services:
   module-generator_update_service:
     class: ModuleGenerator\CLI\Service\ModuleGenerator\Update
     arguments:
-      - '%kernel.root_dir%/..'
+      - '%vendor_directory%/..'
 
   module-generator_update:
     class: ModuleGenerator\CLI\Console\ModuleGenerator\Update
