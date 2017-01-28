@@ -8,7 +8,7 @@ Simply run the installer
 
 You can now run the `module-generator` command from your command line.
 
-If you use bash or zsh you also should have autocomplete once you restart the session (or open a new tab).
+If you use bash or zsh you also should have autocomplete (no need to restart the session or open a new tab).
 ## Update
 
 run the following command
