@@ -3,8 +3,11 @@
 # Get ENV variable
 PREFIX=${PREFIX:='/usr/local'}
 
+# The directory where composer will install this stuff
+GENERATOR_DIRECTORY='fork-cms-module-generator/vendor/justcarakas/fork-cms-module-generator/'
+
 # Clone the git repo
-git clone https://github.com/carakas/fork-cms-module-generator.git $PREFIX/fork-cms-module-generator
+mkdir -p $PREFIX/fork-cms-module-generator
 
 # cd to the fork-cms-module-generator directory
 cd $PREFIX/fork-cms-module-generator
@@ -13,19 +16,20 @@ cd $PREFIX/fork-cms-module-generator
 curl -sS https://getcomposer.org/installer | php
 
 # Install dependencies using composer
-php composer.phar install
+php composer.phar require "justcarakas/fork-cms-module-generator:*"
 
 # Symlink to $PREFIX/bin
-ln -s $PREFIX/fork-cms-module-generator/app/console $PREFIX/bin/module-generator
+ln -s $PREFIX/$GENERATOR_DIRECTORY/app/console $PREFIX/bin/module-generator
 
 # Get back to where we once belonged
 cd -
 
+# Install the tab autocomplete
 if [ -e ~/.bash_profile ]
 then
-    echo "source $PREFIX/fork-cms-module-generator/console_completion.sh" >> ~/.bash_profile
+    echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh" >> ~/.bash_profile
 fi
 if [ -e ~/.zshrc ]
 then
-    echo "source $PREFIX/fork-cms-module-generator/console_completion.sh" >> ~/.zshrc
+    echo "source $PREFIX/$GENERATOR_DIRECTORY/console_completion.sh" >> ~/.zshrc
 fi
