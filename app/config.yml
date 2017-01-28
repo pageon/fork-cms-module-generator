@@ -2,16 +2,6 @@ parameters:
   secret: secret
 
 services:
-  # temp overwrite until it is merged upstream
-  matthias_symfony_console_form.form_helper:
-    class: ModuleGenerator\CLI\Console\Helper\FormHelper
-    public: false
-    arguments:
-        - "@matthias_symfony_console_form.console_form_factory"
-        - "@matthias_symfony_console_form.delegating_interactor"
-    tags:
-        - { name: console_helper }
-
   module-generator_update_service:
     class: ModuleGenerator\CLI\Service\ModuleGenerator\Update
     arguments:
