@@ -19,7 +19,7 @@ cd $PREFIX/fork-cms-module-generator
 echo "install: 0/3"
 
 # Get composer
-curl -sS https://getcomposer.org/installer | php
+curl -sS https://getcomposer.org/installer | php  > /dev/null
 
 echo "install: 1/3"
 
@@ -32,7 +32,7 @@ echo "install: 2/3"
 ln -s $PREFIX/$GENERATOR_DIRECTORY/app/console $PREFIX/bin/module-generator
 
 # Get back to where we once belonged
-cd -
+cd - > /dev/null
 
 # check if the command is available already
 if ! type "module-generator" > /dev/null
