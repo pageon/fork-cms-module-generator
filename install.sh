@@ -35,7 +35,7 @@ ln -s $PREFIX/$GENERATOR_DIRECTORY/app/console $PREFIX/bin/module-generator
 cd - > /dev/null
 
 # check if the command is available already
-if [type "module-generator" = "module-generator not found"]
+if [ type "module-generator" == "module-generator not found" ]
 then
     if [ -e ~/.bash_profile ]
     then
