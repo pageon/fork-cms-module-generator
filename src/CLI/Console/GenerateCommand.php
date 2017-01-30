@@ -63,10 +63,10 @@ abstract class GenerateCommand extends Command
         return $this->targetPhpVersion;
     }
 
-    public function getFormData(string $className)
+    public function getFormData(string $className, $data = null)
     {
         $formHelper = $this->getHelper('form');
 
-        return $formHelper->interactUsingForm($className, $this->input, $this->output);
+        return $formHelper->interactUsingForm($className, $this->input, $this->output, [], $data);
     }
 }
