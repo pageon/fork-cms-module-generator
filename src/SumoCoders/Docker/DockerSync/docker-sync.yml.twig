@@ -1,0 +1,22 @@
+syncs:
+  var_www_html-sync-{{ file.project }}:
+    sync_strategy: 'unison'
+    src: './'
+    dest: '/var/www/html'
+    sync_host_ip: '127.0.0.1'
+    sync_args:
+      - "-prefer='newer'"
+      - "-ignore='Path .idea'"
+      - "-ignore='Path .git'"
+      - "-ignore='Path .github'"
+      - "-ignore='Path deployment'"
+      - "-ignore='Path node_modules'"
+      - "-ignore='Name .DS_Store'"
+      - "-ignore='Name .editorconfig'"
+      - "-ignore='Name Capfile'"
+      - "-ignore='Name Gemfile'"
+      - "-ignore='Name Sumofile'"
+      - "-ignore='Name docker-*.yml'"
+      - "-ignore='Name package.json'"
+    sync_user: 'www-data'
+    sync_userid: '33'

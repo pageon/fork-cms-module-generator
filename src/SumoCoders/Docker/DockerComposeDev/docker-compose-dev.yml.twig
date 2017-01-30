@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    environment:
+      - FORK_ENV=dev
+      - FORK_DEBUG=1
+    volumes:
+      - var_www_html-sync-{{ file.project }}:/var/www/html
+
+volumes:
+  var_www_html-sync-{{ file.project }}:
+    external: true
