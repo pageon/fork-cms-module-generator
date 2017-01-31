@@ -13,6 +13,16 @@ final class Entity extends GeneratableClass
     /** @var string */
     private $tableName;
 
+    /**
+     * @param ClassName $className
+     * @param string $tableName
+     */
+    public function __construct(ClassName $className, string $tableName)
+    {
+        $this->className = $className;
+        $this->tableName = $tableName;
+    }
+
     public function getClassName(): ClassName
     {
         return $this->className;
