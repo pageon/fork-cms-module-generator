@@ -23,6 +23,6 @@ final class {{ class.className.name }}
      */
     public function handle({{ class.commandClassName.name }} ${{ class.commandClassName.forParameter }})
     {
-        $this->{{ class.repositoryClassName.forParameter }}->remove(${{ class.commandClassName.forParameter }}->get{{ entityClassName.realName }}());
+        $this->{{ class.repositoryClassName.forParameter }}->remove(${{ class.commandClassName.forParameter }}->get{{ class.entityClassName.realName }}());
     }
 }
