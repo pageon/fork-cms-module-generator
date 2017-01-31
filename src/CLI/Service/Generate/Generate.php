@@ -97,6 +97,6 @@ final class Generate
 
     public function generateFile(GeneratableFile $file, float $targetPhpVersion)
     {
-        $this->generateClasses([$file], $targetPhpVersion);
+        $this->generateFiles([$file], $targetPhpVersion);
     }
 }
