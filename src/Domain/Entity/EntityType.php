@@ -3,11 +3,14 @@
 namespace ModuleGenerator\Domain\Entity;
 
 use ModuleGenerator\PhpGenerator\ClassName\ClassNameType;
+use ModuleGenerator\PhpGenerator\Parameter\ParameterType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\Valid;
 
 class EntityType extends AbstractType
 {
@@ -33,6 +36,17 @@ class EntityType extends AbstractType
                             ]
                         ),
                     ],
+                ]
+            )->add(
+                'parameters',
+                CollectionType::class,
+                [
+                    'entry_type' => ParameterType::class,
+                    'allow_add' => true,
+                    'label' => 'Parameters (the id is added already)!',
+                    'constraints' => [
+                        new Valid()
+                    ]
                 ]
             );
     }

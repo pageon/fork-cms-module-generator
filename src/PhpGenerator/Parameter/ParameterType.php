@@ -67,6 +67,7 @@ class ParameterType extends AbstractType
                 'data_class' => ParameterDataTransferObject::class,
                 'label' => 'Parameter',
                 'required' => true,
+                'error_bubbling' => false,
             ]
         );
     }
