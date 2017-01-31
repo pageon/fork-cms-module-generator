@@ -50,8 +50,9 @@ class ParameterType extends AbstractType
             'nullable',
             ChoiceType::class,
             [
+                'choices_as_values' => true,
                 'label' => 'Nullable',
-                'data' => false,
+                'data' => 'N',
                 'choices' => [
                     true => 'Y',
                     false => 'N',
