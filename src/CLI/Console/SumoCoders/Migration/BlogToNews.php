@@ -1,9 +1,9 @@
 <?php
 
-namespace ModuleGenerator\CLI\Console\Generate\Migration;
+namespace ModuleGenerator\CLI\Console\SumoCoders\Migration;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
-use ModuleGenerator\Migration\BlogToNews\BlogToNewsMigration;
+use ModuleGenerator\SumoCoders\Migration\BlogToNews\BlogToNewsMigration;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -13,7 +13,7 @@ final class BlogToNews extends GenerateCommand
     {
         parent::configure();
 
-        $this->setName('generate:migration:blog-to-news')
+        $this->setName('sumocoders:migration:blog-to-news')
             ->setDescription('Generates a migration to rename blog to news');
     }
 

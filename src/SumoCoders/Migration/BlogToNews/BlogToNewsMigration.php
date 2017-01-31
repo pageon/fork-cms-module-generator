@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\Migration\BlogToNews;
+namespace ModuleGenerator\SumoCoders\Migration\BlogToNews;
 
 use ModuleGenerator\CLI\Service\Generate\GeneratableFile;
 

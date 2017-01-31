@@ -62,7 +62,7 @@ services:
       - { name: console.command }
 
   generate_migration_blog-to-news:
-    class: ModuleGenerator\CLI\Console\Generate\Migration\BlogToNews
+    class: ModuleGenerator\CLI\Console\SumoCoders\Migration\BlogToNews
     arguments:
       - '@generate_generate_service'
     tags:
