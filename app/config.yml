@@ -47,6 +47,13 @@ services:
     tags:
       - { name: console.command }
 
+  generate_domain_entity:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\Entity
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_domain_crud-commands:
     class: ModuleGenerator\CLI\Console\Generate\Domain\CRUDCommands
     arguments:
