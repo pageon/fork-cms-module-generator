@@ -6,4 +6,10 @@ use Backend\Core\Engine\Base\Config as BaseConfig;
 
 final class {{ class.className.name }} extends BaseConfig
 {
+    public function install()
+    {
+        $this->addModule('{{ class.moduleName }}');
+
+        $this->importLocale(__DIR__ . '/Data/locale.xml');
+    }
 }
