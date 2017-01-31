@@ -3,6 +3,7 @@
 namespace ModuleGenerator\Domain\Entity;
 
 use ModuleGenerator\PhpGenerator\ClassName\ClassNameDataTransferObject;
+use ModuleGenerator\PhpGenerator\Parameter\Parameter;
 
 final class EntityDataTransferObject
 {
@@ -11,4 +12,7 @@ final class EntityDataTransferObject
 
     /** @var string */
     public $tableName;
+
+    /** @var Parameter[] */
+    public $parameters;
 }

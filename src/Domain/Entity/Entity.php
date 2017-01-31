@@ -4,6 +4,7 @@ namespace ModuleGenerator\Domain\Entity;
 
 use ModuleGenerator\CLI\Service\Generate\GeneratableClass;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
+use ModuleGenerator\PhpGenerator\Parameter\Parameter;
 
 final class Entity extends GeneratableClass
 {
@@ -13,14 +14,14 @@ final class Entity extends GeneratableClass
     /** @var string */
     private $tableName;
 
-    /**
-     * @param ClassName $className
-     * @param string $tableName
-     */
-    public function __construct(ClassName $className, string $tableName)
+    /** @var Parameter[] */
+    private $parameters;
+
+    public function __construct(ClassName $className, string $tableName, array $parameters)
     {
         $this->className = $className;
         $this->tableName = $tableName;
+        $this->parameters = $parameters;
     }
 
     public function getClassName(): ClassName
@@ -33,11 +34,17 @@ final class Entity extends GeneratableClass
         return $this->tableName;
     }
 
+    public function getParameters(): array
+    {
+        return $this->parameters;
+    }
+
     public static function fromDataTransferObject(EntityDataTransferObject $entityDataTransferObject): self
     {
         return new self(
             ClassName::fromDataTransferObject($entityDataTransferObject->className),
-            $entityDataTransferObject->tableName
+            $entityDataTransferObject->tableName,
+            $entityDataTransferObject->parameters
         );
     }
 }
