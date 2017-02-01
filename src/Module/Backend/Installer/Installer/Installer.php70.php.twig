@@ -2,9 +2,9 @@
 
 namespace {{ class.className.namespace }};
 
-use Backend\Core\Engine\Base\Config as BaseConfig;
+use Backend\Core\Installer\ModuleInstaller;
 
-final class {{ class.className.name }} extends BaseConfig
+final class {{ class.className.name }} extends ModuleInstaller
 {
     public function install()
     {

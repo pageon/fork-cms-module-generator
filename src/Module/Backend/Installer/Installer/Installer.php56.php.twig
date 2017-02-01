@@ -2,10 +2,9 @@
 
 namespace {{ class.className.namespace }};
 
-use Backend\Core\Engine\Model;
 use Backend\Core\Installer\ModuleInstaller;
 
-class {{ class.className.name }} extends ModuleInstaller
+final class {{ class.className.name }} extends ModuleInstaller
 {
     public function install()
     {
