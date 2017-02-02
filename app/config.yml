@@ -7,6 +7,11 @@ services:
     arguments:
       - '%vendor_directory%/..'
 
+  module-generator_settings_service:
+    class: ModuleGenerator\CLI\Service\ModuleGenerator\Settings
+    arguments:
+      - '%kernel.root_dir%/settings.yml'
+
   module-generator_update:
     class: ModuleGenerator\CLI\Console\ModuleGenerator\Update
     arguments:
