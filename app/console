@@ -7,11 +7,8 @@ require_once $vendorDirectory . '/autoload.php';
 
 use App\Kernel;
 use App\Application;
-use Symfony\Component\Debug\Debug;
 
-Debug::enable();
-
-$kernel = new Kernel('dev', true, $vendorDirectory);
+$kernel = new Kernel('prod', false, $vendorDirectory);
 $application = new Application($kernel);
 $application->run();
 
