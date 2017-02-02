@@ -69,7 +69,7 @@ final class Settings
 
     private function load()
     {
-        $this->settings = Yaml::parse(file_get_contents($this->settingsCacheFile));
+        $this->settings = (array) Yaml::parse(file_get_contents($this->settingsCacheFile));
         // just make sure that this is up to date
         $this->settings[self::SUPPORTED_PHP_VERSIONS] = [
             5.6,
