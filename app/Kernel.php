@@ -40,12 +40,12 @@ class Kernel extends SymfonyKernel
 
     public function getCacheDir(): string
     {
-        return __DIR__ . '/cache';
+        return __DIR__ . '/cache/' . $this->environment;
     }
 
     public function getLogDir(): string
     {
-        return __DIR__ . '/logs';
+        return __DIR__ . '/logs/' . $this->environment;
     }
 
     protected function buildContainer(): ContainerInterface
