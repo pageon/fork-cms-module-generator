@@ -34,6 +34,8 @@
         }
     ],
     "require-dev": {
-        "symfony/var-dumper": "^3.2"
+        "symfony/var-dumper": "^3.2",
+        "behat/behat": "^3.3",
+        "beberlei/assert": "^2.7"
     }
 }
