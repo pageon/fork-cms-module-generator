@@ -3,6 +3,7 @@ services:
     class: ModuleGenerator\CLI\Service\Generate\Generate
     arguments:
       - '@templating'
+      - '@module-generator_dumper'
 
   generate_domain_value-object:
     class: ModuleGenerator\CLI\Console\Generate\Domain\ValueObject

@@ -17,17 +17,17 @@ final class Generate
     /** @var TwigEngine */
     private $templating;
 
-    /** @var Filesystem */
-    private $filesystem;
+    /** @var Dumper */
+    private $dumper;
 
     /**
      * @param TwigEngine $templating
      */
-    public function __construct(TwigEngine $templating)
+    public function __construct(TwigEngine $templating, Dumper $dumper)
     {
         $this->currentWorkingDirectory = getcwd();
         $this->templating = $templating;
-        $this->filesystem = new Filesystem();
+        $this->dumper = $dumper;
     }
 
     /**
@@ -68,7 +68,7 @@ final class Generate
                 $fileDirectory = '/' . str_replace('\\', '/', $class->getClassName()->getNamespace()->getName());
                 $filename = $fileDirectory . '/' . $class->getClassName()->getName() . '.php';
 
-                $this->filesystem->dumpFile(
+                $this->dumper->dump(
                     $this->getGenerateDirectory() . $filename,
                     $this->templating->render($class->getTemplatePath($targetPhpVersion), ['class' => $class])
                 );
@@ -81,7 +81,7 @@ final class Generate
     {
         array_map(
             function (GeneratableFile $file) use ($targetPhpVersion) {
-                $this->filesystem->dumpFile(
+                $this->dumper->dump(
                     $this->getGenerateDirectory() . '/' . $file->getFilePath($targetPhpVersion),
                     $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file])
                 );
