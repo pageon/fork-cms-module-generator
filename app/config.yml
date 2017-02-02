@@ -19,6 +19,13 @@ services:
     tags:
       - { name: console.command }
 
+  module-generator_set_default_php_version:
+    class: ModuleGenerator\CLI\Console\Settings\Set\SetDefaultPhpVersion
+    arguments:
+      - '@module-generator_settings_service'
+    tags:
+      - { name: console.command }
+
   generate_generate_service:
     class: ModuleGenerator\CLI\Service\Generate\Generate
     arguments:
