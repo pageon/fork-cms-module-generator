@@ -1,0 +1,61 @@
+services:
+  generate_generate_service:
+    class: ModuleGenerator\CLI\Service\Generate\Generate
+    arguments:
+      - '@templating'
+
+  generate_domain_value-object:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\ValueObject
+    arguments:
+      - '@generate_generate_service'
+      - '@module-generator_settings_service'
+    tags:
+      - { name: console.command }
+
+  generate_domain_image:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\Image
+    arguments:
+      - '@generate_generate_service'
+      - '@module-generator_settings_service'
+    tags:
+      - { name: console.command }
+
+  generate_domain_repository:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\Repository
+    arguments:
+      - '@generate_generate_service'
+      - '@module-generator_settings_service'
+    tags:
+      - { name: console.command }
+
+  generate_domain_file:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\File
+    arguments:
+      - '@generate_generate_service'
+      - '@module-generator_settings_service'
+    tags:
+      - { name: console.command }
+
+  generate_domain_entity:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\Entity
+    arguments:
+      - '@generate_generate_service'
+      - '@module-generator_settings_service'
+    tags:
+      - { name: console.command }
+
+  generate_domain_crud-commands:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\CRUDCommands
+    arguments:
+      - '@generate_generate_service'
+      - '@module-generator_settings_service'
+    tags:
+      - { name: console.command }
+
+  generate_module_bootstrap:
+    class: ModuleGenerator\CLI\Console\Generate\Module\Bootstrap
+    arguments:
+      - '@generate_generate_service'
+      - '@module-generator_settings_service'
+    tags:
+      - { name: console.command }

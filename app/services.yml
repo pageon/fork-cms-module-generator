@@ -1,0 +1,16 @@
+imports:
+  - { resource: ../src/CLI/Console/Generate/commands.yml }
+  - { resource: ../src/CLI/Console/ModuleGenerator/commands.yml }
+  - { resource: ../src/CLI/Console/Settings/commands.yml }
+  - { resource: ../src/CLI/Console/SumoCoders/commands.yml }
+
+services:
+  module-generator_update_service:
+    class: ModuleGenerator\CLI\Service\ModuleGenerator\Update
+    arguments:
+      - '%vendor_directory%/..'
+
+  module-generator_settings_service:
+    class: ModuleGenerator\CLI\Service\ModuleGenerator\Settings
+    arguments:
+      - '%kernel.root_dir%/settings.yml'
