@@ -26,6 +26,11 @@
             ]
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "ModuleGenerator\\Tests\\": "test/"
+        }
+    },
     "license": "MIT",
     "authors": [
         {

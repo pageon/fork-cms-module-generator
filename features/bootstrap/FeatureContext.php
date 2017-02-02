@@ -5,7 +5,8 @@ use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use App\Kernel;
 use App\Application;
-use Matthias\SymfonyConsoleForm\Tests\Helper\ApplicationTester;
+use ModuleGenerator\Tests\Helper\ApplicationTester;
+use ModuleGenerator\Tests\Helper\StringUtil;
 
 /**
  * Defines application features from the specific context.
@@ -39,11 +40,32 @@ class FeatureContext implements Context
     /**
      * @Given /^I run the command "([^"]*)" and I provide as input$/
      */
-    public function iRunCommand($name, $input)
+    public function iRunTheCommandAndIProvideAsInput($name, PyStringNode $input)
+    {
+        $this->runCommandWithInput($name, $input);
+    }
+
+    /**
+     * @Given /^I run the command "([^"]*)" and I provide as input "([^"]*)"$/
+     */
+    public function iRunTheCommandWithInput($name, $input)
+    {
+        $this->runCommandWithInput($name, $input);
+    }
+
+    private function runCommandWithInput($name, $input)
     {
         $input = str_replace('[enter]', "\n", $input);
         $this->tester->putToInputStream($input);
         $this->tester->run($name, array('interactive' => true, 'decorated' => false));
+    }
+
+    /**
+     * @Given /^I run the command "([^"]*)"$/
+     */
+    public function iRunCommand($name)
+    {
+        $this->tester->run($name, array('interactive' => false, 'decorated' => false));
     }
 
     /**
@@ -52,8 +74,8 @@ class FeatureContext implements Context
     public function theOutputShouldBe(PyStringNode $expectedOutput)
     {
         Assertion::same(
-            (string) $expectedOutput,
-            $this->getOutput()
+            StringUtil::trimLines((string) $expectedOutput),
+            StringUtil::trimLines($this->getOutput())
         );
     }
 
