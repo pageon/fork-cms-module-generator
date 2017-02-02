@@ -1,4 +1,6 @@
 # Fork-cms module generator
+[![Build Status](https://travis-ci.org/carakas/fork-cms-module-generator.svg?branch=master)](https://travis-ci.org/carakas/fork-cms-module-generator)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/carakas/fork-cms-module-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/carakas/fork-cms-module-generator/?branch=master)
 
 ## Installation
 
