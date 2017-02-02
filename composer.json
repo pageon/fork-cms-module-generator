@@ -4,7 +4,6 @@
     "type": "application",
     "require": {
         "php": "^7.0",
-        "matthiasnoback/symfony-console-form": "dev-master",
         "symfony/framework-bundle": "^3.2",
         "symfony/finder": "^3.2",
         "symfony/validator": "^3.2",
@@ -14,14 +13,9 @@
         "symfony/asset": "^3.2",
         "symfony/templating": "^3.2",
         "symfony/serializer": "^3.2",
-        "vierbergenlars/php-semver": "^3.0"
+        "vierbergenlars/php-semver": "^3.0",
+        "matthiasnoback/symfony-console-form": "^2.2"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/carakas/symfony-console-form"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "ModuleGenerator\\": [

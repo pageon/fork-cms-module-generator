@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "483622a108acdf27ba52ecd3b34fb100",
-    "content-hash": "cb719ea8b53f358d9797de18e83f26ea",
+    "hash": "09d14e53ffeef8832b4681de9f1163ab",
+    "content-hash": "63bb04ffd1a68e1e9513e2da3e0fce7f",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -79,16 +79,16 @@
         },
         {
             "name": "matthiasnoback/symfony-console-form",
-            "version": "dev-master",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/carakas/symfony-console-form.git",
-                "reference": "b0ba80a0bd153f59c1bdb92f2d4b2a0a8ebc1853"
+                "url": "https://github.com/matthiasnoback/symfony-console-form.git",
+                "reference": "61c6865d6c24205222be4a13cf2bbab9bcad1843"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/carakas/symfony-console-form/zipball/b0ba80a0bd153f59c1bdb92f2d4b2a0a8ebc1853",
-                "reference": "b0ba80a0bd153f59c1bdb92f2d4b2a0a8ebc1853",
+                "url": "https://api.github.com/repos/matthiasnoback/symfony-console-form/zipball/61c6865d6c24205222be4a13cf2bbab9bcad1843",
+                "reference": "61c6865d6c24205222be4a13cf2bbab9bcad1843",
                 "shasum": ""
             },
             "require": {
@@ -103,6 +103,7 @@
                 "phpunit/phpunit": "^4.8",
                 "symfony/finder": "~2.8|~3.0",
                 "symfony/framework-bundle": "~2.8|~3.0",
+                "symfony/security": "~2.8|~3.0",
                 "symfony/validator": "~2.8|~3.0",
                 "symfony/yaml": "~2.8|~3.0"
             },
@@ -112,11 +113,7 @@
                     "Matthias\\SymfonyConsoleForm\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Matthias\\SymfonyConsoleForm\\Tests\\": "test/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -130,14 +127,11 @@
             "description": "Use Symfony forms for Console command input",
             "homepage": "http://github.com/matthiasnoback/symfony-console-form",
             "keywords": [
-                "Symfony",
                 "console",
-                "form"
+                "form",
+                "symfony"
             ],
-            "support": {
-                "source": "https://github.com/carakas/symfony-console-form/tree/master"
-            },
-            "time": "2017-01-20 12:07:04"
+            "time": "2017-02-01 18:57:36"
         },
         {
             "name": "paragonie/random_compat",
@@ -2990,9 +2984,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "matthiasnoback/symfony-console-form": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
