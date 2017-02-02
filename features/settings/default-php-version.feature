@@ -1,3 +1,4 @@
+#noinspection CucumberUndefinedStep
 Feature: It is possible to interact with the settings of the generator
   Scenario: Get the default php version
     When I run the command "settings:reset"
