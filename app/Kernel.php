@@ -32,6 +32,10 @@ class Kernel extends SymfonyKernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__ . '/config.yml');
+
+        if ($this->environment === 'test') {
+            $loader->load(__DIR__ . '/config_test.yml');
+        }
     }
 
     public function getCacheDir(): string

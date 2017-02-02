@@ -1,0 +1,3 @@
+services:
+  module-generator_dumper:
+    class: ModuleGenerator\CLI\Service\Generate\EchoDumper
