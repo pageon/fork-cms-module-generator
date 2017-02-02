@@ -6,7 +6,7 @@ matrix:
     - php: 7.1
 
 script:
-  - bin/phpcs --standard=psr2 --extensions=php --warning-severity=0 --report=full "src"
+  - vendor/bin/phpcs --standard=psr2 --extensions=php --warning-severity=0 --report=full "src"
   - vendor/bin/behat
 
 before_script:
