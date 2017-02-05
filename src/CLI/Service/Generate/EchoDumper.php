@@ -6,6 +6,8 @@ final class EchoDumper implements Dumper
 {
     public function dump(string $filename, string $content)
     {
+        // make the url more clear and work from the src directory for easier use in tests
+        $filename = substr($filename, ($srcPosition = strpos($filename, 'src')) !== false ? $srcPosition : 0);
         echo '########## START FILE ##########' . PHP_EOL;
         echo '########## START FILENAME ##########' . PHP_EOL;
         echo '# ' . $filename . ' #' . PHP_EOL;
