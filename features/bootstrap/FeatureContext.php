@@ -88,7 +88,7 @@ class FeatureContext implements Context
     }
 
     /**
-     * @Then the file :filePaths should be dumped and look like :pathsToDummyFile
+     * @Then the files :filePaths should be dumped and look like :pathsToDummyFile
      */
     public function theFilesShouldBeDumped($filePaths, $pathsToDummyFile)
     {

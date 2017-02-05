@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+    <Backend>
+        <Core>
+            <item type="label" name="Blog">
+                <translation language="nl"><![CDATA[nieuws]]></translation>
+            </item>
+            <item type="label" name="Articles">
+                <translation language="nl"><![CDATA[nieuwsberichten]]></translation>
+            </item>
+            <item type="label" name="PublishedArticles">
+                <translation language="nl"><![CDATA[gepubliceerde nieuwsberichten]]></translation>
+            </item>
+            <item type="label" name="RecentArticlesFull">
+                <translation language="nl"><![CDATA[recente nieuwsberichten (volledig)]]></translation>
+            </item>
+            <item type="label" name="RecentArticlesList">
+                <translation language="nl"><![CDATA[recente nieuwsberichten (lijst)]]></translation>
+            </item>
+            <item type="label" name="PingBlogServices">
+                <translation language="nl"><![CDATA[ping nieuwsbericht services]]></translation>
+            </item>
+            <item type="error" name="RSSTitle">
+                <translation language="nl"><![CDATA[Nieuws RSS titel is nog niet ingevuld. <a href="%1$s">Configureer</a>]]></translation>
+            </item>
+            <item type="message" name="HelpNickname">
+                <translation language="nl"><![CDATA[De naam waaronder je wilt publiceren (bijvoorbeeld als auteur van een nieuwsbericht).]]></translation>
+            </item>
+        </Core>
+        <Blog>
+            <item type="label" name="Add">
+                <translation language="nl"><![CDATA[nieuwsbericht toevoegen]]></translation>
+            </item>
+            <item type="message" name="Added">
+                <translation language="nl"><![CDATA[Het nieuwsbericht "%1$s" werd toegevoegd.]]></translation>
+            </item>
+            <item type="message" name="ArticlesFor">
+                <translation language="nl"><![CDATA[Nieuwsberichten in "%1$s"]]></translation>
+            </item>
+            <item type="message" name="ConfirmDelete">
+                <translation language="nl"><![CDATA[Ben je zeker dat je het nieuwsbericht "%1$s" wil verwijderen?]]></translation>
+            </item>
+            <item type="message" name="Deleted">
+                <translation language="nl"><![CDATA[De geselecteerde nieuwsberichten werden verwijderd.]]></translation>
+            </item>
+            <item type="message" name="EditArticle">
+                <translation language="nl"><![CDATA[bewerk nieuwsbericht "%1$s"]]></translation>
+            </item>
+            <item type="message" name="Edited">
+                <translation language="nl"><![CDATA[Het nieuwsbericht "%1$s" werd opgeslagen.]]></translation>
+            </item>
+            <item type="message" name="HelpMeta">
+                <translation language="nl">
+                    <![CDATA[Toon de meta informatie van dit nieuwsbericht in de RSS feed (categorie)]]></translation>
+            </item>
+            <item type="message" name="HelpPingServices">
+                <translation language="nl">
+                    <![CDATA[Laat verschillende blogservices weten wanneer je een nieuw nieuwsbericht plaatst.]]></translation>
+            </item>
+            <item type="message" name="HelpSummary">
+                <translation language="nl">
+                    <![CDATA[Maak voor lange nieuwsberichten een inleiding of samenvatting. Die kan getoond worden op de homepage of het nieuwsbericht overzicht.]]></translation>
+            </item>
+            <item type="message" name="NoItems">
+                <translation language="nl">
+                    <![CDATA[Er zijn nog geen nieuwsberichten. <a href="%1$s">Schrijf het eerste nieuwsbericht</a>.]]></translation>
+            </item>
+            <item type="message" name="NumItemsInRecentArticlesFull">
+                <translation language="nl"><![CDATA[Aantal items in recente nieuwsberichten (volledig) widget]]></translation>
+            </item>
+            <item type="message" name="NumItemsInRecentArticlesList">
+                <translation language="nl"><![CDATA[Aantal items in recente nieuwsbericht (lijst) widget]]></translation>
+            </item>
+            <item type="message" name="ShowOnlyItemsInCategory">
+                <translation language="nl"><![CDATA[Toon enkel nieuwsberichten in de categorie:]]></translation>
+            </item>
+            <item type="error" name="RSSDescription">
+                <translation language="nl">
+                    <![CDATA[Nieuws RSS beschrijving is nog niet geconfigureerd. <a href="%1$s">Configureer</a>]]></translation>
+            </item>
+        </Blog>
+    </Backend>
+    <Frontend>
+        <Core>
+            <item type="label" name="Blog">
+                <translation language="nl"><![CDATA[nieuws]]></translation>
+            </item>
+            <item type="label" name="RecentArticles">
+                <translation language="nl"><![CDATA[recente nieuwsberichten]]></translation>
+            </item>
+            <item type="label" name="BlogArchive">
+                <translation language="nl"><![CDATA[nieuwsarchief]]></translation>
+            </item>
+            <item type="message" name="BlogNoItems">
+                <translation language="nl"><![CDATA[Er zijn nog geen nieuwsbericht]]></translation>
+            </item>
+            <item type="message" name="BlogAllComments">
+                <translation language="nl"><![CDATA[Alle reacties op het nieuws]]></translation>
+            </item>
+            <item type="message" name="ArticlesFor">
+                <translation language="nl"><![CDATA[nieuwsberichten voor %1$s]]></translation>
+            </item>
+            <item type="label" name="ArticlesInCategory">
+                <translation language="nl"><![CDATA[nieuwsberichten in categorie]]></translation>
+            </item>
+        </Core>
+    </Frontend>
+</locale>
