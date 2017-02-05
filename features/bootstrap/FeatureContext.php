@@ -82,20 +82,12 @@ class FeatureContext implements Context
     /**
      * @Then the file :filePath should be dumped and look like :pathToDummyFile
      */
-    public function theFileShouldBeDumped($filePath, $pathToDummyFile)
+    public function theFileShouldBeDumped(string $filePath, string $pathToDummyFile)
     {
-        $this->checkFiles([$filePath], [$pathToDummyFile], $this->getOutput());
+        $this->checkFile($filePath, $pathToDummyFile, $this->getOutput());
     }
 
-    /**
-     * @Then the files :filePaths should be dumped and look like :pathsToDummyFile
-     */
-    public function theFilesShouldBeDumped($filePaths, $pathsToDummyFile)
-    {
-        $this->checkFiles(explode(', ', $filePaths), explode(', ', $pathsToDummyFile), $this->getOutput());
-    }
-
-    private function checkFiles(array $filePaths, array $pathsToDummyFile, $output)
+    private function checkFile(string $filePath, string $pathToDummyFile, string $output)
     {
         $fileMatcherExpression = '/########## START FILE ##########\s';
         $fileMatcherExpression .= '########## START FILENAME ##########\s';
@@ -113,16 +105,22 @@ class FeatureContext implements Context
             $outputFiles
         );
 
-        $fileCount = count($filePaths);
+        $fileCount = count($outputFiles);
         for ($i = 0; $i < $fileCount; ++$i) {
-            $filePath = $filePaths[$i];
-            $pathToDummyFile = $pathsToDummyFile[$i];
             $outputFilePath = $outputFiles[1][$i];
+            if ($outputFilePath !== $filePath) {
+                continue;
+            }
+
             $outputFileContent = $outputFiles[2][$i];
 
             Assertion::same($outputFilePath, $filePath);
             Assertion::same($outputFileContent, file_get_contents(__DIR__ . '/' . $pathToDummyFile));
+
+            return;
         }
+
+        Assertion::true(false, $filePath . ' was not generated');
     }
 
     private function getOutput()
