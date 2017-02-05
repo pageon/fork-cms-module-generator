@@ -79,6 +79,52 @@ class FeatureContext implements Context
         );
     }
 
+    /**
+     * @Then the file :filePath should be dumped and look like :pathToDummyFile
+     */
+    public function theFileShouldBeDumped($filePath, $pathToDummyFile)
+    {
+        $this->checkFiles([$filePath], [$pathToDummyFile], $this->getOutput());
+    }
+
+    /**
+     * @Then the file :filePaths should be dumped and look like :pathsToDummyFile
+     */
+    public function theFilesShouldBeDumped($filePaths, $pathsToDummyFile)
+    {
+        $this->checkFiles(explode(', ', $filePaths), explode(', ', $pathsToDummyFile), $this->getOutput());
+    }
+
+    private function checkFiles(array $filePaths, array $pathsToDummyFile, $output)
+    {
+        $fileMatcherExpression = '/########## START FILE ##########\s';
+        $fileMatcherExpression .= '########## START FILENAME ##########\s';
+        $fileMatcherExpression .= '# (.*?) #\s';
+        $fileMatcherExpression .= '########## END FILENAME ##########\s';
+        $fileMatcherExpression .= '########## START CONTENT ##########\s';
+        $fileMatcherExpression .= '([\s\S]*?)\s';
+        $fileMatcherExpression .= '########## END CONTENT ##########\s';
+        $fileMatcherExpression .= '########## END FILE ##########/';
+
+        $outputFiles = [];
+        preg_match_all(
+            $fileMatcherExpression,
+            $output,
+            $outputFiles
+        );
+
+        $fileCount = count($filePaths);
+        for ($i = 0; $i < $fileCount; ++$i) {
+            $filePath = $filePaths[$i];
+            $pathToDummyFile = $pathsToDummyFile[$i];
+            $outputFilePath = $outputFiles[1][$i];
+            $outputFileContent = $outputFiles[2][$i];
+
+            Assertion::same($outputFilePath, $filePath);
+            Assertion::same($outputFileContent, file_get_contents(__DIR__ . '/' . $pathToDummyFile));
+        }
+    }
+
     private function getOutput()
     {
         return $this->tester->getDisplay(true);
