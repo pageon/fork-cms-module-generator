@@ -22,7 +22,7 @@ abstract class GenerateCommand extends Command
     private $input;
 
     /** @var OutputInterface */
-    private $output;
+    private static $output;
 
     /** @var float */
     private $targetPhpVersion;
@@ -59,7 +59,7 @@ abstract class GenerateCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
-        $this->output = $output;
+        self::$output = $output;
 
         $this->targetPhpVersion = (float) $this->input->getArgument('php');
         if (!in_array($this->targetPhpVersion, $this->getSettings()->get(Settings::SUPPORTED_PHP_VERSIONS), true)) {
@@ -81,6 +81,16 @@ abstract class GenerateCommand extends Command
     {
         $formHelper = $this->getHelper('form');
 
-        return $formHelper->interactUsingForm($className, $this->input, $this->output, $options, $data);
+        return $formHelper->interactUsingForm($className, $this->input, self::$output, $options, $data);
+    }
+
+    /**
+     * Yes I know it is dirty but it works for now
+     *
+     * @return OutputInterface
+     */
+    public static function getOutput()
+    {
+        return self::$output;
     }
 }
