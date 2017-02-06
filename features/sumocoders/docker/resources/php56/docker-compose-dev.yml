@@ -4,6 +4,7 @@ services:
     environment:
       - FORK_ENV=dev
       - FORK_DEBUG=1
+      - XDEBUG_CONFIG=remote_host=${EN0IP}
     volumes:
       - var_www_html-sync-MyTestProject:/var/www/html
 
