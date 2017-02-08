@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+  <Backend>
+    <Core>
+      <item type="label" name="TestModule">
+        <translation language="nl"><![CDATA[TestModule]]></translation>
+      </item>
+    </Core>
+  </Backend>
+</locale>
