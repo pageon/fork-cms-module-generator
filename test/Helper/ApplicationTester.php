@@ -92,7 +92,7 @@ final class ApplicationTester
      */
     public function putToInputStream($input)
     {
-        fputs($this->getInputStream(), $input);
+        fwrite($this->getInputStream(), $input);
     }
 
     /**
@@ -101,7 +101,7 @@ final class ApplicationTester
     private function getInputStream()
     {
         if (null === $this->inputStream) {
-            $this->inputStream = fopen('php://memory', 'r+', false);
+            $this->inputStream = fopen('php://memory', 'br+', false);
         }
 
         return $this->inputStream;
