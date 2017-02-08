@@ -7,6 +7,7 @@ use App\Kernel;
 use App\Application;
 use ModuleGenerator\Tests\Helper\ApplicationTester;
 use ModuleGenerator\Tests\Helper\StringUtil;
+use SebastianBergmann\Diff\Differ;
 
 /**
  * Defines application features from the specific context.
@@ -23,6 +24,9 @@ class FeatureContext implements Context
      */
     private $tester;
 
+    /** @var Differ */
+    private $differ;
+
     /**
      * Initializes context.
      *
@@ -35,6 +39,7 @@ class FeatureContext implements Context
         $kernel = new Kernel('test', true, __DIR__ . '/../../vendor');
         $this->application = new Application($kernel);
         $this->tester = new ApplicationTester($this->application);
+        $this->differ = new Differ();
     }
 
     /**
@@ -104,8 +109,7 @@ class FeatureContext implements Context
             $output,
             $outputFiles
         );
-
-        $fileCount = count($outputFiles);
+        $fileCount = count($outputFiles[1]);
         for ($i = 0; $i < $fileCount; ++$i) {
             $outputFilePath = $outputFiles[1][$i];
             if ($outputFilePath !== $filePath) {
@@ -114,8 +118,9 @@ class FeatureContext implements Context
 
             $outputFileContent = $outputFiles[2][$i];
 
+            $dummyContent = file_get_contents(__DIR__ . '/' . $pathToDummyFile);
             Assertion::same($outputFilePath, $filePath);
-            Assertion::same($outputFileContent, file_get_contents(__DIR__ . '/' . $pathToDummyFile));
+            Assertion::same($outputFileContent, $dummyContent, $this->differ->diff($dummyContent, $outputFileContent));
 
             return;
         }
