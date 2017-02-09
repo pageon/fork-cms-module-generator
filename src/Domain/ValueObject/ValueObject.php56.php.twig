@@ -6,8 +6,9 @@ use InvalidArgumentException;
 
 final class {{ class.className.name }}
 {
-    {% for constant in class.constants %}const {{ constant.name }} = {{ constant.valueForTemplate|raw }};
-    {% endfor %}
+{% for constant in class.constants %}
+    const {{ constant.name }} = {{ constant.valueForTemplate|raw }};
+{% endfor %}
 
     /** @var {{ class.type }} */
     private ${{ class.className.forParameter }};
