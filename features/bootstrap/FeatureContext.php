@@ -138,7 +138,7 @@ class FeatureContext implements Context
      */
     public function theCommandHasFinishedSuccessfully()
     {
-        Assertion::same($this->tester->getStatusCode(), 0);
+        Assertion::same($this->tester->getStatusCode(), 0, 'The command wasn\'t finished');
     }
 
     /**
@@ -146,6 +146,6 @@ class FeatureContext implements Context
      */
     public function theCommandWasNotSuccessful()
     {
-        Assertion::notSame($this->tester->getStatusCode(), 0);
+        Assertion::notSame($this->tester->getStatusCode(), 0, 'The command was successful');
     }
 }
