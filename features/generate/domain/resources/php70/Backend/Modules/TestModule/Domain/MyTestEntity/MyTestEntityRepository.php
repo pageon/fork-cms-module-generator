@@ -1,6 +1,6 @@
 <?php
 
-namespace Standalone;
+namespace Backend\Modules\TestModule\Domain\MyTestEntity;
 
 use Doctrine\ORM\EntityRepository;
 
