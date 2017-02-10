@@ -1,5 +1,5 @@
 #noinspection CucumberUndefinedStep
-Feature: It is possible to generate an image value object and its dbal type
+Feature: It is possible to generate an image class and its dbal type
   Scenario: Generate a standalone image code for php 5.6
     When I run the command "settings:reset"
     And I run the command "generate:domain:image 5.6" and I provide as input
