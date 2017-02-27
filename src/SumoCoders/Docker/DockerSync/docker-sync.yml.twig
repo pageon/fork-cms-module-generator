@@ -1,3 +1,4 @@
+version: '2'
 syncs:
   var_www_html-sync-{{ file.project }}:
     sync_strategy: 'unison'
@@ -18,5 +19,4 @@ syncs:
       - "-ignore='Name Sumofile'"
       - "-ignore='Name docker-*.yml'"
       - "-ignore='Name package.json'"
-    sync_user: 'www-data'
     sync_userid: '33'
