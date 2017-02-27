@@ -1,12 +1,12 @@
 # Fork-cms module generator
-[![Build Status](https://travis-ci.org/carakas/fork-cms-module-generator.svg?branch=master)](https://travis-ci.org/carakas/fork-cms-module-generator)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/carakas/fork-cms-module-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/carakas/fork-cms-module-generator/?branch=master)
+[![Build Status](https://travis-ci.org/pageon/fork-cms-module-generator.svg?branch=master)](https://travis-ci.org/pageon/fork-cms-module-generator)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pageon/fork-cms-module-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pageon/fork-cms-module-generator/?branch=master)
 
 ## Installation
 
 Simply run the installer
 
-	curl https://raw.githubusercontent.com/carakas/fork-cms-module-generator/master/install.sh | sh
+	curl https://raw.githubusercontent.com/pageon/fork-cms-module-generator/master/install.sh | sh
 
 You can now run the `module-generator` command from your command line.
 
