@@ -1,5 +1,5 @@
 {
-    "name": "justcarakas/fork-cms-module-generator",
+    "name": "pageon/fork-cms-module-generator",
     "description": "A generator for Fork modules",
     "type": "application",
     "require": {
@@ -35,7 +35,7 @@
     "authors": [
         {
             "name": "Jelmer Prins",
-            "email": "fork@carakas.be"
+            "email": "jelmer@pageon.be"
         }
     ],
     "require-dev": {
