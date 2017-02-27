@@ -4,7 +4,7 @@
 PREFIX=${PREFIX:='/usr/local'}
 
 # The directory where composer will install this stuff
-GENERATOR_DIRECTORY='fork-cms-module-generator/vendor/justcarakas/fork-cms-module-generator'
+GENERATOR_DIRECTORY='fork-cms-module-generator/vendor/pageon/fork-cms-module-generator'
 
 # Cleanup if it already exists
 rm -rf $PREFIX/fork-cms-module-generator
@@ -24,7 +24,7 @@ curl -sS https://getcomposer.org/installer | php  > /dev/null
 echo "install: 1/3"
 
 # Install dependencies using composer
-php composer.phar require "justcarakas/fork-cms-module-generator:*" --quiet
+php composer.phar require "pageon/fork-cms-module-generator:*" --quiet
 
 echo "install: 2/3"
 
