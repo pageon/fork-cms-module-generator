@@ -1,26 +1,35 @@
 # Fork-cms module generator
 [![Build Status](https://travis-ci.org/Pageon/fork-cms-module-generator.svg?branch=master)](https://travis-ci.org/Pageon/fork-cms-module-generator)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Pageon/fork-cms-module-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Pageon/fork-cms-module-generator/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Sumocoders/fork-cms-module-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Pageon/fork-cms-module-generator/?branch=master)
 
 ## Installation
 
-Simply run the installer
+Use composer to install the package to your dev dependencies.
 
-	curl https://raw.githubusercontent.com/pageon/fork-cms-module-generator/master/install.sh | sh
+`composer require --dev sumocoders/sumocoders/fork-cms-module-generator`
 
-You can now run the `module-generator` command from your command line.
+Register the following bundles in your Fork `app/AppKernel.php`, but only load them in dev or test mode.
 
-If you use bash or zsh you also should have autocomplete once you restart the session (or open a new tab).
-## Update
+```
+class AppKernel extends Kernel
+{
+    /**
+     * Load all the bundles we'll be using in our application.
+     */
+    public function registerBundles(): array
+    {
+        ...
 
-run the following command
+        if (in_array($this->getEnvironment(), ['dev', 'test'])) {
+            ...
 
-    module-generator self:update
-    
-## Settings
+            $bundles[] = new \Matthias\SymfonyConsoleForm\Bundle\SymfonyConsoleFormBundle();
+            $bundles[] = new \ModuleGenerator\ModuleGeneratorBundle();
+        }
 
-You can use the `php` parameter to change the minimum supported version of php for the generated code.
+        return $bundles;
+    }
 
-The current supported options are:
-* 5.6
-* 7.0 [default]
+    ...
+}
+```
