@@ -1,0 +1,5 @@
+doctrine:
+  dbal:
+    types:
+  orm:
+    mappings:
