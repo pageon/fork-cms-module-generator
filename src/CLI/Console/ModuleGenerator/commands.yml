@@ -1,7 +1,1 @@
 services:
-  module-generator_update:
-    class: ModuleGenerator\CLI\Console\ModuleGenerator\Update
-    arguments:
-      - '@module-generator_update_service'
-    tags:
-      - { name: console.command }

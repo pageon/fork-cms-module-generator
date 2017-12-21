@@ -77,8 +77,10 @@ final class Settings
         ];
     }
 
-    private function save()
+    private function save(): void
     {
-        file_put_contents($this->settingsCacheFile, Yaml::dump($this->settings));
+        if (!empty($this->settingsCacheFile)) {
+            file_put_contents($this->settingsCacheFile, Yaml::dump($this->settings));
+        }
     }
 }
