@@ -43,7 +43,7 @@ abstract class GenerateCommand extends Command
         $this->input = $input;
         self::$output = $output;
 
-        $this->targetPhpVersion = (float) $this->input->getArgument('php');
+        $this->targetPhpVersion = '7.1';
     }
 
     public function getTargetPhpVersion(): float

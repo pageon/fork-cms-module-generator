@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use {{ class.entityClassName.forUseStatement }};
+
+final class {{ class.className.name }}
+{
+    public function handle({{ class.commandClassName.name }} ${{ class.commandClassName.forParameter }}): void
+    {
+        {{ class.entityClassName.name }}::fromDataTransferObject(${{ class.commandClassName.forParameter }});
+    }
+}

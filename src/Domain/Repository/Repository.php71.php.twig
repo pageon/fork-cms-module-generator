@@ -1,0 +1,24 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Doctrine\ORM\EntityRepository;
+
+class {{ class.className.name }} extends EntityRepository
+{
+    /**
+     * @param {{ class.entityClassName.name }} ${{ class.entityClassName.forParameter }}
+     */
+    public function add({{ class.entityClassName.name }} ${{ class.entityClassName.forParameter }})
+    {
+        $this->getEntityManager()->persist(${{ class.entityClassName.forParameter }});
+    }
+
+    /**
+     * @param {{ class.entityClassName.name }} ${{ class.entityClassName.forParameter }}
+     */
+    public function remove({{ class.entityClassName.name }} ${{ class.entityClassName.forParameter }})
+    {
+        $this->getEntityManager()->remove(${{ class.entityClassName.forParameter }});
+    }
+}

@@ -1,0 +1,59 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use InvalidArgumentException;
+
+final class {{ class.className.name }}
+{
+    {% for constant in class.constants %}const {{ constant.name }} = {{ constant.valueForTemplate|raw }};
+    {% endfor -%}
+
+    const POSSIBLE_VALUES = [
+    {% for constant in class.constants %}
+    self::{{ constant.name }},
+    {% endfor -%}];
+
+    /** @var {{ class.type }} */
+    private ${{ class.className.forParameter }};
+
+    public function __construct({{ class.type }} ${{ class.className.forParameter }})
+    {
+        if (!in_array(${{ class.className.forParameter }}, self::POSSIBLE_VALUES, true)) {
+            throw new InvalidArgumentException('Invalid value');
+        }
+
+        $this->{{ class.className.forParameter }} = ${{ class.className.forParameter }};
+    }
+
+    public function getValue(): {{ class.type }}
+    {
+        return $this->{{ class.className.forParameter }};
+    }
+
+    public function __toString(): string
+    {
+        return (string) $this->{{ class.className.forParameter }};
+    }
+
+    public function equals(self ${{ class.className.forParameter }}): bool
+    {
+        if (!(${{ class.className.forParameter }} instanceof $this)) {
+            return false;
+        }
+
+        return ${{ class.className.forParameter }} == $this;
+    }
+{% for constant in class.constants %}
+
+    public static function {{ constant.camelCasedName }}(): self
+    {
+        return new self(self::{{ constant.name }});
+    }
+
+    public function is{{ constant.camelCasedName(true) }}(): bool
+    {
+        return $this->equals(self::{{ constant.camelCasedName }}());
+    }
+{% endfor -%}
+}
