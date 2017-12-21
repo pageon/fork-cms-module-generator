@@ -3,7 +3,6 @@ services:
     class: ModuleGenerator\CLI\Console\SumoCoders\Migration\BlogToNews
     arguments:
       - '@generate_generate_service'
-      - '@module-generator_settings_service'
     tags:
       - { name: console.command }
 
@@ -11,6 +10,5 @@ services:
     class: ModuleGenerator\CLI\Console\SumoCoders\Docker\Config
     arguments:
       - '@generate_generate_service'
-      - '@module-generator_settings_service'
     tags:
       - { name: console.command }

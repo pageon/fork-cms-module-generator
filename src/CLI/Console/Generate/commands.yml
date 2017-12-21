@@ -9,7 +9,6 @@ services:
     class: ModuleGenerator\CLI\Console\Generate\Domain\ValueObject
     arguments:
       - '@generate_generate_service'
-      - '@module-generator_settings_service'
     tags:
       - { name: console.command }
 
@@ -17,7 +16,6 @@ services:
     class: ModuleGenerator\CLI\Console\Generate\Domain\Image
     arguments:
       - '@generate_generate_service'
-      - '@module-generator_settings_service'
     tags:
       - { name: console.command }
 
@@ -25,7 +23,6 @@ services:
     class: ModuleGenerator\CLI\Console\Generate\Domain\Repository
     arguments:
       - '@generate_generate_service'
-      - '@module-generator_settings_service'
     tags:
       - { name: console.command }
 
@@ -33,7 +30,6 @@ services:
     class: ModuleGenerator\CLI\Console\Generate\Domain\File
     arguments:
       - '@generate_generate_service'
-      - '@module-generator_settings_service'
     tags:
       - { name: console.command }
 
@@ -41,7 +37,6 @@ services:
     class: ModuleGenerator\CLI\Console\Generate\Domain\Entity
     arguments:
       - '@generate_generate_service'
-      - '@module-generator_settings_service'
     tags:
       - { name: console.command }
 
@@ -49,7 +44,6 @@ services:
     class: ModuleGenerator\CLI\Console\Generate\Domain\CRUDCommands
     arguments:
       - '@generate_generate_service'
-      - '@module-generator_settings_service'
     tags:
       - { name: console.command }
 
@@ -57,6 +51,5 @@ services:
     class: ModuleGenerator\CLI\Console\Generate\Module\Bootstrap
     arguments:
       - '@generate_generate_service'
-      - '@module-generator_settings_service'
     tags:
       - { name: console.command }

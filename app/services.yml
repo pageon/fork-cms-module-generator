@@ -1,14 +1,8 @@
 imports:
   - { resource: ../src/CLI/Console/Generate/commands.yml }
   - { resource: ../src/CLI/Console/ModuleGenerator/commands.yml }
-  - { resource: ../src/CLI/Console/Settings/commands.yml }
   - { resource: ../src/CLI/Console/SumoCoders/commands.yml }
 
 services:
   module-generator_dumper:
     class: ModuleGenerator\CLI\Service\Generate\FileDumper
-
-  module-generator_settings_service:
-    class: ModuleGenerator\CLI\Service\ModuleGenerator\Settings
-    arguments:
-      - ''
