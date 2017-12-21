@@ -431,4 +431,40 @@ final class DBALType
     {
         return $this->equals(self::custom());
     }
+
+    public function getPhpType(): string
+    {
+        switch ($this->parameterTypeDoctrine) {
+            case self::SMALLINT:
+            case self::INTEGER:
+            case self::BIGINT:
+                return 'int';
+            case self::DECIMAL:
+            case self::FLOAT:
+                return 'float';
+            case self::STRING:
+            case self::TEXT:
+            case self::GUID:
+            case self::BINARY:
+            case self::BLOB:
+                return 'string';
+            case self::BOOLEAN:
+                return 'bool';
+            case self::DATE:
+            case self::DATETIME:
+            case self::DATETIMETZ:
+            case self::TIME:
+                return '\DateTime';
+            case self::ARRAY:
+            case self::JSON_ARRAY:
+            case self::OBJECT:
+            case self::ENUM_BOOL:
+                return 'array';
+            case self::LOCALE:
+                return 'string';
+            case self::CUSTOM:
+            default:
+                return '';
+        }
+    }
 }

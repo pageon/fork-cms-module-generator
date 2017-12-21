@@ -25,17 +25,19 @@ final class {{ class.className.name }}
      */
     private ${{ parameter.name }};
 {% endfor %}
+{% if class.parameters|length > 0 %}
 
     public function __construct(
-    {%for parameter in class.parameters %}
-    ${{ parameter.name }}{% if not loop.last %},{% endif %}
+    {% for parameter in class.parameters %}
+    {{ parameter.dbalType.phpType }} ${{ parameter.name }}{% if not loop.last %},{% endif %}
+    {%- endfor %}
 
-    {% endfor -%}
-) {
+    ) {
     {% for parameter in class.parameters %}
     $this->{{ parameter.name }} = ${{ parameter.name }};
     {% endfor -%}
 }
+{% endif %}
 
     public function getId(): int
     {
@@ -43,7 +45,7 @@ final class {{ class.className.name }}
     }
 {% for parameter in class.parameters %}
 
-    public function get{{ parameter.name|capitalize }}()
+    public function get{{ parameter.name|capitalize }}(): {% if parameter.nullable %}?{% endif %}{{ parameter.dbalType.phpType }}
     {
         return $this->{{ parameter.name }};
     }
