@@ -19,9 +19,6 @@ class {{ class.className.name }} extends AbstractImage
      */
     protected $file;
 
-    /**
-     * @return string
-     */
     protected function getUploadDir(): string
     {
         return '{{ class.uploadDirectory }}';

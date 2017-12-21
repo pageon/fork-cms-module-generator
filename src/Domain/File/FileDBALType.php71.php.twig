@@ -6,19 +6,11 @@ use Common\Doctrine\Type\AbstractFileType;
 
 class {{ class.className.name }} extends AbstractFileType
 {
-    /**
-     * @param string $fileName
-     *
-     * @return {{ class.fileClassName.name }}
-     */
-    protected function createFromString($fileName): {{ class.fileClassName.name }}
+    protected function createFromString(string $fileName): {{ class.fileClassName.name }}
     {
         return {{ class.fileClassName.name }}::fromString($fileName);
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return '{{ class.name }}';

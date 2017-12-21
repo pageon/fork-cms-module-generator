@@ -6,19 +6,11 @@ use Common\Doctrine\Type\AbstractImageType;
 
 class {{ class.className.name }} extends AbstractImageType
 {
-    /**
-     * @param string $fileName
-     *
-     * @return {{ class.imageClassName.name }}
-     */
-    protected function createFromString($fileName): {{ class.imageClassName.name }}
+    protected function createFromString(string $fileName): {{ class.imageClassName.name }}
     {
         return {{ class.imageClassName.name }}::fromString($fileName);
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return '{{ class.name }}';
