@@ -1,0 +1,15 @@
+imports:
+  - { resource: services.yml }
+
+parameters:
+  secret: secret
+
+framework:
+  form:
+    csrf_protection: true
+  secret: "%secret%"
+  csrf_protection: ~
+  session:
+    handler_id: ~
+  templating:
+    engines: ['twig']
