@@ -1,8 +1,0 @@
-services:
-  module-generator_dumper:
-    class: ModuleGenerator\CLI\Service\Generate\ConsoleOutputDumper
-
-  module-generator_settings_service:
-    class: ModuleGenerator\CLI\Service\ModuleGenerator\Settings
-    arguments:
-      - '%kernel.root_dir%/cache/test/settings.yml'
