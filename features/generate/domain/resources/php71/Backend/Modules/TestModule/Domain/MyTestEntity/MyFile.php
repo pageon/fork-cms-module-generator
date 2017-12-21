@@ -1,6 +1,6 @@
 <?php
 
-namespace Standalone;
+namespace Backend\Modules\TestModule\Domain\MyTestEntity;
 
 use Common\Doctrine\ValueObject\AbstractFile;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -15,11 +15,8 @@ class MyFile extends AbstractFile
      */
     protected $file;
 
-    /**
-     * @return string
-     */
-    protected function getUploadDir()
+    protected function getUploadDir(): string
     {
-        return 'MyFile';
+        return 'TestModule/MyTestEntity/MyFile';
     }
 }
