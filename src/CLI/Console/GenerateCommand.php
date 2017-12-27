@@ -24,16 +24,6 @@ abstract class GenerateCommand extends Command
     /** @var float */
     private $targetPhpVersion;
 
-    protected function configure()
-    {
-        $this->addArgument(
-            'php',
-            InputArgument::OPTIONAL,
-            'Target PHP version',
-            self::PHP71
-        );
-    }
-
     public function __construct(Generate $generateService)
     {
         $this->generateService = $generateService;
