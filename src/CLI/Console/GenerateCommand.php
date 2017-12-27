@@ -10,6 +10,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class GenerateCommand extends Command
 {
+    private const PHP71 = '7.1';
+
     /** @var Generate */
     protected $generateService;
 
@@ -28,7 +30,7 @@ abstract class GenerateCommand extends Command
             'php',
             InputArgument::OPTIONAL,
             'Target PHP version',
-            '7.1'
+            self::PHP71
         );
     }
 
@@ -43,7 +45,7 @@ abstract class GenerateCommand extends Command
         $this->input = $input;
         self::$output = $output;
 
-        $this->targetPhpVersion = '7.1';
+        $this->targetPhpVersion = self::PHP71;
     }
 
     public function getTargetPhpVersion(): float
