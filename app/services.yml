@@ -4,3 +4,5 @@ imports:
 services:
   module-generator_dumper:
     class: ModuleGenerator\CLI\Service\Generate\FileDumper
+  module-generator_appender:
+    class: ModuleGenerator\CLI\Service\Generate\FileAppender
