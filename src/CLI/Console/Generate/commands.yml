@@ -4,6 +4,7 @@ services:
     arguments:
       - '@templating'
       - '@module-generator_dumper'
+      - '@module-generator_appender'
 
   generate_domain_value-object:
     class: ModuleGenerator\CLI\Console\Generate\Domain\ValueObject

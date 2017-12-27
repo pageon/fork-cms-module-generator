@@ -2,9 +2,10 @@
 
 namespace ModuleGenerator\CLI\Service\Generate;
 
-use ModuleGenerator\CLI\Exception\SrcDirectoryNotFound;
+use ModuleGenerator\CLI\Exception\NonComplyingModuleName;
+use ModuleGenerator\CLI\Exception\SourceDirectoryNotFound;
+use ModuleGenerator\Domain\ServiceConfiguration\CommandHandlerServiceConfiguration;
 use Symfony\Bundle\TwigBundle\TwigEngine;
-use Symfony\Component\Filesystem\Filesystem;
 
 final class Generate
 {
@@ -20,20 +21,19 @@ final class Generate
     /** @var Dumper */
     private $dumper;
 
-    /**
-     * @param TwigEngine $templating
-     */
-    public function __construct(TwigEngine $templating, Dumper $dumper)
+    /** @var Appender */
+    private $appender;
+
+    public function __construct(TwigEngine $templating, Dumper $dumper, Appender $appender)
     {
         $this->currentWorkingDirectory = getcwd();
         $this->templating = $templating;
         $this->dumper = $dumper;
+        $this->appender = $appender;
     }
 
     /**
-     * @throws SrcDirectoryNotFound
-     *
-     * @return string The src directory
+     * @throws SourceDirectoryNotFound
      */
     protected function getGenerateDirectory()
     {
@@ -58,15 +58,19 @@ final class Generate
             $currentDirectory = dirname($currentDirectory);
         }
 
-        throw SrcDirectoryNotFound::forDirectory($this->currentWorkingDirectory);
+        throw SourceDirectoryNotFound::forDirectory($this->currentWorkingDirectory);
     }
 
-    public function generateClasses(array $classes, float $targetPhpVersion)
+    public function generateClasses(array $classes, float $targetPhpVersion): void
     {
         array_map(
             function (GeneratableClass $class) use ($targetPhpVersion) {
-                $fileDirectory = '/' . str_replace('\\', '/', $class->getClassName()->getNamespace()->getName());
-                $filename = $fileDirectory . '/' . $class->getClassName()->getName() . '.php';
+                $fileDirectory = DIRECTORY_SEPARATOR . str_replace(
+                        '\\',
+                        DIRECTORY_SEPARATOR,
+                        $class->getClassName()->getNamespace()->getName()
+                    );
+                $filename = $fileDirectory . DIRECTORY_SEPARATOR . $class->getClassName()->getName() . '.php';
 
                 $this->dumper->dump(
                     $this->getGenerateDirectory() . $filename,
@@ -77,7 +81,7 @@ final class Generate
         );
     }
 
-    public function generateFiles(array $files, float $targetPhpVersion)
+    public function generateFiles(array $files, float $targetPhpVersion): void
     {
         array_map(
             function (GeneratableFile $file) use ($targetPhpVersion) {
@@ -90,13 +94,30 @@ final class Generate
         );
     }
 
-    public function generateClass(GeneratableClass $class, float $targetPhpVersion)
+    public function generateClass(GeneratableClass $class, float $targetPhpVersion): void
     {
         $this->generateClasses([$class], $targetPhpVersion);
     }
 
-    public function generateFile(GeneratableFile $file, float $targetPhpVersion)
+    public function generateFile(GeneratableFile $file, float $targetPhpVersion): void
     {
         $this->generateFiles([$file], $targetPhpVersion);
+    }
+
+    public function generateCommandServiceConfiguration(
+        CommandHandlerServiceConfiguration $commandHandlerServiceConfiguration,
+        float $targetPhpVersion
+    ): void {
+        $this->appender->append(
+            $this->getGenerateDirectory() . DIRECTORY_SEPARATOR .
+            $commandHandlerServiceConfiguration->getModulePath() . DIRECTORY_SEPARATOR .
+            'Resources' . DIRECTORY_SEPARATOR .
+            'config' . DIRECTORY_SEPARATOR .
+            'commands.yml',
+            $this->templating->render(
+                $commandHandlerServiceConfiguration->getTemplatePath($targetPhpVersion),
+                ['service' => $commandHandlerServiceConfiguration]
+            )
+        );
     }
 }
