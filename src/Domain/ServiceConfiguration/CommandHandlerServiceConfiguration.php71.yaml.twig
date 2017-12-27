@@ -9,6 +9,6 @@
 {% if service.tags|length > 0 %}
     tags:
 {% for tag in service.tags %}
-      - {  {%- for key, value in tag -%}{{ key }}: {{ value }}{% if not loop.last %}, {% endif %}{% endfor %} }
+      - { {% for key, value in tag -%}{{ key }}: {{ value }}{% if not loop.last %}, {% endif %}{% endfor %} }
 {% endfor %}
 {% endif %}
