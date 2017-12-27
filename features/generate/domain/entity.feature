@@ -16,10 +16,10 @@ Feature: It is possible to generate a class for an entity
     Then the command has finished successfully
     And the file "src/Standalone/MyEntityWithOneNullableParameter.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNullableParameter.php"
 
-  Scenario:
-    When I run the command "generate:domain:entity" and I provide as input
-      """
-      MyEntityWithOneNotNullableParameter[enter]Standalone[enter]MyEntityWithOneNotNullableParameter[enter]y[enter]parameter1[enter][enter]0[enter][enter]
-      """
-    Then the command has finished successfully
-    And the file "src/Standalone/MyEntityWithOneNotNullableParameter.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNotNullableParameter.php"
+#  Scenario:
+#    When I run the command "generate:domain:entity" and I provide as input
+#      """
+#      MyEntityWithOneNotNullableParameter[enter]Standalone[enter]MyEntityWithOneNotNullableParameter[enter]y[enter]parameter1[enter][enter]0[enter][enter]
+#      """
+#    Then the command has finished successfully
+#    And the file "src/Standalone/MyEntityWithOneNotNullableParameter.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNotNullableParameter.php"
