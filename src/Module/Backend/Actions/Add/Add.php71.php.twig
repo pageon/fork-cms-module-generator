@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Backend\Core\Engine\Base\ActionAdd;
+
+class {{ class.className }} extends ActionAdd
+{
+    public function execute(): void
+    {
+        parent::execute();
+        $this->parse();
+        $this->display();
+    }
+}

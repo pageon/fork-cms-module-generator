@@ -3,7 +3,10 @@
 namespace ModuleGenerator\CLI\Console\Generate\Actions;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
+use ModuleGenerator\Module\Backend\Actions\Add\Add;
 use ModuleGenerator\Module\Backend\Actions\CRUDActionsType;
+use ModuleGenerator\Module\Backend\Actions\Delete\Delete;
+use ModuleGenerator\Module\Backend\Actions\Edit\Edit;
 use ModuleGenerator\Module\Backend\Actions\Index\Index;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -26,6 +29,21 @@ class CRUDActions extends GenerateCommand
 
         $this->generateService->generateClass(
             Index::fromDataTransferObject($crudActionsDataTransferObject),
+            $this->getTargetPhpVersion()
+        );
+
+        $this->generateService->generateClass(
+            Add::fromDataTransferObject($crudActionsDataTransferObject),
+            $this->getTargetPhpVersion()
+        );
+
+        $this->generateService->generateClass(
+            Edit::fromDataTransferObject($crudActionsDataTransferObject),
+            $this->getTargetPhpVersion()
+        );
+
+        $this->generateService->generateClass(
+            Delete::fromDataTransferObject($crudActionsDataTransferObject),
             $this->getTargetPhpVersion()
         );
     }
