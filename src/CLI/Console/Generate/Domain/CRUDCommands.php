@@ -69,7 +69,7 @@ final class CRUDCommands extends GenerateCommand
             $this->getTargetPhpVersion()
         );
 
-        $deleteCommandHandler =DeleteCommandHandler::fromDataTransferObject($CRUDCommandsDataTransferObject);
+        $deleteCommandHandler = DeleteCommandHandler::fromDataTransferObject($CRUDCommandsDataTransferObject);
         $this->generateService->generateClass(
             $deleteCommandHandler,
             $this->getTargetPhpVersion()
@@ -102,7 +102,11 @@ final class CRUDCommands extends GenerateCommand
     ): void {
         $this->generateService->generateCommandServiceConfiguration(
             new CommandHandlerServiceConfiguration(
-                $commandHandler, ["@doctrine.orm.entity_manager"], [
+                $commandHandler,
+                [
+                    "@doctrine.orm.entity_manager"
+                ],
+                [
                     [
                         "name" => "command_handler",
                         "handles" => $command->getClassName()->getForUseStatement(),
