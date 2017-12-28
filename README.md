@@ -1,5 +1,5 @@
 # Fork-cms module generator
-[![Build Status](https://travis-ci.org/sumocoders/fork-cms-module-twitter.svg?branch=master)](https://travis-ci.org/sumocoders/fork-cms-module-twitter)
+[![Build Status](https://travis-ci.org/sumocoders/fork-cms-module-generator.svg?branch=master)](https://travis-ci.org/sumocoders/fork-cms-module-generator)
 
 ## Installation
 
