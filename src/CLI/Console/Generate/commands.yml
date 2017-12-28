@@ -6,6 +6,13 @@ services:
       - '@module-generator_dumper'
       - '@module-generator_appender'
 
+  generate_actions_crud:
+    class: ModuleGenerator\CLI\Console\Generate\Actions\CRUDActions
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_domain_value-object:
     class: ModuleGenerator\CLI\Console\Generate\Domain\ValueObject
     arguments:
