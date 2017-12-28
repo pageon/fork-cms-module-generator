@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\Domain\Actions;
+namespace ModuleGenerator\Module\Backend\Actions;
 
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleNameDataTransferObject;
 

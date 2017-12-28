@@ -1,9 +1,9 @@
 <?php
 
-namespace ModuleGenerator\Domain\Actions\Index;
+namespace ModuleGenerator\Module\Backend\Actions\Index;
 
 use ModuleGenerator\CLI\Service\Generate\GeneratableClass;
-use ModuleGenerator\Domain\Actions\CRUDActionsDataTransferObject;
+use ModuleGenerator\Module\Backend\Actions\CRUDActionsDataTransferObject;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
 use ModuleGenerator\PhpGenerator\PhpNamespace\PhpNamespace;

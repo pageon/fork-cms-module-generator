@@ -3,8 +3,8 @@
 namespace ModuleGenerator\CLI\Console\Generate\Actions;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
-use ModuleGenerator\Domain\Actions\CRUDActionsType;
-use ModuleGenerator\Domain\Actions\Index\Index;
+use ModuleGenerator\Module\Backend\Actions\CRUDActionsType;
+use ModuleGenerator\Module\Backend\Actions\Index\Index;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
