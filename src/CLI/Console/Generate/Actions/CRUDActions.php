@@ -4,10 +4,15 @@ namespace ModuleGenerator\CLI\Console\Generate\Actions;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
 use ModuleGenerator\Module\Backend\Actions\Add\Add;
+use ModuleGenerator\Module\Backend\Actions\CRUDActionsDataTransferObject;
 use ModuleGenerator\Module\Backend\Actions\CRUDActionsType;
 use ModuleGenerator\Module\Backend\Actions\Delete\Delete;
 use ModuleGenerator\Module\Backend\Actions\Edit\Edit;
 use ModuleGenerator\Module\Backend\Actions\Index\Index;
+use ModuleGenerator\Module\Backend\Layout\Templates\Add as AddTemplate;
+use ModuleGenerator\Module\Backend\Layout\Templates\Edit as EditTemplate;
+use ModuleGenerator\Module\Backend\Layout\Templates\Index as IndexTemplate;
+use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
