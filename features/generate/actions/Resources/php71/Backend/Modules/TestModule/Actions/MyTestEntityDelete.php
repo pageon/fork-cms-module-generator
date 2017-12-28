@@ -24,7 +24,7 @@ class MyTestEntityDelete extends ActionDelete
     private function getBackLink(array $parameters = []): string
     {
         return BackendModel::createUrlForAction(
-            'Index',
+            'MyTestEntityIndex',
             null,
             null,
             $parameters

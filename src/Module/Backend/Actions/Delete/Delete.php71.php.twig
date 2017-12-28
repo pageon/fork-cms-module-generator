@@ -24,7 +24,7 @@ class {{ class.className }} extends ActionDelete
     private function getBackLink(array $parameters = []): string
     {
         return BackendModel::createUrlForAction(
-            'Index',
+            '{{ class.entityClassName.name }}Index',
             null,
             null,
             $parameters
