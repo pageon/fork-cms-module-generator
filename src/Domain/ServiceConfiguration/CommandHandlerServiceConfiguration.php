@@ -64,7 +64,8 @@ final class CommandHandlerServiceConfiguration
 
     public function getServiceName(): string
     {
-        return $this->getModuleName() . '.handler.' . strtolower(
+        return $this->getModuleName() . '.handler.' .
+            strtolower(
                 preg_replace(
                     '/([^A-Z])([A-Z])/',
                     "$1_$2",
@@ -84,14 +85,14 @@ final class CommandHandlerServiceConfiguration
     {
         if (!$this->modulePath) {
             if (preg_match(
-                    '/((?:Backend|Frontend)\/Modules\/(?:[a-zA-Z0-9_]+))\/.*/',
-                    str_replace(
-                        '\\',
-                        DIRECTORY_SEPARATOR,
-                        $this->getCommandHandler()->getClassName()->getNamespace()->getName()
-                    ),
-                    $matches
-                ) === false) {
+                '/((?:Backend|Frontend)\/Modules\/(?:[a-zA-Z0-9_]+))\/.*/',
+                str_replace(
+                    '\\',
+                    DIRECTORY_SEPARATOR,
+                    $this->getCommandHandler()->getClassName()->getNamespace()->getName()
+                ),
+                $matches
+            ) === false) {
                 throw NonComplyingModuleName::forName(
                     $this->getCommandHandler()->getClassName()->getNamespace()->getName()
                 );

@@ -6,7 +6,8 @@ use Exception;
 
 final class NonComplyingModuleName extends Exception
 {
-    private function __construct(string $message) {
+    private function __construct(string $message)
+    {
         return new parent($message);
     }
 
