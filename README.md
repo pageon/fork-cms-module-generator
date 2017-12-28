@@ -1,6 +1,5 @@
 # Fork-cms module generator
-[![Build Status](https://travis-ci.org/Pageon/fork-cms-module-generator.svg?branch=master)](https://travis-ci.org/Pageon/fork-cms-module-generator)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Sumocoders/fork-cms-module-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Pageon/fork-cms-module-generator/?branch=master)
+[![Build Status](https://travis-ci.org/sumocoders/fork-cms-module-twitter.svg?branch=master)](https://travis-ci.org/sumocoders/fork-cms-module-twitter)
 
 ## Installation
 
