@@ -148,4 +148,15 @@ class FeatureContext implements Context
     {
         Assertion::notSame($this->tester->getStatusCode(), 0, 'The command was successful');
     }
+
+    /**
+     * @BeforeScenario
+     */
+    public function clearData()
+    {
+        $this->application->getKernel()->boot();
+        /** @var Symfony\Component\HttpFoundation\Session\Session $session */
+        $session = $this->application->getKernel()->getContainer()->get('session');
+        $session->clear();
+    }
 }
