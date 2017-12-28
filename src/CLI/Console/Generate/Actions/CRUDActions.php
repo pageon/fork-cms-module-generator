@@ -30,25 +30,25 @@ class CRUDActions extends GenerateCommand
     {
         parent::execute($input, $output);
 
+        /** @var CRUDActionsDataTransferObject $crudActionsDataTransferObject */
         $crudActionsDataTransferObject = $this->getFormData(CRUDActionsType::class);
 
-        $this->generateService->generateClass(
-            Index::fromDataTransferObject($crudActionsDataTransferObject),
+        $this->generateService->generateClasses(
+            [
+                Index::fromDataTransferObject($crudActionsDataTransferObject),
+                Add::fromDataTransferObject($crudActionsDataTransferObject),
+                Edit::fromDataTransferObject($crudActionsDataTransferObject),
+                Delete::fromDataTransferObject($crudActionsDataTransferObject),
+            ],
             $this->getTargetPhpVersion()
         );
 
-        $this->generateService->generateClass(
-            Add::fromDataTransferObject($crudActionsDataTransferObject),
-            $this->getTargetPhpVersion()
-        );
-
-        $this->generateService->generateClass(
-            Edit::fromDataTransferObject($crudActionsDataTransferObject),
-            $this->getTargetPhpVersion()
-        );
-
-        $this->generateService->generateClass(
-            Delete::fromDataTransferObject($crudActionsDataTransferObject),
+        $this->generateService->generateFiles(
+            [
+                IndexTemplate::fromDataTransferObject($crudActionsDataTransferObject),
+                AddTemplate::fromDataTransferObject($crudActionsDataTransferObject),
+                EditTemplate::fromDataTransferObject($crudActionsDataTransferObject),
+            ],
             $this->getTargetPhpVersion()
         );
     }
