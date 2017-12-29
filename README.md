@@ -5,7 +5,7 @@
 
 Use composer to install the package to your dev dependencies.
 
-`composer require --dev sumocoders/sumocoders/fork-cms-module-generator`
+`composer require --dev sumocoders/fork-cms-module-generator`
 
 Register the following bundles in your Fork `app/AppKernel.php`, but only load them in dev or test mode.
 
