@@ -19,10 +19,12 @@ class TestModuleExtension extends Extension implements PrependExtensionInterface
     {
         $this->getLoader($container)->load('services.yml');
     }
+
     public function prepend(ContainerBuilder $container)
     {
         $this->getLoader($container)->load('doctrine.yml');
     }
+
     private function getLoader(ContainerBuilder $container): YamlFileLoader
     {
         return new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
