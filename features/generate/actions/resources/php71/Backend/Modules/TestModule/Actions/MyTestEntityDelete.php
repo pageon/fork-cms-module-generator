@@ -3,6 +3,7 @@
 namespace Backend\Modules\TestModule\Actions;
 
 use Backend\Core\Engine\Base\ActionDelete;
+use Backend\Core\Engine\Model as BackendModel;
 
 class MyTestEntityDelete extends ActionDelete
 {
@@ -10,12 +11,7 @@ class MyTestEntityDelete extends ActionDelete
     {
         parent::execute();
 
-        /* $this->redirect(BackendModel::createUrlForAction(
-            'MyTestEntityIndex',
-            null,
-            null,
-            ['report' => 'deleted', 'var' => $this->record['title']]
-        )); */
+        // $this->redirect($this->getBackLink(['report' => 'deleted', 'var' => $this->record['title']]));
 
         $this->parse();
         $this->display();
