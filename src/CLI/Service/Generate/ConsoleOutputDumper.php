@@ -6,7 +6,7 @@ use ModuleGenerator\CLI\Console\GenerateCommand;
 
 final class ConsoleOutputDumper implements Dumper
 {
-    public function dump(string $filename, string $content, bool $append = false): void
+    public function dump(string $filename, string $content): void
     {
         // make the url more clear and work from the src directory for easier use in tests
         $filename = substr($filename, ($srcPosition = strpos($filename, 'src')) !== false ? $srcPosition : 0);

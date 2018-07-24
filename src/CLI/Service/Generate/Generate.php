@@ -66,10 +66,10 @@ final class Generate
         array_map(
             function (GeneratableClass $class) use ($targetPhpVersion) {
                 $fileDirectory = DIRECTORY_SEPARATOR . str_replace(
-                    '\\',
-                    DIRECTORY_SEPARATOR,
-                    $class->getClassName()->getNamespace()->getName()
-                );
+                        '\\',
+                        DIRECTORY_SEPARATOR,
+                        $class->getClassName()->getNamespace()->getName()
+                    );
                 $filename = $fileDirectory . DIRECTORY_SEPARATOR . $class->getClassName()->getName() . '.php';
 
                 $this->dumper->dump(
@@ -85,11 +85,18 @@ final class Generate
     {
         array_map(
             function (GeneratableFile $file) use ($targetPhpVersion) {
+                if ($file->isAppend()) {
+                    $this->appender->append(
+                        $this->getGenerateDirectory() . '/' . $file->getFilePath($targetPhpVersion),
+                        $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file])
+                    );
+
+                    return;
+                }
+
                 $this->dumper->dump(
                     $this->getGenerateDirectory() . '/' . $file->getFilePath($targetPhpVersion),
-                    $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file]),
-                    $file->isAppend(),
-                    $file->getTemplatePath($targetPhpVersion) . 'original'
+                    $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file])
                 );
             },
             $files

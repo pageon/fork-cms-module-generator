@@ -104,7 +104,7 @@ final class CRUDCommands extends GenerateCommand
             new CommandHandlerServiceConfiguration(
                 $commandHandler,
                 [
-                    "@doctrine.orm.entity_manager"
+                    "@doctrine.orm.entity_manager",
                 ],
                 [
                     [

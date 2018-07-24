@@ -14,14 +14,8 @@ final class FileDumper implements Dumper
         $this->fileSystem = new Filesystem();
     }
 
-    public function dump(string $filename, string $content, bool $append = false): void
+    public function dump(string $filename, string $content): void
     {
-        if ($append) {
-            $this->fileSystem->appendToFile($filename, $content);
-
-            return;
-        }
-
         $this->fileSystem->dumpFile($filename, $content);
     }
 }
