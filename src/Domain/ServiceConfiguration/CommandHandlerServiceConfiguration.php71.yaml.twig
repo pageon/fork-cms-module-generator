@@ -1,11 +1,4 @@
-  {{ service.serviceName|lower }}:
-    class: {{ service.className }}
-{% if service.arguments|length > 0 %}
-    arguments:
-{% for argument in service.arguments %}
-      - "{{ argument }}"
-{% endfor %}
-{% endif %}
+  {{ service.className }}:
 {% if service.tags|length > 0 %}
     tags:
 {% for tag in service.tags %}
