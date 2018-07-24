@@ -3,6 +3,7 @@
 namespace {{ class.className.namespace }};
 
 use Backend\Core\Engine\Base\ActionDelete;
+use Backend\Core\Engine\Model as BackendModel;
 
 class {{ class.className }} extends ActionDelete
 {
@@ -10,12 +11,7 @@ class {{ class.className }} extends ActionDelete
     {
         parent::execute();
 
-        /* $this->redirect(BackendModel::createUrlForAction(
-            '{{ class.entityClassName.name }}Index',
-            null,
-            null,
-            ['report' => 'deleted', 'var' => $this->record['title']]
-        )); */
+        // $this->redirect($this->getBackLink(['report' => 'deleted', 'var' => $this->record['title']]));
 
         $this->parse();
         $this->display();
