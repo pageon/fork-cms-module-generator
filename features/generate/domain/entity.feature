@@ -23,3 +23,11 @@ Feature: It is possible to generate a class for an entity
       """
     Then the command has finished successfully
     And the file "src/Standalone/MyEntityWithOneNotNullableParameter.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNotNullableParameter.php"
+
+  Scenario:
+    When I run the command "generate:domain:entity" and I provide as input
+      """
+      MyEntityWithMultipleParameters[enter]Standalone[enter]MyEntityWithMultipleParameters[enter]y[enter]parameter1[enter][enter]0[enter]y[enter]parameter2[enter][enter]0[enter][enter]
+      """
+    Then the command has finished successfully
+    And the file "src/Standalone/MyEntityWithMultipleParameters.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithMultipleParameters.php"
