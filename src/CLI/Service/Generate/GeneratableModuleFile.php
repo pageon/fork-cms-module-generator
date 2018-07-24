@@ -9,8 +9,10 @@ abstract class GeneratableModuleFile extends GeneratableFile
     /** @var ModuleName */
     private $moduleName;
 
-    public function __construct(ModuleName $moduleName)
+    public function __construct(ModuleName $moduleName, bool $append = false)
     {
+        parent::__construct($append);
+
         $this->moduleName = $moduleName;
     }
 
