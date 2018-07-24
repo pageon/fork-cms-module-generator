@@ -32,16 +32,11 @@ final class Repository extends GenerateCommand
             $this->getTargetPhpVersion()
         );
 
-        $matches = [];
-        preg_match(
-            '|^Backend\\\\Modules\\\\(.*)\\\\Domain\\\\|',
-            $repositoryClass->getClassName()->getNamespace(),
-            $matches
-        );
-        if (\count($matches) === 2) {
+        $moduleName = $this->extractModuleName($repositoryClass->getClassName()->getNamespace());
+        if ($moduleName instanceof ModuleName) {
             $this->generateService->generateFile(
                 new Repositories(
-                    new ModuleName($matches[1]),
+                    $moduleName,
                     [$repositoryClass->getClassName()->getForUseStatement()],
                     true
                 ),

@@ -3,6 +3,8 @@
 namespace ModuleGenerator\CLI\Console;
 
 use ModuleGenerator\CLI\Service\Generate\Generate;
+use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
+use ModuleGenerator\PhpGenerator\PhpNamespace\PhpNamespace;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -58,5 +60,21 @@ abstract class GenerateCommand extends Command
     public static function getOutput()
     {
         return self::$output;
+    }
+
+    public function extractModuleName(PhpNamespace $namespace): ?ModuleName
+    {
+        $matches = [];
+        preg_match(
+            '|^Backend\\\\Modules\\\\(.*?)\\\\|',
+            $namespace,
+            $matches
+        );
+
+        if (\count($matches) === 2) {
+            return new ModuleName($matches[1]);
+        }
+
+        return null;
     }
 }
