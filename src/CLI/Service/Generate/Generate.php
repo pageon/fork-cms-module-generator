@@ -87,7 +87,9 @@ final class Generate
             function (GeneratableFile $file) use ($targetPhpVersion) {
                 $this->dumper->dump(
                     $this->getGenerateDirectory() . '/' . $file->getFilePath($targetPhpVersion),
-                    $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file])
+                    $this->templating->render($file->getTemplatePath($targetPhpVersion), ['file' => $file]),
+                    $file->isAppend(),
+                    $file->getTemplatePath($targetPhpVersion) . 'original'
                 );
             },
             $files

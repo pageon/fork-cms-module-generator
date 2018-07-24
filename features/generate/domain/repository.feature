@@ -15,3 +15,4 @@ Feature: It is possible to generate a repository class for an entity
       """
     Then the command has finished successfully
     And the file "src/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityRepository.php" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityRepository.php"
+    And the file "src/Backend/Modules/TestModule/Resources/config/repositories.yml" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Resources/config/repositories.yml"
