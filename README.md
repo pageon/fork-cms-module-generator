@@ -32,3 +32,7 @@ class AppKernel extends Kernel
     ...
 }
 ```
+
+## Tests
+
+You can run the tests with `composer test`

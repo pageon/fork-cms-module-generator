@@ -48,5 +48,8 @@
         "beberlei/assert": "^2.7",
         "squizlabs/php_codesniffer": "^2.8",
         "sebastian/diff": "^1.4"
+    },
+    "scripts": {
+        "test": "vendor/bin/behat"
     }
 }
