@@ -2,10 +2,16 @@
 
 namespace {{ class.className.namespace }};
 
-use Doctrine\ORM\EntityRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
-class {{ class.className.name }} extends EntityRepository
+class {{ class.className.name }} extends ServiceEntityRepository
 {
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, {{ class.entityClassName.name }}::class);
+    }
+
     public function add({{ class.entityClassName.name }} ${{ class.entityClassName.forParameter }}): void
     {
         $this->getEntityManager()->persist(${{ class.entityClassName.forParameter }});
