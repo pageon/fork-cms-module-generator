@@ -15,12 +15,12 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
  */
 class TestModuleExtension extends Extension implements PrependExtensionInterface
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $this->getLoader($container)->load('services.yml');
     }
 
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $this->getLoader($container)->load('doctrine.yml');
     }
