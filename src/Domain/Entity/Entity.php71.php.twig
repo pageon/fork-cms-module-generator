@@ -21,6 +21,9 @@ final class {{ class.className.name }}
 {% for parameter in class.parameters %}
 
     /**
+     * @var {{ parameter.dbalType.phpType }}{% if parameter.nullable %}|null{% endif %}
+
+     *
      * @ORM\Column(type="{{ parameter.dbalType }}"{% if parameter.nullable %}, nullable=true{% endif %})
      */
     private ${{ parameter.name }};

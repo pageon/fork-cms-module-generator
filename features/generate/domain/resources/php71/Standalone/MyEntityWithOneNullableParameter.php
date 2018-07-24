@@ -20,6 +20,8 @@ final class MyEntityWithOneNullableParameter
     private $id;
 
     /**
+     * @var string|null
+     *
      * @ORM\Column(type="string", nullable=true)
      */
     private $parameter1;
