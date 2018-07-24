@@ -31,3 +31,12 @@ Feature: It is possible to generate a class for an entity
       """
     Then the command has finished successfully
     And the file "src/Standalone/MyEntityWithMultipleParameters.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithMultipleParameters.php"
+
+  Scenario:
+    When I run the command "generate:domain:entity" and I provide as input
+      """
+      MyTestEntity[enter]Backend\Modules\TestModule\Domain\MyTestEntity[enter]MyTestEntity[enter][enter]
+      """
+    Then the command has finished successfully
+    And the file "src/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntity.php" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntity.php"
+    And the file "src/Backend/Modules/TestModule/Resources/config/doctrine.yml" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Resources/config/doctrine.yml"

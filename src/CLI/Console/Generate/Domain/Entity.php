@@ -5,6 +5,8 @@ namespace ModuleGenerator\CLI\Console\Generate\Domain;
 use ModuleGenerator\CLI\Console\GenerateCommand;
 use ModuleGenerator\Domain\Entity\Entity as EntityClass;
 use ModuleGenerator\Domain\Entity\EntityType;
+use ModuleGenerator\Module\Backend\Resources\Config\Doctrine\Doctrine;
+use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -31,5 +33,17 @@ final class Entity extends GenerateCommand
         );
 
         $this->generateService->generateClass($entity, $this->getTargetPhpVersion());
+
+        $moduleName = $this->extractModuleName($entity->getClassName()->getNamespace());
+        if ($moduleName instanceof ModuleName) {
+            $this->generateService->generateFile(
+                new Doctrine(
+                    $moduleName,
+                    [$entity],
+                    true
+                ),
+                $this->getTargetPhpVersion()
+            );
+        }
     }
 }
