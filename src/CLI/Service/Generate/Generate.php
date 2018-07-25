@@ -66,10 +66,10 @@ final class Generate
         array_map(
             function (GeneratableClass $class) use ($targetPhpVersion) {
                 $fileDirectory = DIRECTORY_SEPARATOR . str_replace(
-                        '\\',
-                        DIRECTORY_SEPARATOR,
-                        $class->getClassName()->getNamespace()->getName()
-                    );
+                    '\\',
+                    DIRECTORY_SEPARATOR,
+                    $class->getClassName()->getNamespace()->getName()
+                );
                 $filename = $fileDirectory . DIRECTORY_SEPARATOR . $class->getClassName()->getName() . '.php';
 
                 $this->dumper->dump(
