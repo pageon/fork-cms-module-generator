@@ -24,6 +24,11 @@ final class Add extends GeneratableModuleFile
             $this->entityClassName->getName() . 'Add.html.twig';
     }
 
+    public function getEntityClassName(): ClassName
+    {
+        return $this->entityClassName;
+    }
+
     public function getTemplatePath(float $targetPhpVersion): string
     {
         return __DIR__ . '/Add.html.twig';
