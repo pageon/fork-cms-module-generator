@@ -3,13 +3,64 @@
 namespace {{ class.className.namespace }};
 
 use Backend\Core\Engine\Base\ActionAdd;
+use Backend\Core\Language\Locale;
+use {{ class.entityClassName.namespace }}\Command\Create{{ class.entityClassName.name }};
+use {{ class.entityClassName.namespace }}\{{ class.entityClassName.name }}Type;
+use Backend\Core\Engine\Model as BackendModel;
+use Symfony\Component\Form\Form;
 
 class {{ class.className }} extends ActionAdd
 {
     public function execute(): void
     {
         parent::execute();
-        $this->parse();
-        $this->display();
+
+        $form = $this->getForm();
+
+        if (!$form->isSubmitted() || !$form->isValid()) {
+            $this->template->assign('form', $form->createView());
+
+            $this->parse();
+            $this->display();
+
+            return;
+        }
+
+        $this->handleForm($form);
+    }
+
+    private function handleForm(Form $form): void
+    {
+        $create{{ class.entityClassName.name }} = $form->getData();
+
+        $this->get('command_bus')->handle($create{{ class.entityClassName.name }});
+
+        $this->redirect(
+            $this->getBackLink(
+                [
+                    'report' => 'added',
+                    'var' => $create{{ class.entityClassName.name }}->title,
+                ]
+            )
+        );
+    }
+
+    private function getForm(): Form
+    {
+        $form = $this->createForm({{ class.entityClassName.name }}Type::class, new Create{{ class.entityClassName.name }}(Locale::workingLocale()));
+
+        $form->handleRequest($this->getRequest());
+
+        return $form;
+    }
+
+    private function getBackLink(array $parameters = []): string
+    {
+        return BackendModel::createUrlForAction(
+            '{{ class.entityClassName.name }}Index',
+            null,
+            null,
+            $parameters
+        );
     }
 }
