@@ -9,7 +9,7 @@
       {{ entity.tableName }}:
         type: annotation
         is_bundle: false
-        dir: "%kernel.project_dir%/src{{ entity.className.fullyQualifiedName|replace({'\\': '/'}) }}"
+        dir: "%kernel.project_dir%/src/{{ entity.className.namespace|replace({'\\': '/'}) }}"
         alias: {{ entity.tableName }}
         prefix: {{ entity.className.namespace }}
 {% endfor %}
