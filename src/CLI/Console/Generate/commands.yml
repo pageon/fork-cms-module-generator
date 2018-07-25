@@ -20,6 +20,13 @@ services:
     tags:
       - { name: console.command }
 
+  generate_domain_data-grid:
+    class: ModuleGenerator\CLI\Console\Generate\Domain\DataGrid
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_domain_image:
     class: ModuleGenerator\CLI\Console\Generate\Domain\Image
     arguments:
