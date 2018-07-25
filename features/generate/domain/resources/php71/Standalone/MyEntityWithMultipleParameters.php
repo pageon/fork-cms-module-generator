@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="MyEntityWithMultipleParameters")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Standalone\MyEntityWithMultipleParametersRepository")
  */
 final class MyEntityWithMultipleParameters
 {

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="MyEntityWithOneNotNullableParameter")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Standalone\MyEntityWithOneNotNullableParameterRepository")
  */
 final class MyEntityWithOneNotNullableParameter
 {

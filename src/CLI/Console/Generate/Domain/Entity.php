@@ -45,5 +45,9 @@ final class Entity extends GenerateCommand
                 $this->getTargetPhpVersion()
             );
         }
+
+        (new Repository($this->generateService))->setTargetPhpVersion($this->getTargetPhpVersion())->createRepository(
+            $entity->getClassName()
+        );
     }
 }

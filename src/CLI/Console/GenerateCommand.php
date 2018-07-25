@@ -40,6 +40,13 @@ abstract class GenerateCommand extends Command
         $this->targetPhpVersion = self::PHP71;
     }
 
+    public function setTargetPhpVersion(float $targetPhpVersion): self
+    {
+        $this->targetPhpVersion = $targetPhpVersion;
+
+        return $this;
+    }
+
     public function getTargetPhpVersion(): float
     {
         return $this->targetPhpVersion;
