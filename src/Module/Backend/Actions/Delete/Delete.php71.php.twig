@@ -35,7 +35,7 @@ class {{ class.className }} extends ActionDelete
         );
     }
 
-    private function get{{ class.entityClassName.name }}(): {{ class.entityClassName.name }}
+    private function get{{ class.entityClassName.name }}(): ?{{ class.entityClassName.name }}
     {
         $deleteForm = $this->createForm(DeleteType::class, null, ['module' => $this->getModule()]);
         $deleteForm->handleRequest($this->getRequest());

@@ -35,7 +35,7 @@ class MyTestEntityDelete extends ActionDelete
         );
     }
 
-    private function getMyTestEntity(): MyTestEntity
+    private function getMyTestEntity(): ?MyTestEntity
     {
         $deleteForm = $this->createForm(DeleteType::class, null, ['module' => $this->getModule()]);
         $deleteForm->handleRequest($this->getRequest());
