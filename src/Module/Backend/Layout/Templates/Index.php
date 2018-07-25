@@ -29,6 +29,11 @@ final class Index extends GeneratableModuleFile
         return __DIR__ . '/Index.html.twig';
     }
 
+    public function getEntityClassName(): ClassName
+    {
+        return $this->entityClassName;
+    }
+
     public static function fromDataTransferObject(CRUDActionsDataTransferObject $crudActionsDataTransferObject): self
     {
         return new self(

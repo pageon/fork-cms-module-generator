@@ -3,14 +3,16 @@
 {% import 'Layout/Templates/macros.html.twig' as macro %}
 
 {% block actionbar %}
-  <div class="btn-toolbar pull-right">
-    <div class="btn-group" role="group">
-      {{ macro.buttonIcon(geturl('add'), 'plus-square', 'lbl.Add'|trans|ucfirst) }}
+  {% if show{%- endverbatim %}{{ file.moduleName }}{{ file.entityClassName }}{%- verbatim -%}Add %}
+    <div class="btn-toolbar pull-right">
+      <div class="btn-group" role="group">
+        {{ macro.buttonIcon(geturl('{%- endverbatim %}{{ file.entityClassName }}{%- verbatim -%}Add'), 'plus-square', 'lbl.Add'|trans|ucfirst) }}
+      </div>
     </div>
-  </div>
+  {% endif %}
 {% endblock %}
 
 {% block content %}
-  {# Main content of the page goes here #}
+  {{ macro.dataGrid(dataGrid) }}
 {% endblock %}
 {%- endverbatim %}
