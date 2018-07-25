@@ -1,7 +1,7 @@
 
-    MyTestEntity:
-      type: annotation
-      is_bundle: false
-      dir: "%kernel.project_dir%/src/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntity"
-      alias: MyTestEntity
-      prefix: Backend\Modules\TestModule\Domain\MyTestEntity
+      MyTestEntity:
+        type: annotation
+        is_bundle: false
+        dir: "%kernel.project_dir%/src/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntity"
+        alias: MyTestEntity
+        prefix: Backend\Modules\TestModule\Domain\MyTestEntity

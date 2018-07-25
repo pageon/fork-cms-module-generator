@@ -6,10 +6,10 @@
 {% endif %}
 {% for entity in file.entities %}
 
-    {{ entity.tableName }}:
-      type: annotation
-      is_bundle: false
-      dir: "%kernel.project_dir%/src{{ entity.className.fullyQualifiedName|replace({'\\': '/'}) }}"
-      alias: {{ entity.tableName }}
-      prefix: {{ entity.className.namespace }}
+      {{ entity.tableName }}:
+        type: annotation
+        is_bundle: false
+        dir: "%kernel.project_dir%/src{{ entity.className.fullyQualifiedName|replace({'\\': '/'}) }}"
+        alias: {{ entity.tableName }}
+        prefix: {{ entity.className.namespace }}
 {% endfor %}
