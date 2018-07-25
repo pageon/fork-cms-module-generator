@@ -4,17 +4,25 @@ namespace {{ class.className.namespace }};
 
 use Backend\Core\Engine\Base\ActionDelete;
 use Backend\Core\Engine\Model as BackendModel;
+use Backend\Form\Type\DeleteType;
+use {{ class.entityClassName.namespace }}\Command\Delete{{ class.entityClassName.name }};
+use {{ class.entityClassName.namespace }}\{{ class.entityClassName.name }};
+use {{ class.entityClassName.namespace }}\{{ class.entityClassName.name }}Repository;
 
 class {{ class.className }} extends ActionDelete
 {
     public function execute(): void
     {
-        parent::execute();
+        ${{ class.entityClassName.forParameter }} = $this->get{{ class.entityClassName.name }}();
+        if (!${{ class.entityClassName.forParameter }} instanceof {{ class.entityClassName.name }}) {
+            $this->redirect(BackendModel::createUrlForAction('{{ class.entityClassName.name }}Index', null, null, ['error' => 'non-existing']));
 
-        // $this->redirect($this->getBackLink(['report' => 'deleted', 'var' => $this->record['title']]));
+            return;
+        }
 
-        $this->parse();
-        $this->display();
+        $this->get('command_bus')->handle(new Delete{{ class.entityClassName.name }}(${{ class.entityClassName.forParameter }}));
+
+        $this->redirect($this->getBackLink(['report' => 'deleted', 'var' => ${{ class.entityClassName.forParameter }}->getTitle()]));
     }
 
     private function getBackLink(array $parameters = []): string
@@ -25,5 +33,17 @@ class {{ class.className }} extends ActionDelete
             null,
             $parameters
         );
+    }
+
+    private function get{{ class.entityClassName.name }}(): {{ class.entityClassName.name }}
+    {
+        $deleteForm = $this->createForm(DeleteType::class, null, ['module' => $this->getModule()]);
+        $deleteForm->handleRequest($this->getRequest());
+
+        if (!$deleteForm->isSubmitted() || !$deleteForm->isValid()) {
+            return null;
+        }
+
+        $this->get({{ class.entityClassName.name }}Repository::class)->find($deleteForm->getData()['id']);
     }
 }
