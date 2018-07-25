@@ -21,8 +21,8 @@ class {{ class.className.name }} extends DataGridDatabase
 
         $this->setSortingColumns(['title']);
 
-        if (BackendAuthentication::isAllowedAction('MyTestEntityEdit')) {
-            $editUrl = Model::createUrlForAction('MyTestEntityEdit', null, null, ['id' => '[id]'], false);
+        if (BackendAuthentication::isAllowedAction('{{ class.entityClassName }}Edit')) {
+            $editUrl = Model::createUrlForAction('{{ class.entityClassName }}Edit', null, null, ['id' => '[id]'], false);
             $this->setColumnURL('title', $editUrl);
             $this->addColumn('edit', null, Language::lbl('Edit'), $editUrl, Language::lbl('Edit'));
         }
