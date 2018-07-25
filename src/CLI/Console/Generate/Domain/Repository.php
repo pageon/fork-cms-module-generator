@@ -25,7 +25,11 @@ final class Repository extends GenerateCommand
     {
         parent::execute($input, $output);
 
-        $entityClassName = ClassName::fromDataTransferObject($this->getFormData(RepositoryType::class));
+        $this->createRepository(ClassName::fromDataTransferObject($this->getFormData(RepositoryType::class)));
+    }
+
+    public function createRepository(ClassName $entityClassName): void
+    {
         $repositoryClass = RepositoryClass::fromEntityClassName($entityClassName);
         $this->generateService->generateClass(
             $repositoryClass,
