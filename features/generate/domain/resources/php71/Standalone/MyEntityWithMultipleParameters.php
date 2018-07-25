@@ -55,4 +55,20 @@ final class MyEntityWithMultipleParameters
     {
         return $this->parameter2;
     }
+
+    public static function fromDataTransferObject(MyEntityWithMultipleParametersDataTransferObject $dataTransferObject): self
+    {
+        if ($dataTransferObject->hasExistingMyEntityWithMultipleParameters()) {
+            $myEntityWithMultipleParameters = $dataTransferObject->getMyEntityWithMultipleParametersEntity();
+            $myEntityWithMultipleParameters->parameter1 = $dataTransferObject->parameter1;
+            $myEntityWithMultipleParameters->parameter2 = $dataTransferObject->parameter2;
+
+            return $myEntityWithMultipleParameters;
+        }
+
+        return new self(
+            $dataTransferObject->parameter1,
+            $dataTransferObject->parameter2
+        );
+    }
 }

@@ -41,4 +41,18 @@ final class MyEntityWithOneNotNullableParameter
     {
         return $this->parameter1;
     }
+
+    public static function fromDataTransferObject(MyEntityWithOneNotNullableParameterDataTransferObject $dataTransferObject): self
+    {
+        if ($dataTransferObject->hasExistingMyEntityWithOneNotNullableParameter()) {
+            $myEntityWithOneNotNullableParameter = $dataTransferObject->getMyEntityWithOneNotNullableParameterEntity();
+            $myEntityWithOneNotNullableParameter->parameter1 = $dataTransferObject->parameter1;
+
+            return $myEntityWithOneNotNullableParameter;
+        }
+
+        return new self(
+            $dataTransferObject->parameter1
+        );
+    }
 }

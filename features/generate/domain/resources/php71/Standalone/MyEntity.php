@@ -23,4 +23,13 @@ final class MyEntity
     {
         return $this->id;
     }
+
+    public static function fromDataTransferObject(MyEntityDataTransferObject $dataTransferObject): self
+    {
+        if ($dataTransferObject->hasExistingMyEntity()) {
+            return $dataTransferObject->getMyEntityEntity();
+        }
+
+        return new self();
+    }
 }

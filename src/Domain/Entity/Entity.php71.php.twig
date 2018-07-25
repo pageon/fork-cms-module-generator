@@ -54,4 +54,32 @@ final class {{ class.className.name }}
         return $this->{{ parameter.name }};
     }
 {% endfor %}
+
+    public static function fromDataTransferObject({{ class.className.name }}DataTransferObject $dataTransferObject): self
+    {
+        if ($dataTransferObject->hasExisting{{ class.className.name }}()) {
+{% if class.parameters is empty %}
+            return $dataTransferObject->get{{ class.className.name }}Entity();
+{% else %}
+            ${{ class.className.forParameter }} = $dataTransferObject->get{{ class.className.name }}Entity();
+{% for parameter in class.parameters %}
+            ${{ class.className.forParameter }}->{{ parameter.name }} = $dataTransferObject->{{ parameter.name }};
+{% endfor %}
+
+            return ${{ class.className.forParameter }};
+{% endif %}
+        }
+
+{% if class.parameters is empty %}
+        return new self();
+{% else %}
+        return new self(
+{% for parameter in class.parameters %}
+            $dataTransferObject->{{ parameter.name }}{% if not loop.last %},
+{% endif %}
+{% endfor %}
+
+        );
+{% endif %}
+    }
 }
