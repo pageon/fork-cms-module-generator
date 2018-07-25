@@ -3,6 +3,7 @@
 namespace ModuleGenerator\CLI\Console\Generate\Domain;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
+use ModuleGenerator\Domain\DataTransferObject\DataTransferObject;
 use ModuleGenerator\Domain\Entity\Entity as EntityClass;
 use ModuleGenerator\Domain\Entity\EntityType;
 use ModuleGenerator\Module\Backend\Resources\Config\Doctrine\Doctrine;
@@ -32,7 +33,10 @@ final class Entity extends GenerateCommand
             $this->getFormData(EntityType::class, ['form-interactor' => $formInteractor])
         );
 
-        $this->generateService->generateClass($entity, $this->getTargetPhpVersion());
+        $this->generateService->generateClasses(
+            [$entity, new DataTransferObject($entity)],
+            $this->getTargetPhpVersion()
+        );
 
         $moduleName = $this->extractModuleName($entity->getClassName()->getNamespace());
         if ($moduleName instanceof ModuleName) {

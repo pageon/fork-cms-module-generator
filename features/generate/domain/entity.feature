@@ -8,6 +8,7 @@ Feature: It is possible to generate a class for an entity
     Then the command has finished successfully
     And the file "src/Standalone/MyEntity.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntity.php"
     And the file "src/Standalone/MyEntityRepository.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityRepository.php"
+    And the file "src/Standalone/MyEntityDataTransferObject.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityDataTransferObject.php"
 
   Scenario:
     When I run the command "generate:domain:entity" and I provide as input
@@ -16,6 +17,7 @@ Feature: It is possible to generate a class for an entity
       """
     Then the command has finished successfully
     And the file "src/Standalone/MyEntityWithOneNullableParameter.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNullableParameter.php"
+    And the file "src/Standalone/MyEntityWithOneNullableParameterDataTransferObject.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNullableParameterDataTransferObject.php"
 
   Scenario:
     When I run the command "generate:domain:entity" and I provide as input
@@ -24,6 +26,7 @@ Feature: It is possible to generate a class for an entity
       """
     Then the command has finished successfully
     And the file "src/Standalone/MyEntityWithOneNotNullableParameter.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNotNullableParameter.php"
+    And the file "src/Standalone/MyEntityWithOneNotNullableParameterDataTransferObject.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNotNullableParameterDataTransferObject.php"
 
   Scenario:
     When I run the command "generate:domain:entity" and I provide as input
@@ -32,6 +35,7 @@ Feature: It is possible to generate a class for an entity
       """
     Then the command has finished successfully
     And the file "src/Standalone/MyEntityWithMultipleParameters.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithMultipleParameters.php"
+    And the file "src/Standalone/MyEntityWithMultipleParametersDataTransferObject.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithMultipleParametersDataTransferObject.php"
 
   Scenario:
     When I run the command "generate:domain:entity" and I provide as input
@@ -43,3 +47,4 @@ Feature: It is possible to generate a class for an entity
     And the file "src/Backend/Modules/TestModule/Resources/config/doctrine.yml" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Resources/config/doctrine.yml"
     And the file "src/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityRepository.php" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityRepository.php"
     And the file "src/Backend/Modules/TestModule/Resources/config/repositories.yml" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Resources/config/repositories.yml"
+    And the file "src/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityDataTransferObject.php" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityDataTransferObject.php"
