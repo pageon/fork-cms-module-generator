@@ -24,6 +24,11 @@ final class Edit extends GeneratableModuleFile
             $this->entityClassName->getName() . 'Edit.html.twig';
     }
 
+    public function getEntityClassName(): ClassName
+    {
+        return $this->entityClassName;
+    }
+
     public function getTemplatePath(float $targetPhpVersion): string
     {
         return __DIR__ . '/Edit.html.twig';
