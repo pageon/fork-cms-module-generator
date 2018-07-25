@@ -44,6 +44,6 @@ class MyTestEntityDelete extends ActionDelete
             return null;
         }
 
-        $this->get(MyTestEntityRepository::class)->find($deleteForm->getData()['id']);
+        return $this->get(MyTestEntityRepository::class)->find($deleteForm->getData()['id']);
     }
 }

@@ -44,6 +44,6 @@ class {{ class.className }} extends ActionDelete
             return null;
         }
 
-        $this->get({{ class.entityClassName.name }}Repository::class)->find($deleteForm->getData()['id']);
+        return $this->get({{ class.entityClassName.name }}Repository::class)->find($deleteForm->getData()['id']);
     }
 }
