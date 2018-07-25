@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="{{ class.tableName }}")
- * @ORM\Entity(repositoryClass="{{ class.className.namespace }}\{{ class.tableName }}Repository")
+ * @ORM\Entity(repositoryClass="{{ class.className.namespace }}\{{ class.className.name }}Repository")
  */
 final class {{ class.className.name }}
 {
