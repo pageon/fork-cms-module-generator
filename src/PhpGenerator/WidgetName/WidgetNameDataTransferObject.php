@@ -1,6 +1,6 @@
 <?php
 
-namespace WidgetGenerator\PhpGenerator\WidgetName;
+namespace ModuleGenerator\PhpGenerator\WidgetName;
 
 final class WidgetNameDataTransferObject
 {

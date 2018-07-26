@@ -1,6 +1,6 @@
 <?php
 
-namespace ActionGenerator\PhpGenerator\ActionName;
+namespace ModuleGenerator\PhpGenerator\ActionName;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

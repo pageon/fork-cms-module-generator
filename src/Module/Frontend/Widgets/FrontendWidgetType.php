@@ -2,7 +2,7 @@
 
 namespace ModuleGenerator\Module\Frontend\Widgets;
 
-use WidgetGenerator\PhpGenerator\WidgetName\WidgetNameType;
+use ModuleGenerator\PhpGenerator\WidgetName\WidgetNameType;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleNameType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

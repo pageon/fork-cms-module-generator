@@ -3,7 +3,7 @@
 namespace ModuleGenerator\Module\Frontend\Widgets;
 
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleNameDataTransferObject;
-use WidgetGenerator\PhpGenerator\WidgetName\WidgetNameDataTransferObject;
+use ModuleGenerator\PhpGenerator\WidgetName\WidgetNameDataTransferObject;
 
 final class FrontendWidgetDataTransferObject
 {

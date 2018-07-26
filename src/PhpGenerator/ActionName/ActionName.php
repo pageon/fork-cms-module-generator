@@ -1,6 +1,6 @@
 <?php
 
-namespace ActionGenerator\PhpGenerator\ActionName;
+namespace ModuleGenerator\PhpGenerator\ActionName;
 
 final class ActionName
 {
