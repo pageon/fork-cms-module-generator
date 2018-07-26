@@ -7,42 +7,42 @@ services:
       - '@module-generator_appender'
 
   generate_actions_crud:
-    class: ModuleGenerator\CLI\Console\Generate\Actions\CRUDActions
+    class: ModuleGenerator\CLI\Console\Generate\Backend\Action\CRUDActions
     arguments:
       - '@generate_generate_service'
     tags:
       - { name: console.command }
 
   generate_action_detail:
-    class: ModuleGenerator\CLI\Console\Generate\Actions\DetailAction
+    class: ModuleGenerator\CLI\Console\Generate\Backend\Action\DetailAction
     arguments:
       - '@generate_generate_service'
     tags:
       - { name: console.command }
 
   generate_action_index:
-    class: ModuleGenerator\CLI\Console\Generate\Actions\IndexAction
+    class: ModuleGenerator\CLI\Console\Generate\Backend\Action\IndexAction
     arguments:
       - '@generate_generate_service'
     tags:
       - { name: console.command }
 
   generate_action_delete:
-    class: ModuleGenerator\CLI\Console\Generate\Actions\DeleteAction
+    class: ModuleGenerator\CLI\Console\Generate\Backend\Action\DeleteAction
     arguments:
       - '@generate_generate_service'
     tags:
       - { name: console.command }
 
   generate_action_edit:
-    class: ModuleGenerator\CLI\Console\Generate\Actions\EditAction
+    class: ModuleGenerator\CLI\Console\Generate\Backend\Action\EditAction
     arguments:
       - '@generate_generate_service'
     tags:
       - { name: console.command }
 
   generate_action_add:
-    class: ModuleGenerator\CLI\Console\Generate\Actions\AddAction
+    class: ModuleGenerator\CLI\Console\Generate\Backend\Action\AddAction
     arguments:
       - '@generate_generate_service'
     tags:

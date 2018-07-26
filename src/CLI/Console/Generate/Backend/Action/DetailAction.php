@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\CLI\Console\Generate\Actions;
+namespace ModuleGenerator\CLI\Console\Generate\Backend\Action;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
 use ModuleGenerator\Module\Backend\Actions\BackendActionDataTransferObject;

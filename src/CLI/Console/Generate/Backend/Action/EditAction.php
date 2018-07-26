@@ -1,23 +1,23 @@
 <?php
 
-namespace ModuleGenerator\CLI\Console\Generate\Actions;
+namespace ModuleGenerator\CLI\Console\Generate\Backend\Action;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
 use ModuleGenerator\Module\Backend\Actions\BackendActionDataTransferObject;
 use ModuleGenerator\Module\Backend\Actions\BackendActionType;
-use ModuleGenerator\Module\Backend\Actions\Add\Add;
-use ModuleGenerator\Module\Backend\Layout\Templates\Add\Add as AddTemplate;
+use ModuleGenerator\Module\Backend\Actions\Edit\Edit;
+use ModuleGenerator\Module\Backend\Layout\Templates\Edit\Edit as EditTemplate;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AddAction extends GenerateCommand
+class EditAction extends GenerateCommand
 {
     protected function configure()
     {
         parent::configure();
 
-        $this->setName('generate:backend:action:add')
-            ->setDescription('Generate the add action for an entity');
+        $this->setName('generate:backend:action:edit')
+            ->setDescription('Generate the edit action for an entity');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -33,11 +33,11 @@ class AddAction extends GenerateCommand
     public function generateAction(BackendActionDataTransferObject $crudActionsDataTransferObject): void
     {
         $this->generateService->generateClass(
-            Add::fromDataTransferObject($crudActionsDataTransferObject),
+            Edit::fromDataTransferObject($crudActionsDataTransferObject),
             $this->getTargetPhpVersion()
         );
         $this->generateService->generateFile(
-            AddTemplate::fromDataTransferObject($crudActionsDataTransferObject),
+            EditTemplate::fromDataTransferObject($crudActionsDataTransferObject),
             $this->getTargetPhpVersion()
         );
     }
