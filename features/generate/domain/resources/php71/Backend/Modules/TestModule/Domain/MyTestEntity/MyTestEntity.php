@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="MyTestEntity")
  * @ORM\Entity(repositoryClass="Backend\Modules\TestModule\Domain\MyTestEntity\MyTestEntityRepository")
  */
-final class MyTestEntity
+class MyTestEntity
 {
     /**
      * @var int

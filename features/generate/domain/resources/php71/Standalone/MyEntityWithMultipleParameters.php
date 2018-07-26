@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="MyEntityWithMultipleParameters")
  * @ORM\Entity(repositoryClass="Standalone\MyEntityWithMultipleParametersRepository")
  */
-final class MyEntityWithMultipleParameters
+class MyEntityWithMultipleParameters
 {
     /**
      * @var int

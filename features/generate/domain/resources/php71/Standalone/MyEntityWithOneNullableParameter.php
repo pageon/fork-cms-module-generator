@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="MyEntityWithOneNullableParameter")
  * @ORM\Entity(repositoryClass="Standalone\MyEntityWithOneNullableParameterRepository")
  */
-final class MyEntityWithOneNullableParameter
+class MyEntityWithOneNullableParameter
 {
     /**
      * @var int
