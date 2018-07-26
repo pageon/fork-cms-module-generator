@@ -1,7 +1,7 @@
 {%- verbatim -%}
 {% import 'Core/Layout/Templates/Alerts.html.twig' as alerts %}
 
-<section class="module-test-module block-test-module-my-test-entity">
+<section class="{% endverbatim -%}module-{{ file.moduleName.forCssClassName }} block-{{ file.moduleName.forCssClassName }}-{{ file.actionName.forCssClassName }}{%- verbatim -%}">
   {% if not {% endverbatim -%}{{ file.entityClassName.forParameter }}Collection{%- verbatim %} %}
     {% block block_no_items %}
       {{ alerts.alert('info', 'msg.{%- endverbatim %}{{ file.entityClassName }}{%- verbatim -%}NoItems'|trans) }}

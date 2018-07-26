@@ -17,6 +17,11 @@ final class WidgetName
         return $this->name;
     }
 
+    public function getForCssClassName(): string
+    {
+        return ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '-$0', $this->name)), '-');
+    }
+
     public function __toString(): string
     {
         return $this->getName();

@@ -17,6 +17,11 @@ final class ModuleName
         return $this->name;
     }
 
+    public function getForCssClassName(): string
+    {
+        return ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '-$0', $this->getName())), '-');
+    }
+
     public function __toString(): string
     {
         return $this->getName();

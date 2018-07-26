@@ -22,6 +22,11 @@ final class ActionName
         return $this->getName();
     }
 
+    public function getForCssClassName(): string
+    {
+        return ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '-$0', $this->name)), '-');
+    }
+
     public static function fromDataTransferObject(
         ActionNameDataTransferObject $actionNameDataTransferObject
     ): self {

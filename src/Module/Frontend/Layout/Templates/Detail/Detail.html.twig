@@ -7,7 +7,7 @@
 {% import 'Core/Layout/Templates/Alerts.html.twig' as alerts %}
 {% import "Core/Layout/Templates/Macros.html.twig" as macro %}
 
-<article class="module-test-module block-test-module-my-test-detail" itemscope itemtype="http://schema.org/Question">
+<article class="{% endverbatim -%}module-{{ file.moduleName.forCssClassName }} block-{{ file.moduleName.forCssClassName }}-{{ file.actionName.forCssClassName }}{%- verbatim -%}">
   {% block block_heading %}
     <header class="block-heading page-header">
       <h1 itemprop="about">{{ {% endverbatim -%}{{ file.entityClassName.forParameter }}{%- verbatim -%}.title }}</h1>
