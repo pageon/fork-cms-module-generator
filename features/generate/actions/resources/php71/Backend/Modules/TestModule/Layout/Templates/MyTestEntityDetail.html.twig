@@ -1,0 +1,20 @@
+{% extends 'Layout/Templates/base.html.twig' %}
+{% import 'Layout/Templates/macros.html.twig' as macro %}
+
+{% block actionbar %}{% endblock %}
+
+{% block content %}
+  <h2>{{ myTestEntity.title }}</h2>
+  <div class="row fork-module-actions">
+    <div class="col-md-12">
+      <div class="btn-toolbar">
+        <div class="btn-group" role="group">
+          {% if showTestModuleMyTestEntityDelete %}
+            {{ macro.buttonIcon('', 'plus-square', 'lbl.Delete'|trans|ucfirst, 'btn-danger', {"type":"button", "data-toggle":"modal", "data-target":"#confirmDelete"}) }}
+          {% endif %}
+          {{ macro.buttonIcon(geturl('MyTestEntityIndex'), 'times', 'lbl.Cancel'|trans|ucfirst, 'btn-default') }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
