@@ -2,14 +2,14 @@
 
 namespace ModuleGenerator\Module\Frontend\Widgets;
 
-use WidgetGenerator\PhpGenerator\WidgetName\WidgetName;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleNameDataTransferObject;
+use WidgetGenerator\PhpGenerator\WidgetName\WidgetNameDataTransferObject;
 
 final class FrontendWidgetDataTransferObject
 {
     /** @var ModuleNameDataTransferObject */
     public $moduleName;
 
-    /** @var WidgetName */
+    /** @var WidgetNameDataTransferObject */
     public $widgetName;
 }

@@ -2,7 +2,7 @@
 
 namespace ModuleGenerator\Module\Frontend\Actions;
 
-use ActionGenerator\PhpGenerator\ActionName\ActionName;
+use ActionGenerator\PhpGenerator\ActionName\ActionNameDataTransferObject;
 use ModuleGenerator\PhpGenerator\ClassName\ClassNameDataTransferObject;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleNameDataTransferObject;
 
@@ -14,6 +14,6 @@ final class FrontendActionDataTransferObject
     /** @var ClassNameDataTransferObject */
     public $entityClassName;
 
-    /** @var ActionName */
+    /** @var ActionNameDataTransferObject */
     public $actionName;
 }
