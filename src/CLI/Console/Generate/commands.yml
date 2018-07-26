@@ -27,6 +27,13 @@ services:
     tags:
       - { name: console.command }
 
+  generate_action_add:
+    class: ModuleGenerator\CLI\Console\Generate\Actions\AddAction
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_domain_value-object:
     class: ModuleGenerator\CLI\Console\Generate\Domain\ValueObject
     arguments:
