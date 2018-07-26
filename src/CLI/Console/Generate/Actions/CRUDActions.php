@@ -3,8 +3,8 @@
 namespace ModuleGenerator\CLI\Console\Generate\Actions;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
-use ModuleGenerator\Module\Backend\Actions\CRUDActionsDataTransferObject;
-use ModuleGenerator\Module\Backend\Actions\CRUDActionsType;
+use ModuleGenerator\Module\Backend\Actions\BackendActionDataTransferObject;
+use ModuleGenerator\Module\Backend\Actions\BackendActionType;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -22,8 +22,8 @@ class CRUDActions extends GenerateCommand
     {
         parent::execute($input, $output);
 
-        /** @var CRUDActionsDataTransferObject $crudActionsDataTransferObject */
-        $crudActionsDataTransferObject = $this->getFormData(CRUDActionsType::class);
+        /** @var BackendActionDataTransferObject $crudActionsDataTransferObject */
+        $crudActionsDataTransferObject = $this->getFormData(BackendActionType::class);
 
         $classes = [
             AddAction::class,

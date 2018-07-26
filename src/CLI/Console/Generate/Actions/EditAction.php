@@ -3,8 +3,8 @@
 namespace ModuleGenerator\CLI\Console\Generate\Actions;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
-use ModuleGenerator\Module\Backend\Actions\CRUDActionsDataTransferObject;
-use ModuleGenerator\Module\Backend\Actions\CRUDActionsType;
+use ModuleGenerator\Module\Backend\Actions\BackendActionDataTransferObject;
+use ModuleGenerator\Module\Backend\Actions\BackendActionType;
 use ModuleGenerator\Module\Backend\Actions\Edit\Edit;
 use ModuleGenerator\Module\Backend\Layout\Templates\Edit\Edit as EditTemplate;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,13 +24,13 @@ class EditAction extends GenerateCommand
     {
         parent::execute($input, $output);
 
-        /** @var CRUDActionsDataTransferObject $crudActionsDataTransferObject */
-        $crudActionsDataTransferObject = $this->getFormData(CRUDActionsType::class);
+        /** @var BackendActionDataTransferObject $crudActionsDataTransferObject */
+        $crudActionsDataTransferObject = $this->getFormData(BackendActionType::class);
 
         $this->generateAction($crudActionsDataTransferObject);
     }
 
-    public function generateAction(CRUDActionsDataTransferObject $crudActionsDataTransferObject): void
+    public function generateAction(BackendActionDataTransferObject $crudActionsDataTransferObject): void
     {
         $this->generateService->generateClass(
             Edit::fromDataTransferObject($crudActionsDataTransferObject),

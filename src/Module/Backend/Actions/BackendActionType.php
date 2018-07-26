@@ -8,7 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CRUDActionsType extends AbstractType
+class BackendActionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -32,7 +32,7 @@ class CRUDActionsType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => CRUDActionsDataTransferObject::class,
+                'data_class' => BackendActionDataTransferObject::class,
             ]
         );
     }

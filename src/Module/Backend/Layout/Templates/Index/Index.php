@@ -3,7 +3,7 @@
 namespace ModuleGenerator\Module\Backend\Layout\Templates\Index;
 
 use ModuleGenerator\CLI\Service\Generate\GeneratableModuleFile;
-use ModuleGenerator\Module\Backend\Actions\CRUDActionsDataTransferObject;
+use ModuleGenerator\Module\Backend\Actions\BackendActionDataTransferObject;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
 
@@ -34,7 +34,7 @@ final class Index extends GeneratableModuleFile
         return $this->entityClassName;
     }
 
-    public static function fromDataTransferObject(CRUDActionsDataTransferObject $crudActionsDataTransferObject): self
+    public static function fromDataTransferObject(BackendActionDataTransferObject $crudActionsDataTransferObject): self
     {
         return new self(
             ModuleName::fromDataTransferObject($crudActionsDataTransferObject->moduleName),

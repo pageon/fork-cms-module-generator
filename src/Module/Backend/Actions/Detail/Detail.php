@@ -3,7 +3,7 @@
 namespace ModuleGenerator\Module\Backend\Actions\Detail;
 
 use ModuleGenerator\CLI\Service\Generate\GeneratableClass;
-use ModuleGenerator\Module\Backend\Actions\CRUDActionsDataTransferObject;
+use ModuleGenerator\Module\Backend\Actions\BackendActionDataTransferObject;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
 use ModuleGenerator\PhpGenerator\PhpNamespace\PhpNamespace;
@@ -46,7 +46,7 @@ final class Detail extends GeneratableClass
         return $this->className;
     }
 
-    public static function fromDataTransferObject(CRUDActionsDataTransferObject $crudActionsDataTransferObject): self
+    public static function fromDataTransferObject(BackendActionDataTransferObject $crudActionsDataTransferObject): self
     {
         return new self(
             ModuleName::fromDataTransferObject($crudActionsDataTransferObject->moduleName),
