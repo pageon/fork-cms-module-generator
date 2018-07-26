@@ -27,6 +27,13 @@ services:
     tags:
       - { name: console.command }
 
+  generate_action_delete:
+    class: ModuleGenerator\CLI\Console\Generate\Actions\DeleteAction
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_action_edit:
     class: ModuleGenerator\CLI\Console\Generate\Actions\EditAction
     arguments:
