@@ -2,7 +2,7 @@
 
 namespace ModuleGenerator\Module\Frontend\Actions;
 
-use ActionGenerator\PhpGenerator\ActionName\ActionNameDataTransferObject;
+use ModuleGenerator\PhpGenerator\ActionName\ActionNameDataTransferObject;
 use ModuleGenerator\PhpGenerator\ClassName\ClassNameDataTransferObject;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleNameDataTransferObject;
 

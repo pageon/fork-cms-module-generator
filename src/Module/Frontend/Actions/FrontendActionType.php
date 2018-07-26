@@ -2,7 +2,7 @@
 
 namespace ModuleGenerator\Module\Frontend\Actions;
 
-use ActionGenerator\PhpGenerator\ActionName\ActionNameType;
+use ModuleGenerator\PhpGenerator\ActionName\ActionNameType;
 use ModuleGenerator\PhpGenerator\ClassName\ClassNameType;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleNameType;
 use Symfony\Component\Form\AbstractType;

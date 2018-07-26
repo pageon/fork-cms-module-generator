@@ -1,0 +1,27 @@
+{%- verbatim -%}
+{% import 'Core/Layout/Templates/Alerts.html.twig' as alerts %}
+
+<section class="module-test-module block-test-module-my-test-entity">
+  {% if not {% endverbatim -%}{{ file.entityClassName.forParameter }}Collection{%- verbatim %} %}
+    {% block block_no_items %}
+      {{ alerts.alert('info', 'msg.{%- endverbatim %}{{ file.entityClassName }}{%- verbatim -%}NoItems'|trans) }}
+    {% endblock %}
+  {% else %}
+    {% block block_heading %}{% endblock %}
+
+    {% block block_items %}
+      <nav>
+        <ul>
+          {% for {% endverbatim %}{{ file.entityClassName.forParameter }} in {{ file.entityClassName.forParameter }}Collection{%- verbatim %} %}
+            {% block block_item %}
+              <li><a href="{{ {% endverbatim -%}{{ file.entityClassName.forParameter }}{%- verbatim -%}.fullUrl }}" title="{{ {% endverbatim -%}{{ file.entityClassName.forParameter }}{%- verbatim -%}.title }}">{{ {% endverbatim %}{{ file.entityClassName.forParameter }}{%- verbatim -%}.title }}</a></li>
+            {% endblock %}
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endblock %}
+
+    {% block block_footer %}{% endblock %}
+  {% endif %}
+</section>
+{%- endverbatim %}

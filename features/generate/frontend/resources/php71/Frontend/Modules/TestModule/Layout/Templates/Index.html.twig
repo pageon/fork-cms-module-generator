@@ -1,0 +1,25 @@
+{% import 'Core/Layout/Templates/Alerts.html.twig' as alerts %}
+
+<section class="module-test-module block-test-module-my-test-entity">
+  {% if not myTestEntityCollection %}
+    {% block block_no_items %}
+      {{ alerts.alert('info', 'msg.MyTestEntityNoItems'|trans) }}
+    {% endblock %}
+  {% else %}
+    {% block block_heading %}{% endblock %}
+
+    {% block block_items %}
+      <nav>
+        <ul>
+          {% for myTestEntity in myTestEntityCollection %}
+            {% block block_item %}
+              <li><a href="{{ myTestEntity.fullUrl }}" title="{{ myTestEntity.title }}">{{ myTestEntity.title }}</a></li>
+            {% endblock %}
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endblock %}
+
+    {% block block_footer %}{% endblock %}
+  {% endif %}
+</section>

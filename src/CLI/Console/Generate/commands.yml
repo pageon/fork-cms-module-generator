@@ -55,6 +55,13 @@ services:
     tags:
       - { name: console.command }
 
+  generate_frontend_action_index:
+    class: ModuleGenerator\CLI\Console\Generate\Frontend\Action\IndexAction
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_domain_value-object:
     class: ModuleGenerator\CLI\Console\Generate\Domain\ValueObject
     arguments:
