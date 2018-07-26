@@ -3,15 +3,8 @@
 namespace ModuleGenerator\CLI\Console\Generate\Actions;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
-use ModuleGenerator\Module\Backend\Actions\Add\Add;
 use ModuleGenerator\Module\Backend\Actions\CRUDActionsDataTransferObject;
 use ModuleGenerator\Module\Backend\Actions\CRUDActionsType;
-use ModuleGenerator\Module\Backend\Actions\Delete\Delete;
-use ModuleGenerator\Module\Backend\Actions\Edit\Edit;
-use ModuleGenerator\Module\Backend\Actions\Index\Index;
-use ModuleGenerator\Module\Backend\Layout\Templates\Add\Add as AddTemplate;
-use ModuleGenerator\Module\Backend\Layout\Templates\Edit\Edit as EditTemplate;
-use ModuleGenerator\Module\Backend\Layout\Templates\Index\Index as IndexTemplate;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -32,23 +25,17 @@ class CRUDActions extends GenerateCommand
         /** @var CRUDActionsDataTransferObject $crudActionsDataTransferObject */
         $crudActionsDataTransferObject = $this->getFormData(CRUDActionsType::class);
 
-        $this->generateService->generateClasses(
-            [
-                Index::fromDataTransferObject($crudActionsDataTransferObject),
-                Add::fromDataTransferObject($crudActionsDataTransferObject),
-                Edit::fromDataTransferObject($crudActionsDataTransferObject),
-                Delete::fromDataTransferObject($crudActionsDataTransferObject),
-            ],
-            $this->getTargetPhpVersion()
-        );
+        $classes = [
+            AddAction::class,
+            DeleteAction::class,
+            EditAction::class,
+            IndexAction::class,
+        ];
 
-        $this->generateService->generateFiles(
-            [
-                IndexTemplate::fromDataTransferObject($crudActionsDataTransferObject),
-                AddTemplate::fromDataTransferObject($crudActionsDataTransferObject),
-                EditTemplate::fromDataTransferObject($crudActionsDataTransferObject),
-            ],
-            $this->getTargetPhpVersion()
-        );
+        foreach ($classes as $class) {
+            (new $class($this->generateService))->setTargetPhpVersion($this->getTargetPhpVersion())->generateAction(
+                $crudActionsDataTransferObject
+            );
+        }
     }
 }
