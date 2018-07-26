@@ -7,4 +7,3 @@ Feature: It is possible to generate basic crud actions for an entity
       """
     Then the command has finished successfully
     And the file "src/Backend/Modules/TestModule/Actions/MyTestEntityDelete.php" should be dumped and look like "../generate/actions/resources/php71/Backend/Modules/TestModule/Actions/MyTestEntityDelete.php"
-    And the file "src/Backend/Modules/TestModule/Layout/Templates/MyTestEntityDelete.html.twig" should be dumped and look like "../generate/actions/resources/php71/Backend/Modules/TestModule/Layout/Templates/MyTestEntityDelete.html.twig"
