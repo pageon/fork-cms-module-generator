@@ -1,0 +1,22 @@
+{#
+  variables that are available:
+  - {{ item }}: contains data about the question
+  - {{ related }}: the related items
+#}
+{% import 'Core/Layout/Templates/Alerts.html.twig' as alerts %}
+{% import "Core/Layout/Templates/Macros.html.twig" as macro %}
+
+<article class="module-test-module block-test-module-my-test-detail" itemscope itemtype="http://schema.org/Question">
+  {% block block_heading %}
+    <header class="block-heading page-header">
+      <h1 itemprop="about">{{ myTestEntity.title }}</h1>
+    </header>
+  {% endblock %}
+
+  {% block block_item %}
+
+  {% endblock %}
+
+  {% block block_footer %}
+  {% endblock %}
+</article>

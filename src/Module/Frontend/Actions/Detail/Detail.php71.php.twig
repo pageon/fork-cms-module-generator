@@ -1,0 +1,39 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use {{ class.entityClassName.forUseStatement }};
+use {{ class.entityClassName.forUseStatement }}Repository;
+use Frontend\Core\Engine\Base\Block;
+use Frontend\Core\Language\Locale;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+final class {{ class.className }} extends Block
+{
+    public function execute(): void
+    {
+        parent::execute();
+
+        $this->loadTemplate();
+
+        $this->template->assign('{{ class.entityClassName.forParameter }}', $this->get{{ class.entityClassName }}());
+    }
+
+    private function get{{ class.entityClassName }}(): {{ class.entityClassName }}
+    {
+        if ($this->url->getParameter(1) === null) {
+            throw new NotFoundHttpException();
+        }
+
+        ${{ class.entityClassName.forParameter }} = $this->get({{ class.entityClassName }}Repository::class)->findBySlugAndLocale(
+            $this->url->getParameter(1),
+            Locale::frontendLanguage()
+        );
+
+        if (${{ class.entityClassName.forParameter }} === null) {
+            throw new NotFoundHttpException();
+        }
+
+        return ${{ class.entityClassName.forParameter }};
+    }
+}
