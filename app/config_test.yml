@@ -4,8 +4,3 @@ services:
 
   module-generator_appender:
     class: ModuleGenerator\CLI\Service\Generate\ConsoleOutputAppender
-
-  module-generator_settings_service:
-    class: ModuleGenerator\CLI\Service\ModuleGenerator\Settings
-    arguments:
-      - '%kernel.root_dir%/cache/test/settings.yml'
