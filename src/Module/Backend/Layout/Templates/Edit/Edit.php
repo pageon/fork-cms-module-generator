@@ -1,13 +1,13 @@
 <?php
 
-namespace ModuleGenerator\Module\Backend\Layout\Templates;
+namespace ModuleGenerator\Module\Backend\Layout\Templates\Edit;
 
 use ModuleGenerator\CLI\Service\Generate\GeneratableModuleFile;
 use ModuleGenerator\Module\Backend\Actions\CRUDActionsDataTransferObject;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
 
-final class Index extends GeneratableModuleFile
+final class Edit extends GeneratableModuleFile
 {
     /** @var ClassName */
     private $entityClassName;
@@ -21,17 +21,17 @@ final class Index extends GeneratableModuleFile
     public function getFilePath(float $targetPhpVersion): string
     {
         return 'Backend/Modules/' . $this->getModuleName() . '/Layout/Templates/' .
-            $this->entityClassName->getName() . 'Index.html.twig';
-    }
-
-    public function getTemplatePath(float $targetPhpVersion): string
-    {
-        return __DIR__ . '/Index.html.twig';
+            $this->entityClassName->getName() . 'Edit.html.twig';
     }
 
     public function getEntityClassName(): ClassName
     {
         return $this->entityClassName;
+    }
+
+    public function getTemplatePath(float $targetPhpVersion): string
+    {
+        return __DIR__ . '/Edit.html.twig';
     }
 
     public static function fromDataTransferObject(CRUDActionsDataTransferObject $crudActionsDataTransferObject): self

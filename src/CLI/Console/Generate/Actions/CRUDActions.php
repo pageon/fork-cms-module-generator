@@ -9,10 +9,9 @@ use ModuleGenerator\Module\Backend\Actions\CRUDActionsType;
 use ModuleGenerator\Module\Backend\Actions\Delete\Delete;
 use ModuleGenerator\Module\Backend\Actions\Edit\Edit;
 use ModuleGenerator\Module\Backend\Actions\Index\Index;
-use ModuleGenerator\Module\Backend\Layout\Templates\Add as AddTemplate;
-use ModuleGenerator\Module\Backend\Layout\Templates\Edit as EditTemplate;
-use ModuleGenerator\Module\Backend\Layout\Templates\Index as IndexTemplate;
-use ModuleGenerator\PhpGenerator\ClassName\ClassName;
+use ModuleGenerator\Module\Backend\Layout\Templates\Add\Add as AddTemplate;
+use ModuleGenerator\Module\Backend\Layout\Templates\Edit\Edit as EditTemplate;
+use ModuleGenerator\Module\Backend\Layout\Templates\Index\Index as IndexTemplate;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

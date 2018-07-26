@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleGenerator\Module\Backend\Layout\Templates;
+namespace ModuleGenerator\Module\Backend\Layout\Templates\Add;
 
 use ModuleGenerator\CLI\Service\Generate\GeneratableModuleFile;
 use ModuleGenerator\Module\Backend\Actions\CRUDActionsDataTransferObject;
