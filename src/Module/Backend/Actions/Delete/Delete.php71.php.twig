@@ -9,7 +9,7 @@ use {{ class.entityClassName.namespace }}\Command\Delete{{ class.entityClassName
 use {{ class.entityClassName.namespace }}\{{ class.entityClassName.name }};
 use {{ class.entityClassName.namespace }}\{{ class.entityClassName.name }}Repository;
 
-class {{ class.className }} extends ActionDelete
+final class {{ class.className }} extends ActionDelete
 {
     public function execute(): void
     {

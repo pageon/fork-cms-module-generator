@@ -9,7 +9,7 @@ use Backend\Modules\TestModule\Domain\MyTestEntity\MyTestEntityType;
 use Backend\Core\Engine\Model as BackendModel;
 use Symfony\Component\Form\Form;
 
-class MyTestEntityAdd extends ActionAdd
+final class MyTestEntityAdd extends ActionAdd
 {
     public function execute(): void
     {

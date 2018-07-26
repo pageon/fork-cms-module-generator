@@ -6,7 +6,7 @@ use Backend\Core\Engine\Base\ActionEdit;
 use {{ class.entityClassName.forUseStatement }};
 use {{ class.entityClassName.forUseStatement }}Repository;
 
-class {{ class.className }} extends ActionEdit
+final class {{ class.className }} extends ActionEdit
 {
     public function execute(): void
     {

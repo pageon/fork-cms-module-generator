@@ -6,7 +6,7 @@ use Backend\Core\Engine\Base\ActionEdit;
 use Backend\Modules\TestModule\Domain\MyTestEntity\MyTestEntity;
 use Backend\Modules\TestModule\Domain\MyTestEntity\MyTestEntityRepository;
 
-class MyTestEntityDetail extends ActionEdit
+final class MyTestEntityDetail extends ActionEdit
 {
     public function execute(): void
     {

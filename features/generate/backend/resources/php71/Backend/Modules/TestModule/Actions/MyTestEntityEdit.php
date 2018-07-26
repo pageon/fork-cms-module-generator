@@ -11,7 +11,7 @@ use Backend\Modules\TestModule\Domain\MyTestEntity\MyTestEntityRepository;
 use Backend\Modules\TestModule\Domain\MyTestEntity\MyTestEntityType;
 use Symfony\Component\Form\Form;
 
-class MyTestEntityEdit extends ActionEdit
+final class MyTestEntityEdit extends ActionEdit
 {
     public function execute(): void
     {

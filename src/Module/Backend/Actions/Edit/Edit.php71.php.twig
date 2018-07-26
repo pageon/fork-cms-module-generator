@@ -11,7 +11,7 @@ use {{ class.entityClassName.forUseStatement }}Repository;
 use {{ class.entityClassName.forUseStatement }}Type;
 use Symfony\Component\Form\Form;
 
-class {{ class.className }} extends ActionEdit
+final class {{ class.className }} extends ActionEdit
 {
     public function execute(): void
     {

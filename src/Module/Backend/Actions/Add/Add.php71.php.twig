@@ -9,7 +9,7 @@ use {{ class.entityClassName.namespace }}\{{ class.entityClassName.name }}Type;
 use Backend\Core\Engine\Model as BackendModel;
 use Symfony\Component\Form\Form;
 
-class {{ class.className }} extends ActionAdd
+final class {{ class.className }} extends ActionAdd
 {
     public function execute(): void
     {

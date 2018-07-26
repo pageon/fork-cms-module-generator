@@ -9,7 +9,7 @@ use Backend\Modules\TestModule\Domain\MyTestEntity\Command\DeleteMyTestEntity;
 use Backend\Modules\TestModule\Domain\MyTestEntity\MyTestEntity;
 use Backend\Modules\TestModule\Domain\MyTestEntity\MyTestEntityRepository;
 
-class MyTestEntityDelete extends ActionDelete
+final class MyTestEntityDelete extends ActionDelete
 {
     public function execute(): void
     {
