@@ -3,10 +3,11 @@
 namespace {{ class.className.namespace }};
 
 use Common\Doctrine\Type\AbstractImageType;
+use Common\Doctrine\ValueObject\AbstractImage;
 
 class {{ class.className.name }} extends AbstractImageType
 {
-    protected function createFromString(string $fileName): {{ class.imageClassName.name }}
+    protected function createFromString(string $fileName): AbstractImage
     {
         return {{ class.imageClassName.name }}::fromString($fileName);
     }

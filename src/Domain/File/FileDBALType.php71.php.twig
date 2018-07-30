@@ -3,10 +3,11 @@
 namespace {{ class.className.namespace }};
 
 use Common\Doctrine\Type\AbstractFileType;
+use Common\Doctrine\ValueObject\AbstractFile;
 
 class {{ class.className.name }} extends AbstractFileType
 {
-    protected function createFromString(string $fileName): {{ class.fileClassName.name }}
+    protected function createFromString(string $fileName): AbstractFile
     {
         return {{ class.fileClassName.name }}::fromString($fileName);
     }
