@@ -3,10 +3,11 @@
 namespace Standalone;
 
 use Common\Doctrine\Type\AbstractFileType;
+use Common\Doctrine\ValueObject\AbstractFile;
 
 class MyFileDBALType extends AbstractFileType
 {
-    protected function createFromString(string $fileName): MyFile
+    protected function createFromString(string $fileName): AbstractFile
     {
         return MyFile::fromString($fileName);
     }
