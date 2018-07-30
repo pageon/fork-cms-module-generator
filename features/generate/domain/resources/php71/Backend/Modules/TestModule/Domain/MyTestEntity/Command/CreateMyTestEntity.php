@@ -3,12 +3,14 @@
 namespace Backend\Modules\TestModule\Domain\MyTestEntity\Command;
 
 use Backend\Modules\TestModule\Domain\MyTestEntity\MyTestEntityDataTransferObject;
+use Common\Locale;
 
 final class CreateMyTestEntity extends MyTestEntityDataTransferObject
 {
-    public function __construct()
+    public function __construct(Locale $locale)
     {
-        // make it impossible to add an existing CreateMyTestEntity via the constructor
         parent::__construct();
+
+        $this->locale = $locale;
     }
 }

@@ -3,12 +3,14 @@
 namespace {{ class.className.namespace }};
 
 use {{ class.dataTransferObjectClassName.forUseStatement }};
+use Common\Locale;
 
 final class {{ class.className.name }} extends {{ class.dataTransferObjectClassName.name }}
 {
-    public function __construct()
+    public function __construct(Locale $locale)
     {
-        // make it impossible to add an existing {{ class.className.name }} via the constructor
         parent::__construct();
+
+        $this->locale = $locale;
     }
 }
