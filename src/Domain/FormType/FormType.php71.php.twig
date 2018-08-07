@@ -1,0 +1,31 @@
+<?php
+
+namespace {{ class.entity.className.namespace }};
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+{% for useStatement in class.formFieldUseStatements %}
+use {{ useStatement }};
+{% endfor %}
+
+final class {{ class.entity.className.name }}Type extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+{% for parameter in class.formFields %}
+        $builder->add(
+            '{{ parameter.parameter.name }}',
+            {{ parameter.formType }}::class,
+            [
+                'label' => 'lbl.{{ parameter.parameter.name|capitalize }}',
+            ]
+        );
+{% endfor %}
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults(['data_class' => {{ class.entity.className.name }}DataTransferObject::class]);
+    }
+}
