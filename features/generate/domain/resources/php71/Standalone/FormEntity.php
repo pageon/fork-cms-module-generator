@@ -78,6 +78,20 @@ class FormEntity
     private $text;
 
     /**
+     * @var \Common\Doctrine\ValueObject\AbstractImage
+     *
+     * @ORM\Column(type="image")
+     */
+    private $image;
+
+    /**
+     * @var \Common\Doctrine\ValueObject\AbstractFile
+     *
+     * @ORM\Column(type="file")
+     */
+    private $file;
+
+    /**
      * @var DateTime
      *
      * @ORM\Column(type="datetime")
@@ -99,7 +113,9 @@ class FormEntity
         \DateTime $datetime,
         int $integer,
         float $float,
-        string $text
+        string $text,
+        \Common\Doctrine\ValueObject\AbstractImage $image,
+        \Common\Doctrine\ValueObject\AbstractFile $file
     ) {
         $this->string = $string;
         $this->boolean = $boolean;
@@ -109,6 +125,8 @@ class FormEntity
         $this->integer = $integer;
         $this->float = $float;
         $this->text = $text;
+        $this->image = $image;
+        $this->file = $file;
     }
 
     public function getId(): int
@@ -156,6 +174,16 @@ class FormEntity
         return $this->text;
     }
 
+    public function getImage(): \Common\Doctrine\ValueObject\AbstractImage
+    {
+        return $this->image;
+    }
+
+    public function getFile(): \Common\Doctrine\ValueObject\AbstractFile
+    {
+        return $this->file;
+    }
+
     /**
      * @ORM\PrePersist
      */
@@ -195,6 +223,8 @@ class FormEntity
             $formEntity->integer = $dataTransferObject->integer;
             $formEntity->float = $dataTransferObject->float;
             $formEntity->text = $dataTransferObject->text;
+            $formEntity->image = $dataTransferObject->image;
+            $formEntity->file = $dataTransferObject->file;
 
             return $formEntity;
         }
@@ -207,7 +237,9 @@ class FormEntity
             $dataTransferObject->datetime,
             $dataTransferObject->integer,
             $dataTransferObject->float,
-            $dataTransferObject->text
+            $dataTransferObject->text,
+            $dataTransferObject->image,
+            $dataTransferObject->file
         );
     }
 }

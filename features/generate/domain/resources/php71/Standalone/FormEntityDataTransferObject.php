@@ -67,6 +67,20 @@ class FormEntityDataTransferObject
      */
     public $text;
 
+    /**
+     * @var \Common\Doctrine\ValueObject\AbstractImage
+     *
+     * @Assert\NotBlank(message="err.FieldIsRequired")
+     */
+    public $image;
+
+    /**
+     * @var \Common\Doctrine\ValueObject\AbstractFile
+     *
+     * @Assert\NotBlank(message="err.FieldIsRequired")
+     */
+    public $file;
+
     public function __construct(FormEntity $formEntity = null)
     {
         $this->formEntityEntity = $formEntity;
@@ -83,6 +97,8 @@ class FormEntityDataTransferObject
         $this->integer = $this->formEntityEntity->getInteger();
         $this->float = $this->formEntityEntity->getFloat();
         $this->text = $this->formEntityEntity->getText();
+        $this->image = $this->formEntityEntity->getImage();
+        $this->file = $this->formEntityEntity->getFile();
     }
 
     public function getFormEntityEntity(): FormEntity
