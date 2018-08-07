@@ -455,7 +455,7 @@ final class DBALType
             case self::DATETIME:
             case self::DATETIMETZ:
             case self::TIME:
-                return \DateTime::class;
+                return '\\' . \DateTime::class;
             case self::ARRAY:
             case self::JSON_ARRAY:
             case self::OBJECT:
