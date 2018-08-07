@@ -2,6 +2,8 @@
 
 namespace ModuleGenerator\PhpGenerator\ParameterType;
 
+use Common\Doctrine\ValueObject\AbstractFile;
+use Common\Doctrine\ValueObject\AbstractImage;
 use InvalidArgumentException;
 use Common\Locale;
 
@@ -28,6 +30,8 @@ final class DBALType
     const ENUM_BOOL = 'enum_bool';
     const LOCALE = 'locale';
     const CUSTOM = 'custom';
+    const FILE = 'file';
+    const IMAGE = 'image';
     const POSSIBLE_VALUES = [
         self::SMALLINT,
         self::INTEGER,
@@ -50,6 +54,8 @@ final class DBALType
         self::ENUM_BOOL,
         self::LOCALE,
         self::CUSTOM,
+        self::FILE,
+        self::IMAGE,
     ];
 
     /** @var string */
@@ -433,6 +439,38 @@ final class DBALType
         return $this->equals(self::custom());
     }
 
+    /**
+     * @return self
+     */
+    public static function image(): self
+    {
+        return new self(self::IMAGE);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isImage(): bool
+    {
+        return $this->equals(self::image());
+    }
+
+    /**
+     * @return self
+     */
+    public static function file(): self
+    {
+        return new self(self::FILE);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFile(): bool
+    {
+        return $this->equals(self::file());
+    }
+
     public function getPhpType(): string
     {
         switch ($this->parameterTypeDoctrine) {
@@ -463,6 +501,10 @@ final class DBALType
                 return 'array';
             case self::LOCALE:
                 return '\\' . Locale::class;
+            case self::IMAGE:
+                return '\\' . AbstractImage::class;
+            case self::FILE:
+                return '\\' . AbstractFile::class;
             case self::CUSTOM:
             default:
                 return '';
