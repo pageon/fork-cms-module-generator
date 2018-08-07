@@ -39,13 +39,18 @@ final class FormType extends GeneratableClass
     {
         $formFields = [];
         foreach ($this->entity->getParameters() as $parameter) {
+            $formField = $this->getFieldForParameter($parameter);
+            if ($formField === null) {
+                continue;
+            }
+
             $formFields[] = [
                 'parameter' => $parameter,
                 'formType' => $this->getFieldForParameter($parameter),
             ];
         }
 
-        return array_filter($formFields);
+        return $formFields;
     }
 
     public function getFormFields(): array
