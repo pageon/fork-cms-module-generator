@@ -3,6 +3,7 @@
 namespace ModuleGenerator\PhpGenerator\ParameterType;
 
 use InvalidArgumentException;
+use Common\Locale;
 
 final class DBALType
 {
@@ -454,14 +455,14 @@ final class DBALType
             case self::DATETIME:
             case self::DATETIMETZ:
             case self::TIME:
-                return '\DateTime';
+                return \DateTime::class;
             case self::ARRAY:
             case self::JSON_ARRAY:
             case self::OBJECT:
             case self::ENUM_BOOL:
                 return 'array';
             case self::LOCALE:
-                return 'string';
+                return '\\' . Locale::class;
             case self::CUSTOM:
             default:
                 return '';
