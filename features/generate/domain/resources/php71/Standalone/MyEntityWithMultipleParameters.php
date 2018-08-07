@@ -2,11 +2,13 @@
 
 namespace Standalone;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="MyEntityWithMultipleParameters")
  * @ORM\Entity(repositoryClass="Standalone\MyEntityWithMultipleParametersRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class MyEntityWithMultipleParameters
 {
@@ -33,6 +35,20 @@ class MyEntityWithMultipleParameters
      */
     private $parameter2;
 
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $createdOn;
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $editedOn;
+
     public function __construct(
         string $parameter1,
         string $parameter2
@@ -54,6 +70,33 @@ class MyEntityWithMultipleParameters
     public function getParameter2(): string
     {
         return $this->parameter2;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersist(): void
+    {
+        $this->createdOn = new DateTime();
+        $this->editedOn = new DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate(): void
+    {
+        $this->editedOn = new DateTime();
+    }
+
+    public function getCreatedOn(): DateTime
+    {
+        return $this->createdOn;
+    }
+
+    public function getEditedOn(): DateTime
+    {
+        return $this->editedOn;
     }
 
     public static function fromDataTransferObject(MyEntityWithMultipleParametersDataTransferObject $dataTransferObject): self

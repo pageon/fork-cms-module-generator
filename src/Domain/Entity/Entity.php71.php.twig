@@ -2,11 +2,13 @@
 
 namespace {{ class.className.namespace }};
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="{{ class.tableName }}")
  * @ORM\Entity(repositoryClass="{{ class.className.namespace }}\{{ class.className.name }}Repository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class {{ class.className.name }}
 {
@@ -28,6 +30,20 @@ class {{ class.className.name }}
      */
     private ${{ parameter.name }};
 {% endfor %}
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $createdOn;
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $editedOn;
 {% if class.parameters|length > 0 %}
 
     public function __construct(
@@ -54,6 +70,33 @@ class {{ class.className.name }}
         return $this->{{ parameter.name }};
     }
 {% endfor %}
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersist(): void
+    {
+        $this->createdOn = new DateTime();
+        $this->editedOn = new DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate(): void
+    {
+        $this->editedOn = new DateTime();
+    }
+
+    public function getCreatedOn(): DateTime
+    {
+        return $this->createdOn;
+    }
+
+    public function getEditedOn(): DateTime
+    {
+        return $this->editedOn;
+    }
 
     public static function fromDataTransferObject({{ class.className.name }}DataTransferObject $dataTransferObject): self
     {

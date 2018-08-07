@@ -43,7 +43,7 @@ class EntityType extends AbstractType
                 [
                     'entry_type' => ParameterType::class,
                     'allow_add' => true,
-                    'label' => 'Parameters (the id is added already)!',
+                    'label' => 'Parameters (the id, createdOn, and editedOn are already added)!',
                     'constraints' => [
                         new Valid()
                     ]
