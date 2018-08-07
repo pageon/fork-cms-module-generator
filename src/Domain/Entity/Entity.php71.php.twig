@@ -65,7 +65,7 @@ class {{ class.className.name }}
     }
 {% for parameter in class.parameters %}
 
-    public function get{{ parameter.name|capitalize }}(): {% if parameter.nullable %}?{% endif %}{{ parameter.dbalType.phpType }}
+    public function {% if parameter.dbalType.isEnumBool or parameter.dbalType.isBoolean %}is{% else %}get{% endif %}{{ parameter.name|capitalize }}(): {% if parameter.nullable %}?{% endif %}{{ parameter.dbalType.phpType }}
     {
         return $this->{{ parameter.name }};
     }
