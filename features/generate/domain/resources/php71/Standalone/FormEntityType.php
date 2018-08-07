@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Backend\Form\Type\EditorType;
+use Common\Form\ImageType;
+use Common\Form\FileType;
 
 final class FormEntityType extends AbstractType
 {
@@ -72,6 +74,20 @@ final class FormEntityType extends AbstractType
             EditorType::class,
             [
                 'label' => 'lbl.Text',
+            ]
+        );
+        $builder->add(
+            'image',
+            ImageType::class,
+            [
+                'label' => 'lbl.Image',
+            ]
+        );
+        $builder->add(
+            'file',
+            FileType::class,
+            [
+                'label' => 'lbl.File',
             ]
         );
     }

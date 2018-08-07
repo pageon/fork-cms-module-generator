@@ -95,6 +95,10 @@ final class FormType extends GeneratableClass
                 return $this->getSymfonyFormType('NumberType');
             case $parameterDbalType->isText():
                 return new ClassName('EditorType', new PhpNamespace('Backend\Form\Type'));
+            case $parameterDbalType->isImage():
+                return new ClassName('ImageType', new PhpNamespace('Common\Form'));
+            case $parameterDbalType->isFile():
+                return new ClassName('FileType', new PhpNamespace('Common\Form'));
             default:
                 return null;
         }
