@@ -6,6 +6,7 @@ use ModuleGenerator\CLI\Console\GenerateCommand;
 use ModuleGenerator\Domain\DataTransferObject\DataTransferObject;
 use ModuleGenerator\Domain\Entity\Entity as EntityClass;
 use ModuleGenerator\Domain\Entity\EntityType;
+use ModuleGenerator\Domain\FormType\FormType;
 use ModuleGenerator\Module\Backend\Resources\Config\Doctrine\Doctrine;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
 use Symfony\Component\Console\Input\InputInterface;
@@ -34,7 +35,7 @@ final class Entity extends GenerateCommand
         );
 
         $this->generateService->generateClasses(
-            [$entity, new DataTransferObject($entity)],
+            [$entity, new DataTransferObject($entity), new FormType($entity)],
             $this->getTargetPhpVersion()
         );
 

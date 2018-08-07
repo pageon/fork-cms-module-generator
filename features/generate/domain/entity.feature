@@ -48,3 +48,12 @@ Feature: It is possible to generate a class for an entity
     And the file "src/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityRepository.php" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityRepository.php"
     And the file "src/Backend/Modules/TestModule/Resources/config/repositories.yml" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Resources/config/repositories.yml"
     And the file "src/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityDataTransferObject.php" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Domain/MyTestEntity/MyTestEntityDataTransferObject.php"
+
+  Scenario:
+    When I run the command "generate:domain:entity" and I provide as input
+      """
+      FormEntity[enter]Standalone[enter]FormEntityTable[enter]y[enter]string[enter]string[enter][enter]y[enter]boolean[enter]boolean[enter][enter]y[enter]time[enter]time[enter][enter]y[enter]date[enter]date[enter][enter]y[enter]datetime[enter]datetime[enter][enter]y[enter]integer[enter]integer[enter][enter]y[enter]number[enter]number[enter][enter]y[enter]text[enter]text[enter][enter][enter]
+      """
+    Then the command has finished successfully
+    And the file "src/Standalone/FormEntity.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/FormEntity.php"
+    And the file "src/Standalone/FormEntityDataTransferObject.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/FormEntityDataTransferObject.php"
