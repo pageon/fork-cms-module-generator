@@ -15,7 +15,7 @@ final class {{ class.className }} extends ActionDelete
     {
         ${{ class.entityClassName.forParameter }} = $this->get{{ class.entityClassName.name }}();
         if (!${{ class.entityClassName.forParameter }} instanceof {{ class.entityClassName.name }}) {
-            $this->redirect(BackendModel::createUrlForAction('{{ class.entityClassName.name }}Index', null, null, ['error' => 'non-existing']));
+            $this->redirect($this->getBackLink(['error' => 'non-existing']));
 
             return;
         }

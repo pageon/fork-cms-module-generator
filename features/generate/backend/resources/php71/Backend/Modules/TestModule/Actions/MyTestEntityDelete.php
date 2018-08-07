@@ -15,7 +15,7 @@ final class MyTestEntityDelete extends ActionDelete
     {
         $myTestEntity = $this->getMyTestEntity();
         if (!$myTestEntity instanceof MyTestEntity) {
-            $this->redirect(BackendModel::createUrlForAction('MyTestEntityIndex', null, null, ['error' => 'non-existing']));
+            $this->redirect($this->getBackLink(['error' => 'non-existing']));
 
             return;
         }
