@@ -1,6 +1,10 @@
 <?php
 
 namespace {{ class.entity.className.namespace }};
+{% if class.hasRequiredParameters %}
+
+use Symfony\Component\Validator\Constraints as Assert;
+{% endif %}
 
 class {{ class.entity.className.name }}DataTransferObject
 {
@@ -13,6 +17,10 @@ class {{ class.entity.className.name }}DataTransferObject
     /**
      * @var {{ parameter.dbalType.phpType }}{% if parameter.nullable %}|null{% endif %}
 
+{% if not parameter.nullable %}
+     *
+     * @Assert\NotBlank(message="err.FieldIsRequired")
+{% endif %}
      */
     public ${{ parameter.name }};
 {% endfor %}

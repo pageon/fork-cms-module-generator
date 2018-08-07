@@ -2,6 +2,8 @@
 
 namespace Standalone;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class MyEntityWithMultipleParametersDataTransferObject
 {
     /**
@@ -11,11 +13,15 @@ class MyEntityWithMultipleParametersDataTransferObject
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(message="err.FieldIsRequired")
      */
     public $parameter1;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(message="err.FieldIsRequired")
      */
     public $parameter2;
 

@@ -28,4 +28,15 @@ final class DataTransferObject extends GeneratableClass
             $this->entity->getClassName()->getNamespace()
         );
     }
+
+    public function hasRequiredParameters(): bool
+    {
+        foreach ($this->entity->getParameters() as $parameter) {
+            if (!$parameter->isNullable()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
