@@ -3,21 +3,21 @@
 namespace {{ class.className.namespace }};
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\StringType;
 
-final class {{ class.className.name }} extends Type
+final class {{ class.className.name }} extends StringType
 {
     public function getName(): string
     {
         return '{{ class.name }}';
     }
 
-    public function convertToPHPValue(string ${{ class.className.forParameter }}, AbstractPlatform $platform): {{ class.valueObjectClassName.name }}
+    public function convertToPHPValue(${{ class.className.forParameter }}, AbstractPlatform $platform): {{ class.valueObjectClassName.name }}
     {
         return new {{ class.valueObjectClassName.name }}(${{ class.className.forParameter }});
     }
 
-    public function convertToDatabaseValue({{ class.valueObjectClassName.name }} ${{ class.className.forParameter }}, AbstractPlatform $platform): string
+    public function convertToDatabaseValue(${{ class.className.forParameter }}, AbstractPlatform $platform): string
     {
         return ${{ class.className.forParameter }}->getValue();
     }
