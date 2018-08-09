@@ -6,10 +6,10 @@ use InvalidArgumentException;
 
 final class {{ class.className.name }}
 {
-    {% for constant in class.constants %}const {{ constant.name }} = {{ constant.valueForTemplate|raw }};
+    {% for constant in class.constants %}private const {{ constant.name }} = {{ constant.valueForTemplate|raw }};
     {% endfor -%}
 
-    const POSSIBLE_VALUES = [
+    public const POSSIBLE_VALUES = [
     {% for constant in class.constants %}
     self::{{ constant.name }},
     {% endfor -%}];

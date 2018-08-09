@@ -6,10 +6,10 @@ use InvalidArgumentException;
 
 final class MyValueObject
 {
-    const FIRST_HAND = 'first';
-    const SECOND_HAND = 'second';
-    const THIRD_HAND = 'third';
-    const POSSIBLE_VALUES = [
+    private const FIRST_HAND = 'first';
+    private const SECOND_HAND = 'second';
+    private const THIRD_HAND = 'third';
+    public const POSSIBLE_VALUES = [
         self::FIRST_HAND,
         self::SECOND_HAND,
         self::THIRD_HAND,
