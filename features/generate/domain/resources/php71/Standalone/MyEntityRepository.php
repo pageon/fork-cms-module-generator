@@ -2,6 +2,7 @@
 
 namespace Standalone;
 
+use Common\Core\Model;
 use Common\Locale;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -26,6 +27,9 @@ class MyEntityRepository extends ServiceEntityRepository
         $this->getEntityManager()->remove($myEntity);
     }
 
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
     public function findBySlugAndLocale(string $slug, Locale $locale): ?MyEntity
     {
         try {
@@ -39,5 +43,31 @@ class MyEntityRepository extends ServiceEntityRepository
         } catch (NoResultException | NonUniqueResultException $resultException) {
             return null;
         }
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getUrl(string $url, Locale $locale, int $id = null): string
+    {
+        $query = $this
+            ->createQueryBuilder('i')
+            ->select('COUNT(i)')
+            ->innerJoin('i.meta', 'm')
+            ->where('m.url = :url and i.locale = :locale')
+            ->setParameter('url', $url)
+            ->setParameter('locale', $locale);
+
+        if ($id !== null) {
+            $query
+                ->andWhere('i.id != :id')
+                ->setParameter('id', $id);
+        }
+
+        if ((int)$query->getQuery()->getSingleScalarResult() === 0) {
+            return $url;
+        }
+
+        return $this->getUrl(Model::addNumber($url), $locale, $id);
     }
 }
