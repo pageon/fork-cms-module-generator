@@ -2,6 +2,7 @@
 
 namespace {{ class.entity.className.namespace }};
 
+use Backend\Form\EventListener\AddMetaSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,6 +26,20 @@ final class {{ class.entity.className.name }}Type extends AbstractType
             ]
         );
 {% endfor %}
+
+        // @TODO remove when entity doesn't use meta
+        $builder->addEventSubscriber(
+            new AddMetaSubscriber(
+                '@TODO module name',
+                '@TODO action name',
+                {{ class.entity.className.name }}Repository::class,
+                'getUrl',
+                [
+                    'getData.getLocale',
+                    'getData.getId',
+                ]
+            )
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

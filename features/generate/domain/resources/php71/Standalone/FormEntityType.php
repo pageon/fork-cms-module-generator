@@ -2,6 +2,7 @@
 
 namespace Standalone;
 
+use Backend\Form\EventListener\AddMetaSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -89,6 +90,20 @@ final class FormEntityType extends AbstractType
             [
                 'label' => 'lbl.File',
             ]
+        );
+
+        // @TODO remove when entity doesn't use meta
+        $builder->addEventSubscriber(
+            new AddMetaSubscriber(
+                '@TODO module name',
+                '@TODO action name',
+                FormEntityRepository::class,
+                'getUrl',
+                [
+                    'getData.getLocale',
+                    'getData.getId',
+                ]
+            )
         );
     }
 

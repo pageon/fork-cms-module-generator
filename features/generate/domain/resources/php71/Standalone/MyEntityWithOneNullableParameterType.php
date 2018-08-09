@@ -2,6 +2,7 @@
 
 namespace Standalone;
 
+use Backend\Form\EventListener\AddMetaSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,6 +19,20 @@ final class MyEntityWithOneNullableParameterType extends AbstractType
                 'label' => 'lbl.Parameter1',
                 'required' => false,
             ]
+        );
+
+        // @TODO remove when entity doesn't use meta
+        $builder->addEventSubscriber(
+            new AddMetaSubscriber(
+                '@TODO module name',
+                '@TODO action name',
+                MyEntityWithOneNullableParameterRepository::class,
+                'getUrl',
+                [
+                    'getData.getLocale',
+                    'getData.getId',
+                ]
+            )
         );
     }
 
