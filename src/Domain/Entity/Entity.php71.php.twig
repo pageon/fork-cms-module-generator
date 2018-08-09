@@ -48,7 +48,7 @@ class {{ class.className.name }}
 
     public function __construct(
     {% for parameter in class.parameters %}
-    {{ parameter.dbalType.phpType }} ${{ parameter.name }}{% if not loop.last %},
+    {% if parameter.nullable %}?{% endif %}{{ parameter.dbalType.phpType }} ${{ parameter.name }}{% if not loop.last %},
     {% endif %}
 {% endfor %}
 

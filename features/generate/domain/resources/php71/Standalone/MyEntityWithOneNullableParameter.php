@@ -43,7 +43,7 @@ class MyEntityWithOneNullableParameter
     private $editedOn;
 
     public function __construct(
-        string $parameter1
+        ?string $parameter1
     ) {
         $this->parameter1 = $parameter1;
     }
