@@ -2,6 +2,8 @@
 
 namespace Standalone;
 
+use Common\Locale;
+
 class MyEntityDataTransferObject
 {
     /**
@@ -26,5 +28,25 @@ class MyEntityDataTransferObject
     public function hasExistingMyEntity(): bool
     {
         return $this->myEntityEntity instanceof MyEntity;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getLocale(): Locale
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getId(): ?int
+    {
+        if ($this->hasExistingMyEntity()) {
+            return $this->myEntityEntity->getId();
+        }
+
+        return null;
     }
 }

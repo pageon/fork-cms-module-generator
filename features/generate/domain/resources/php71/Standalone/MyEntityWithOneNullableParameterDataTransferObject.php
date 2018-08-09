@@ -2,6 +2,8 @@
 
 namespace Standalone;
 
+use Common\Locale;
+
 class MyEntityWithOneNullableParameterDataTransferObject
 {
     /**
@@ -33,5 +35,25 @@ class MyEntityWithOneNullableParameterDataTransferObject
     public function hasExistingMyEntityWithOneNullableParameter(): bool
     {
         return $this->myEntityWithOneNullableParameterEntity instanceof MyEntityWithOneNullableParameter;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getLocale(): Locale
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getId(): ?int
+    {
+        if ($this->hasExistingMyEntityWithOneNullableParameter()) {
+            return $this->myEntityWithOneNullableParameterEntity->getId();
+        }
+
+        return null;
     }
 }

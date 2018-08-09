@@ -2,6 +2,7 @@
 
 namespace Standalone;
 
+use Common\Locale;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class MyEntityWithOneNotNullableParameterDataTransferObject
@@ -37,5 +38,25 @@ class MyEntityWithOneNotNullableParameterDataTransferObject
     public function hasExistingMyEntityWithOneNotNullableParameter(): bool
     {
         return $this->myEntityWithOneNotNullableParameterEntity instanceof MyEntityWithOneNotNullableParameter;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getLocale(): Locale
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getId(): ?int
+    {
+        if ($this->hasExistingMyEntityWithOneNotNullableParameter()) {
+            return $this->myEntityWithOneNotNullableParameterEntity->getId();
+        }
+
+        return null;
     }
 }

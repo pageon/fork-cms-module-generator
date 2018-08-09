@@ -2,6 +2,7 @@
 
 namespace Standalone;
 
+use Common\Locale;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class FormEntityDataTransferObject
@@ -109,5 +110,25 @@ class FormEntityDataTransferObject
     public function hasExistingFormEntity(): bool
     {
         return $this->formEntityEntity instanceof FormEntity;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getLocale(): Locale
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getId(): ?int
+    {
+        if ($this->hasExistingFormEntity()) {
+            return $this->formEntityEntity->getId();
+        }
+
+        return null;
     }
 }

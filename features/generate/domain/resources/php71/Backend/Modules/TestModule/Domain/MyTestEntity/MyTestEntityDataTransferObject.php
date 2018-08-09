@@ -2,6 +2,8 @@
 
 namespace Backend\Modules\TestModule\Domain\MyTestEntity;
 
+use Common\Locale;
+
 class MyTestEntityDataTransferObject
 {
     /**
@@ -26,5 +28,25 @@ class MyTestEntityDataTransferObject
     public function hasExistingMyTestEntity(): bool
     {
         return $this->myTestEntityEntity instanceof MyTestEntity;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getLocale(): Locale
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getId(): ?int
+    {
+        if ($this->hasExistingMyTestEntity()) {
+            return $this->myTestEntityEntity->getId();
+        }
+
+        return null;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Standalone;
 
+use Common\Locale;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class MyEntityWithMultipleParametersDataTransferObject
@@ -45,5 +46,25 @@ class MyEntityWithMultipleParametersDataTransferObject
     public function hasExistingMyEntityWithMultipleParameters(): bool
     {
         return $this->myEntityWithMultipleParametersEntity instanceof MyEntityWithMultipleParameters;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getLocale(): Locale
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getId(): ?int
+    {
+        if ($this->hasExistingMyEntityWithMultipleParameters()) {
+            return $this->myEntityWithMultipleParametersEntity->getId();
+        }
+
+        return null;
     }
 }
