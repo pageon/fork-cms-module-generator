@@ -98,6 +98,54 @@ class {{ class.className.name }}
         return $this->editedOn;
     }
 
+{% for parameter in class.parameters %}
+{% if parameter.dbalType.isImage or parameter.dbalType.isFile %}
+    /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+     */
+    public function prepareToUpload{{ parameter.name|capitalize }}(): void
+    {
+{% if parameter.isNullable %}
+        if ($this->{{ parameter.name }} === null) {
+            return;
+        }
+
+{% endif %}
+        $this->{{ parameter.name }}->prepareToUpload();
+    }
+
+    /**
+     * @ORM\PostUpdate
+     * @ORM\PostPersist
+     */
+    public function upload{{ parameter.name|capitalize }}(): void
+    {
+{% if parameter.isNullable %}
+        if ($this->{{ parameter.name }} === null) {
+            return;
+        }
+
+{% endif %}
+        $this->{{ parameter.name }}->upload();
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function remove{{ parameter.name|capitalize }}(): void
+    {
+{% if parameter.isNullable %}
+        if ($this->{{ parameter.name }} === null) {
+            return;
+        }
+
+{% endif %}
+        $this->{{ parameter.name }}->remove();
+    }
+
+{% endif %}
+{% endfor %}
     public static function fromDataTransferObject({{ class.className.name }}DataTransferObject $dataTransferObject): self
     {
         if ($dataTransferObject->hasExisting{{ class.className.name }}()) {

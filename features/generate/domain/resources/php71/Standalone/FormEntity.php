@@ -211,6 +211,58 @@ class FormEntity
         return $this->editedOn;
     }
 
+    /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+     */
+    public function prepareToUploadImage(): void
+    {
+        $this->image->prepareToUpload();
+    }
+
+    /**
+     * @ORM\PostUpdate
+     * @ORM\PostPersist
+     */
+    public function uploadImage(): void
+    {
+        $this->image->upload();
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeImage(): void
+    {
+        $this->image->remove();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+     */
+    public function prepareToUploadFile(): void
+    {
+        $this->file->prepareToUpload();
+    }
+
+    /**
+     * @ORM\PostUpdate
+     * @ORM\PostPersist
+     */
+    public function uploadFile(): void
+    {
+        $this->file->upload();
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeFile(): void
+    {
+        $this->file->remove();
+    }
+
     public static function fromDataTransferObject(FormEntityDataTransferObject $dataTransferObject): self
     {
         if ($dataTransferObject->hasExistingFormEntity()) {
