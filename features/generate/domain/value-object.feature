@@ -12,7 +12,7 @@ Feature: It is possible to generate the a value object
   Scenario: Generate a module value object
     When I run the command "generate:domain:value-object" and I provide as input
       """
-      MyValueObject[enter]Backend\Modules\TestModule\Domain\MyTestEntity[enter]y[enter]first[enter]first[enter]y[enter]second[enter]second[enter]y[enter]third[enter]third[enter][enter][enter]
+      MyValueObject[enter]Backend\Modules\TestModule\Domain\MyTestEntity[enter]y[enter]first_hand[enter]first[enter]y[enter]second hand[enter]second[enter]y[enter]thirdHand[enter]third[enter][enter][enter]
       """
     Then the command has finished successfully
     And the file "src/Backend/Modules/TestModule/Domain/MyTestEntity/MyValueObjectDBALType.php" should be dumped and look like "../generate/domain/resources/php71/Backend/Modules/TestModule/Domain/MyTestEntity/MyValueObjectDBALType.php"

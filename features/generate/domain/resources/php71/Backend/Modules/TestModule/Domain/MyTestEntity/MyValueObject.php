@@ -6,13 +6,13 @@ use InvalidArgumentException;
 
 final class MyValueObject
 {
-    const FIRST = 'first';
-    const SECOND = 'second';
-    const THIRD = 'third';
+    const FIRST_HAND = 'first';
+    const SECOND_HAND = 'second';
+    const THIRD_HAND = 'third';
     const POSSIBLE_VALUES = [
-        self::FIRST,
-        self::SECOND,
-        self::THIRD,
+        self::FIRST_HAND,
+        self::SECOND_HAND,
+        self::THIRD_HAND,
     ];
 
     /** @var string */
@@ -46,33 +46,33 @@ final class MyValueObject
         return $myValueObject == $this;
     }
 
-    public static function first(): self
+    public static function firstHand(): self
     {
-        return new self(self::FIRST);
+        return new self(self::FIRST_HAND);
     }
 
-    public function isFirst(): bool
+    public function isFirstHand(): bool
     {
-        return $this->equals(self::first());
+        return $this->equals(self::firstHand());
     }
 
-    public static function second(): self
+    public static function secondHand(): self
     {
-        return new self(self::SECOND);
+        return new self(self::SECOND_HAND);
     }
 
-    public function isSecond(): bool
+    public function isSecondHand(): bool
     {
-        return $this->equals(self::second());
+        return $this->equals(self::secondHand());
     }
 
-    public static function third(): self
+    public static function thirdHand(): self
     {
-        return new self(self::THIRD);
+        return new self(self::THIRD_HAND);
     }
 
-    public function isThird(): bool
+    public function isThirdHand(): bool
     {
-        return $this->equals(self::third());
+        return $this->equals(self::thirdHand());
     }
 }

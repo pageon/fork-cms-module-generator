@@ -15,7 +15,7 @@ final class Constant
     public function __construct(string $name, $value)
     {
         $converter = new CamelCaseToSnakeCaseNameConverter();
-        $this->name = mb_strtoupper(ltrim($converter->normalize($name), '_'));
+        $this->name = mb_strtoupper(ltrim($converter->normalize(str_replace(' ', '_', $name)), '_'));
         $this->value = $this->castToCorrectType($value);
     }
 
