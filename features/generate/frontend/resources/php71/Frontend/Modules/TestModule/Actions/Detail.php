@@ -21,12 +21,12 @@ final class Detail extends Block
 
     private function getMyTestEntity(): MyTestEntity
     {
-        if ($this->url->getParameter(1) === null) {
+        if ($this->url->getParameter(0) === null) {
             throw new NotFoundHttpException();
         }
 
         $myTestEntity = $this->get(MyTestEntityRepository::class)->findBySlugAndLocale(
-            $this->url->getParameter(1),
+            $this->url->getParameter(0),
             Locale::frontendLanguage()
         );
 

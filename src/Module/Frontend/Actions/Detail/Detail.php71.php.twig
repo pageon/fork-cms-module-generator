@@ -21,12 +21,12 @@ final class {{ class.className }} extends Block
 
     private function get{{ class.entityClassName }}(): {{ class.entityClassName }}
     {
-        if ($this->url->getParameter(1) === null) {
+        if ($this->url->getParameter(0) === null) {
             throw new NotFoundHttpException();
         }
 
         ${{ class.entityClassName.forParameter }} = $this->get({{ class.entityClassName }}Repository::class)->findBySlugAndLocale(
-            $this->url->getParameter(1),
+            $this->url->getParameter(0),
             Locale::frontendLanguage()
         );
 
