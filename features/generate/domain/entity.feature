@@ -18,6 +18,7 @@ Feature: It is possible to generate a class for an entity
     Then the command has finished successfully
     And the file "src/Standalone/MyEntityWithOneNullableParameter.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNullableParameter.php"
     And the file "src/Standalone/MyEntityWithOneNullableParameterDataTransferObject.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNullableParameterDataTransferObject.php"
+    And the file "src/Standalone/MyEntityWithOneNullableParameterType.php" should be dumped and look like "../generate/domain/resources/php71/Standalone/MyEntityWithOneNullableParameterType.php"
 
   Scenario:
     When I run the command "generate:domain:entity" and I provide as input

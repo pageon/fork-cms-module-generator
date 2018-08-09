@@ -18,7 +18,10 @@ final class {{ class.entity.className.name }}Type extends AbstractType
             '{{ parameter.parameter.name }}',
             {{ parameter.formType }}::class,
             [
-                'label' => 'lbl.{{ parameter.parameter.name|capitalize }}',
+                'label' => 'lbl.{{ parameter.parameter.name|capitalize }}',{% if parameter.parameter.isNullable %}
+
+                'required' => false,{% endif %}
+
             ]
         );
 {% endfor %}
