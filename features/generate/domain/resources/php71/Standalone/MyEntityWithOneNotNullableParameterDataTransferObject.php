@@ -17,7 +17,7 @@ class MyEntityWithOneNotNullableParameterDataTransferObject
      *
      * @Assert\NotBlank(message="err.FieldIsRequired")
      */
-    public $parameter1;
+    public $myParameter1;
 
     public function __construct(MyEntityWithOneNotNullableParameter $myEntityWithOneNotNullableParameter = null)
     {
@@ -27,7 +27,7 @@ class MyEntityWithOneNotNullableParameterDataTransferObject
             return;
         }
 
-        $this->parameter1 = $this->myEntityWithOneNotNullableParameterEntity->getParameter1();
+        $this->myParameter1 = $this->myEntityWithOneNotNullableParameterEntity->getMyParameter1();
     }
 
     public function getMyEntityWithOneNotNullableParameterEntity(): MyEntityWithOneNotNullableParameter

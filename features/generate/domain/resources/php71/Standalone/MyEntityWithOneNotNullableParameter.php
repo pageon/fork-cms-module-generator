@@ -26,7 +26,7 @@ class MyEntityWithOneNotNullableParameter
      *
      * @ORM\Column(type="string")
      */
-    private $parameter1;
+    private $myParameter1;
 
     /**
      * @var DateTime
@@ -43,9 +43,9 @@ class MyEntityWithOneNotNullableParameter
     private $editedOn;
 
     public function __construct(
-        string $parameter1
+        string $myParameter1
     ) {
-        $this->parameter1 = $parameter1;
+        $this->myParameter1 = $myParameter1;
     }
 
     public function getId(): int
@@ -53,9 +53,9 @@ class MyEntityWithOneNotNullableParameter
         return $this->id;
     }
 
-    public function getParameter1(): string
+    public function getMyParameter1(): string
     {
-        return $this->parameter1;
+        return $this->myParameter1;
     }
 
     /**
@@ -89,13 +89,13 @@ class MyEntityWithOneNotNullableParameter
     {
         if ($dataTransferObject->hasExistingMyEntityWithOneNotNullableParameter()) {
             $myEntityWithOneNotNullableParameter = $dataTransferObject->getMyEntityWithOneNotNullableParameterEntity();
-            $myEntityWithOneNotNullableParameter->parameter1 = $dataTransferObject->parameter1;
+            $myEntityWithOneNotNullableParameter->myParameter1 = $dataTransferObject->myParameter1;
 
             return $myEntityWithOneNotNullableParameter;
         }
 
         return new self(
-            $dataTransferObject->parameter1
+            $dataTransferObject->myParameter1
         );
     }
 }

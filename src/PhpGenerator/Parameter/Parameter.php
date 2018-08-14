@@ -46,6 +46,11 @@ final class Parameter
         return $this->nullable;
     }
 
+    public function getForFunction(): string
+    {
+        return ucfirst($this->getName());
+    }
+
     public static function fromDataTransferObject(ParameterDataTransferObject $parameterDataTransferObject): self
     {
         return new self(

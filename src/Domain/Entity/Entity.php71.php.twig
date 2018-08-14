@@ -65,7 +65,7 @@ class {{ class.className.name }}
     }
 {% for parameter in class.parameters %}
 
-    public function {% if parameter.dbalType.isEnumBool or parameter.dbalType.isBoolean %}is{% else %}get{% endif %}{{ parameter.name|capitalize }}(): {% if parameter.nullable %}?{% endif %}{{ parameter.dbalType.phpType }}
+    public function {% if parameter.dbalType.isEnumBool or parameter.dbalType.isBoolean %}is{% else %}get{% endif %}{{ parameter.forFunction }}(): {% if parameter.nullable %}?{% endif %}{{ parameter.dbalType.phpType }}
     {
         return $this->{{ parameter.name }};
     }
@@ -104,7 +104,7 @@ class {{ class.className.name }}
      * @ORM\PreUpdate
      * @ORM\PrePersist
      */
-    public function prepareToUpload{{ parameter.name|capitalize }}(): void
+    public function prepareToUpload{{ parameter.forFunction }}(): void
     {
 {% if parameter.isNullable %}
         if ($this->{{ parameter.name }} === null) {
@@ -119,7 +119,7 @@ class {{ class.className.name }}
      * @ORM\PostUpdate
      * @ORM\PostPersist
      */
-    public function upload{{ parameter.name|capitalize }}(): void
+    public function upload{{ parameter.forFunction }}(): void
     {
 {% if parameter.isNullable %}
         if ($this->{{ parameter.name }} === null) {
@@ -133,7 +133,7 @@ class {{ class.className.name }}
     /**
      * @ORM\PostRemove
      */
-    public function remove{{ parameter.name|capitalize }}(): void
+    public function remove{{ parameter.forFunction }}(): void
     {
 {% if parameter.isNullable %}
         if ($this->{{ parameter.name }} === null) {

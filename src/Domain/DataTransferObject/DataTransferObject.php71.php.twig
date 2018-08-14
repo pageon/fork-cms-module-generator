@@ -36,7 +36,7 @@ class {{ class.entity.className.name }}DataTransferObject
 {% if class.entity.parameters is not empty %}
 
     {% for parameter in class.entity.parameters %}
-    $this->{{ parameter.name }} = $this->{{ class.entity.className.forParameter }}Entity->{% if parameter.dbalType.isEnumBool or parameter.dbalType.isBoolean %}is{% else %}get{% endif %}{{ parameter.name|capitalize }}();
+    $this->{{ parameter.name }} = $this->{{ class.entity.className.forParameter }}Entity->{% if parameter.dbalType.isEnumBool or parameter.dbalType.isBoolean %}is{% else %}get{% endif %}{{ parameter.forFunction }}();
     {% endfor -%}
 }
 {% else %}
