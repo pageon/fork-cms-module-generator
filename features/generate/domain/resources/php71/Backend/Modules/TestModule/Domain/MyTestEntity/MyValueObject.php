@@ -43,7 +43,7 @@ final class MyValueObject
             return false;
         }
 
-        return $myValueObject == $this;
+        return $myValueObject->myValueObject === $this->myValueObject;
     }
 
     public static function firstHand(): self

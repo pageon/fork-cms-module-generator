@@ -42,7 +42,7 @@ final class {{ class.className.name }}
             return false;
         }
 
-        return ${{ class.className.forParameter }} == $this;
+        return ${{ class.className.forParameter }}->{{ class.className.forParameter }} === $this->{{ class.className.forParameter }};
     }
 {% for constant in class.constants %}
 
