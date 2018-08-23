@@ -48,6 +48,13 @@ services:
     tags:
       - { name: console.command }
 
+  generate_action_settings:
+    class: ModuleGenerator\CLI\Console\Generate\Backend\Action\SettingsAction
+    arguments:
+      - '@generate_generate_service'
+    tags:
+      - { name: console.command }
+
   generate_frontend_widget_base:
     class: ModuleGenerator\CLI\Console\Generate\Frontend\Widget\BaseWidget
     arguments:

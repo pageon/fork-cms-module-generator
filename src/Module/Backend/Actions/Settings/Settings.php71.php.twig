@@ -1,0 +1,64 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Backend\Core\Engine\Base\ActionIndex;
+use {{ class.entityClassName.namespace }}\Command\Save{{ class.entityClassName.name }};
+use {{ class.entityClassName.namespace }}\{{ class.entityClassName.name }}Type;
+use Backend\Core\Engine\Model as BackendModel;
+use Symfony\Component\Form\Form;
+
+final class {{ class.className }} extends ActionIndex
+{
+    public function execute(): void
+    {
+        parent::execute();
+
+        $form = $this->getForm();
+
+        if (!$form->isSubmitted() || !$form->isValid()) {
+            $this->template->assign('form', $form->createView());
+
+            $this->parse();
+            $this->display();
+
+            return;
+        }
+
+        $this->handleForm($form);
+    }
+
+    private function handleForm(Form $form): void
+    {
+        $save{{ class.entityClassName.name }} = $form->getData();
+
+        $this->get('command_bus')->handle($save{{ class.entityClassName.name }});
+
+        $this->redirect(
+            $this->getBackLink(
+                [
+                    'report' => 'saved',
+                ]
+            )
+        );
+    }
+
+    private function getForm(): Form
+    {
+        $form = $this->createForm({{ class.entityClassName.name }}Type::class, new Save{{ class.entityClassName.name }}($this->get('fork.settings')));
+
+        $form->handleRequest($this->getRequest());
+
+        return $form;
+    }
+
+    private function getBackLink(array $parameters = []): string
+    {
+        return BackendModel::createUrlForAction(
+            '{{ class.entityClassName.name }}',
+            null,
+            null,
+            $parameters
+        );
+    }
+}
