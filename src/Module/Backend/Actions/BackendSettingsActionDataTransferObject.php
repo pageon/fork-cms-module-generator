@@ -4,6 +4,7 @@ namespace ModuleGenerator\Module\Backend\Actions;
 
 use ModuleGenerator\PhpGenerator\ClassName\ClassNameDataTransferObject;
 use ModuleGenerator\PhpGenerator\ModuleName\ModuleNameDataTransferObject;
+use ModuleGenerator\PhpGenerator\Parameter\ParameterDataTransferObject;
 
 final class BackendSettingsActionDataTransferObject
 {
@@ -12,4 +13,7 @@ final class BackendSettingsActionDataTransferObject
 
     /** @var ClassNameDataTransferObject */
     public $settingClassName;
+
+    /** @var ParameterDataTransferObject[] */
+    public $settings;
 }
