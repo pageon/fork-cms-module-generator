@@ -3,6 +3,7 @@
 namespace ModuleGenerator\CLI\Console\Generate\Backend\Action;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
+use ModuleGenerator\Domain\Command\Settings\SettingsCommand;
 use ModuleGenerator\Domain\FormType\SettingsType;
 use ModuleGenerator\Module\Backend\Actions\BackendSettingsActionDataTransferObject;
 use ModuleGenerator\Module\Backend\Actions\BackendSettingsActionType;
@@ -39,6 +40,10 @@ class SettingsAction extends GenerateCommand
         );
         $this->generateService->generateClass(
             SettingsType::fromDataTransferObject($backendSettingsActionDataTransferObject),
+            $this->getTargetPhpVersion()
+        );
+        $this->generateService->generateClass(
+            SettingsCommand::fromDataTransferObject($backendSettingsActionDataTransferObject),
             $this->getTargetPhpVersion()
         );
         $this->generateService->generateFile(

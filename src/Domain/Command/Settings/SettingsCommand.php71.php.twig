@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Common\ModulesSettings;
+use Symfony\Component\Validator\Constraints as Assert;
+
+final class {{ class.className.name }}
+{
+{%- for setting in class.settings %}
+
+    /**
+     * @var {{ setting.dbalType.phpType }}{% if setting.nullable %}|null{% endif %}
+
+{% if not setting.nullable %}
+     *
+     * @Assert\NotBlank(message="err.FieldIsRequired")
+{% endif %}
+     */
+    public ${{ setting.name }};
+{% endfor %}
+
+    public function __construct(ModulesSettings $modulesSettings)
+    {
+        $settings = $modulesSettings->getForModule('{{ class.moduleName }}');
+{% if class.settings is not empty %}
+
+  {% for setting in class.settings %}
+      $this->{{ setting.name }} = $settings['{{ setting.name }}'] ?? null;
+  {% endfor -%}
+{% endif %}
+  }
+}

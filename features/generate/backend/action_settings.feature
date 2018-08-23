@@ -9,3 +9,4 @@ Feature: It is possible to generate a settings action
     And the file "src/Backend/Modules/TestModule/Actions/MySettings.php" should be dumped and look like "../generate/backend/resources/php71/Backend/Modules/TestModule/Actions/MySettings.php"
     And the file "src/Backend/Modules/TestModule/Layout/Templates/MySettings.html.twig" should be dumped and look like "../generate/backend/resources/php71/Backend/Modules/TestModule/Layout/Templates/MySettings.html.twig"
     And the file "src/Backend/Modules/TestModule/Domain/MySettings/MySettingsType.php" should be dumped and look like "../generate/backend/resources/php71/Backend/Modules/TestModule/Domain/MySettings/MySettingsType.php"
+    And the file "src/Backend/Modules/TestModule/Domain/MySettings/Command/SaveMySettings.php" should be dumped and look like "../generate/backend/resources/php71/Backend/Modules/TestModule/Domain/MySettings/Command/SaveMySettings.php"
