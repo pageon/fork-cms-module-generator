@@ -33,7 +33,8 @@ class SettingsAction extends GenerateCommand
         $this->generateAction($backendSettingsActionDataTransferObject);
     }
 
-    public function generateAction(BackendSettingsActionDataTransferObject $backendSettingsActionDataTransferObject
+    public function generateAction(
+        BackendSettingsActionDataTransferObject $backendSettingsActionDataTransferObject
     ): void {
         $this->generateService->generateClass(
             Settings::fromDataTransferObject($backendSettingsActionDataTransferObject),
