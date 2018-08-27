@@ -20,6 +20,9 @@ final class Detail extends Block
 
         $this->template->assign('myTestEntity', $myTestEntity);
         $this->header->setPageTitle($myTestEntity->getTitle());
+
+        // @todo remove if you don't have meta
+        $this->setMeta($myTestEntity->getMeta());
     }
 
     private function getMyTestEntity(): MyTestEntity
