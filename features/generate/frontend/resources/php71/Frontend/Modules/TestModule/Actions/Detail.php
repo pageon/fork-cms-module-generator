@@ -16,7 +16,10 @@ final class Detail extends Block
 
         $this->loadTemplate();
 
-        $this->template->assign('myTestEntity', $this->getMyTestEntity());
+        $myTestEntity = $this->getMyTestEntity();
+
+        $this->template->assign('myTestEntity', $myTestEntity);
+        $this->header->setPageTitle($myTestEntity->getTitle());
     }
 
     private function getMyTestEntity(): MyTestEntity

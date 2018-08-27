@@ -16,7 +16,10 @@ final class {{ class.className }} extends Block
 
         $this->loadTemplate();
 
-        $this->template->assign('{{ class.entityClassName.forParameter }}', $this->get{{ class.entityClassName }}());
+        ${{ class.entityClassName.forParameter }} = $this->get{{ class.entityClassName }}();
+
+        $this->template->assign('{{ class.entityClassName.forParameter }}', ${{ class.entityClassName.forParameter }});
+        $this->header->setPageTitle(${{ class.entityClassName.forParameter }}->getTitle());
     }
 
     private function get{{ class.entityClassName }}(): {{ class.entityClassName }}
