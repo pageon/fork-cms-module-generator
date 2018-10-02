@@ -32,7 +32,7 @@ final class {{ class.className }} extends Block
         }
 
         ${{ class.entityClassName.forParameter }} = $this->get({{ class.entityClassName }}Repository::class)->findBySlugAndLocale(
-            $this->url->getParameter(0),
+            urldecode($this->url->getParameter(0)),
             Locale::frontendLanguage()
         );
 

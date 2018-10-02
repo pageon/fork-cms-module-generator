@@ -32,7 +32,7 @@ final class Detail extends Block
         }
 
         $myTestEntity = $this->get(MyTestEntityRepository::class)->findBySlugAndLocale(
-            $this->url->getParameter(0),
+            urldecode($this->url->getParameter(0)),
             Locale::frontendLanguage()
         );
 
