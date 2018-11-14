@@ -98,7 +98,7 @@ final class CommandHandlerServiceConfiguration
                 );
             }
 
-            $this->modulePath = $matches[1];
+            $this->modulePath = $matches[1] ?? 'command';
         }
 
         return $this->modulePath;
