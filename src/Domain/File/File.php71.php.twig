@@ -11,7 +11,7 @@ class {{ class.className.name }} extends AbstractFile
     /**
      * @var UploadedFile
      *
-     * @Assert\File(maxSize = "{{ class.maxFileSize }}")
+     * @Assert\File({% if class.maxFileSize %}maxSize = "{{ class.maxFileSize }}"{% endif %})
      */
     protected $file;
 
