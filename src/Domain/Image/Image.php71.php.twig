@@ -12,7 +12,8 @@ class {{ class.className.name }} extends AbstractImage
      * @var UploadedFile
      *
      * @Assert\File(
-     *     maxSize = "{{ class.maxFileSize }}",
+{% if class.maxFileSize %}     *     maxSize = "{{ class.maxFileSize }}",
+{% endif %}
      *     mimeTypes = {{ class.mimeTypes|raw }},
      *     mimeTypesMessage = "{{ class.mimeTypeErrorMessage }}"
      * )
