@@ -24,7 +24,7 @@ final class Image extends GeneratableClass
 
     public function __construct(
         ClassName $className,
-        string $maxFileSize,
+        ?string $maxFileSize,
         string $mimeTypes,
         string $mimeTypeErrorMessage,
         string $uploadDirectory
@@ -66,7 +66,7 @@ final class Image extends GeneratableClass
         return $this->className;
     }
 
-    public function getMaxFileSize(): string
+    public function getMaxFileSize(): ?string
     {
         return $this->maxFileSize;
     }

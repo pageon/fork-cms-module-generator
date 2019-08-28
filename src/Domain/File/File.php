@@ -18,7 +18,7 @@ class File extends GeneratableClass
 
     public function __construct(
         ClassName $className,
-        string $maxFileSize,
+        ?string $maxFileSize,
         string $uploadDirectory
     ) {
         $this->className = $className;
@@ -54,7 +54,7 @@ class File extends GeneratableClass
         return $this->className;
     }
 
-    public function getMaxFileSize(): string
+    public function getMaxFileSize(): ?string
     {
         return $this->maxFileSize;
     }
