@@ -35,7 +35,7 @@ final class InfoType extends AbstractType
             SemVerType::class,
             [
                 'label' => 'Minimum fork version',
-                'data' => new version('4.5.0'),
+                'data' => new version('5.0.0'),
             ]
         )->add(
             'moduleDescription',

@@ -1,0 +1,35 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use {{ class.dataClass.forUseStatement }};
+{% for useStatement in class.formFieldUseStatements %}
+use {{ useStatement }};
+{% endfor %}
+
+final class {{ class.className.name }} extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+{% for setting in class.formFields %}
+        $builder->add(
+            '{{ setting.setting.name }}',
+            {{ setting.formType }}::class,
+            [
+                'label' => 'lbl.{{ setting.setting.forFunction }}',{% if setting.setting.isNullable %}
+
+                'required' => false,{% endif %}
+
+            ]
+        );
+{% endfor %}
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults(['data_class' => {{ class.dataClass.name }}::class]);
+    }
+}

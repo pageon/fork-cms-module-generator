@@ -42,7 +42,6 @@ class ParameterType extends AbstractType
                     },
                     DBALType::POSSIBLE_VALUES
                 ),
-                'choices_as_values' => true,
                 'choice_translation_domain' => false,
                 'data' => DBALType::string(),
             ]
@@ -50,12 +49,11 @@ class ParameterType extends AbstractType
             'nullable',
             ChoiceType::class,
             [
-                'choices_as_values' => true,
-                'label' => 'Nullable',
-                'data' => 'N',
+                'label' => 'Nullable [No]',
+                'data' => false,
                 'choices' => [
-                    true => 'Y',
-                    false => 'N',
+                    'Yes' => true,
+                    'No' => false,
                 ],
             ]
         );

@@ -1,0 +1,24 @@
+{%- verbatim -%}
+{#
+  variables that are available:
+  - {{ item }}: contains data about the question
+  - {{ related }}: the related items
+#}
+{% import 'Core/Layout/Templates/Alerts.html.twig' as alerts %}
+{% import "Core/Layout/Templates/Macros.html.twig" as macro %}
+
+<article class="{% endverbatim -%}module-{{ file.moduleName.forCssClassName }} block-{{ file.moduleName.forCssClassName }}-{{ file.actionName.forCssClassName }}{%- verbatim -%}">
+  {% block block_heading %}
+    <header class="block-heading page-header">
+      <h1 itemprop="about">{{ {% endverbatim -%}{{ file.entityClassName.forParameter }}{%- verbatim -%}.title }}</h1>
+    </header>
+  {% endblock %}
+
+  {% block block_item %}
+
+  {% endblock %}
+
+  {% block block_footer %}
+  {% endblock %}
+</article>
+{%- endverbatim %}

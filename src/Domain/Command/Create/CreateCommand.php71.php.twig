@@ -1,0 +1,16 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use {{ class.dataTransferObjectClassName.forUseStatement }};
+use Common\Locale;
+
+final class {{ class.className.name }} extends {{ class.dataTransferObjectClassName.name }}
+{
+    public function __construct(Locale $locale)
+    {
+        parent::__construct();
+
+        $this->locale = $locale;
+    }
+}

@@ -1,0 +1,75 @@
+<?php
+
+namespace {{ class.entity.className.namespace }};
+
+use Common\Locale;
+{% if class.hasRequiredParameters %}
+use Symfony\Component\Validator\Constraints as Assert;
+{% endif %}
+
+class {{ class.entity.className.name }}DataTransferObject
+{
+    /**
+     * @var {{ class.entity.className.name }}
+     */
+    private ${{ class.entity.className.forParameter }}Entity;
+{% for parameter in class.entity.parameters %}
+
+    /**
+     * @var {{ parameter.dbalType.phpType }}{% if parameter.nullable %}|null{% endif %}
+
+{% if not parameter.nullable %}
+     *
+     * @Assert\NotBlank(message="err.FieldIsRequired")
+{% endif %}
+     */
+    public ${{ parameter.name }};
+{% endfor %}
+
+    public function __construct({{ class.entity.className.name }} ${{ class.entity.className.forParameter }} = null)
+    {
+        $this->{{ class.entity.className.forParameter }}Entity = ${{ class.entity.className.forParameter }};
+
+        if (!$this->hasExisting{{ class.entity.className.name }}()) {
+            return;
+        }
+{% if class.entity.parameters is not empty %}
+
+    {% for parameter in class.entity.parameters %}
+    $this->{{ parameter.name }} = $this->{{ class.entity.className.forParameter }}Entity->{% if parameter.dbalType.isEnumBool or parameter.dbalType.isBoolean %}is{% else %}get{% endif %}{{ parameter.forFunction }}();
+    {% endfor -%}
+}
+{% else %}
+    }
+{% endif %}
+
+    public function get{{ class.entity.className.name }}Entity(): {{ class.entity.className.name }}
+    {
+        return $this->{{ class.entity.className.forParameter }}Entity;
+    }
+
+    public function hasExisting{{ class.entity.className.name }}(): bool
+    {
+        return $this->{{ class.entity.className.forParameter }}Entity instanceof {{ class.entity.className.name }};
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getLocale(): Locale
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @TODO remove when entity doesn't use meta
+     */
+    public function getId(): ?int
+    {
+        if ($this->hasExisting{{ class.entity.className.name }}()) {
+            return $this->{{ class.entity.className.forParameter }}Entity->getId();
+        }
+
+        return null;
+    }
+}

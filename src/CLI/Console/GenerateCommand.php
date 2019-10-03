@@ -3,20 +3,19 @@
 namespace ModuleGenerator\CLI\Console;
 
 use ModuleGenerator\CLI\Service\Generate\Generate;
-use ModuleGenerator\CLI\Service\ModuleGenerator\Settings;
+use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
+use ModuleGenerator\PhpGenerator\PhpNamespace\PhpNamespace;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class GenerateCommand extends Command
 {
+    private const PHP71 = '7.1';
+
     /** @var Generate */
     protected $generateService;
-
-    /** @var Settings */
-    protected $settings;
 
     /** @var InputInterface */
     private $input;
@@ -27,33 +26,10 @@ abstract class GenerateCommand extends Command
     /** @var float */
     private $targetPhpVersion;
 
-    protected function configure()
-    {
-        $this->addArgument(
-            'php',
-            InputArgument::OPTIONAL,
-            'Target PHP version',
-            $this->getSettings()->get(Settings::DEFAULT_PHP_VERSION)
-        );
-    }
-
-    /**
-     * @param Generate $generateService
-     * @param Settings $settings
-     */
-    public function __construct(Generate $generateService, Settings $settings)
+    public function __construct(Generate $generateService)
     {
         $this->generateService = $generateService;
-        $this->settings = $settings;
         parent::__construct();
-    }
-
-    /**
-     * @return Settings
-     */
-    protected function getSettings()
-    {
-        return $this->settings;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -61,15 +37,14 @@ abstract class GenerateCommand extends Command
         $this->input = $input;
         self::$output = $output;
 
-        $this->targetPhpVersion = (float) $this->input->getArgument('php');
-        if (!in_array($this->targetPhpVersion, $this->getSettings()->get(Settings::SUPPORTED_PHP_VERSIONS), true)) {
-            throw new InvalidArgumentException(
-                'This php version is not available as a target. The possible options are: ' . implode(
-                    ', ',
-                    $this->getSettings()->get(Settings::SUPPORTED_PHP_VERSIONS)
-                )
-            );
-        }
+        $this->targetPhpVersion = self::PHP71;
+    }
+
+    public function setTargetPhpVersion(float $targetPhpVersion): self
+    {
+        $this->targetPhpVersion = $targetPhpVersion;
+
+        return $this;
     }
 
     public function getTargetPhpVersion(): float
@@ -92,5 +67,21 @@ abstract class GenerateCommand extends Command
     public static function getOutput()
     {
         return self::$output;
+    }
+
+    public function extractModuleName(PhpNamespace $namespace): ?ModuleName
+    {
+        $matches = [];
+        preg_match(
+            '|^Backend\\\\Modules\\\\(.*?)\\\\|',
+            $namespace,
+            $matches
+        );
+
+        if (\count($matches) === 2) {
+            return new ModuleName($matches[1]);
+        }
+
+        return null;
     }
 }

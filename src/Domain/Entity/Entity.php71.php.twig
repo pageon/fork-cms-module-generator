@@ -1,0 +1,176 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use DateTime;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Table(name="{{ class.tableName }}")
+ * @ORM\Entity(repositoryClass="{{ class.className.namespace }}\{{ class.className.name }}Repository")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class {{ class.className.name }}
+{
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+{% for parameter in class.parameters %}
+
+    /**
+     * @var {{ parameter.dbalType.phpType }}{% if parameter.nullable %}|null{% endif %}
+
+     *
+     * @ORM\Column(type="{{ parameter.dbalTypeName }}"{% if parameter.nullable %}, nullable=true{% endif %})
+     */
+    private ${{ parameter.name }};
+{% endfor %}
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $createdOn;
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $editedOn;
+{% if class.parameters|length > 0 %}
+
+    public function __construct(
+    {% for parameter in class.parameters %}
+    {% if parameter.nullable %}?{% endif %}{{ parameter.dbalType.phpType }} ${{ parameter.name }}{% if not loop.last %},
+    {% endif %}
+{% endfor %}
+
+    ) {
+    {% for parameter in class.parameters %}
+    $this->{{ parameter.name }} = ${{ parameter.name }};
+    {% endfor -%}
+}
+{% endif %}
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+{% for parameter in class.parameters %}
+
+    public function {% if parameter.dbalType.isEnumBool or parameter.dbalType.isBoolean %}is{% else %}get{% endif %}{{ parameter.forFunction }}(): {% if parameter.nullable %}?{% endif %}{{ parameter.dbalType.phpType }}
+    {
+        return $this->{{ parameter.name }};
+    }
+{% endfor %}
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersist(): void
+    {
+        $this->createdOn = new DateTime();
+        $this->editedOn = new DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate(): void
+    {
+        $this->editedOn = new DateTime();
+    }
+
+    public function getCreatedOn(): DateTime
+    {
+        return $this->createdOn;
+    }
+
+    public function getEditedOn(): DateTime
+    {
+        return $this->editedOn;
+    }
+
+{% for parameter in class.parameters %}
+{% if parameter.dbalType.isImage or parameter.dbalType.isFile %}
+    /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+     */
+    public function prepareToUpload{{ parameter.forFunction }}(): void
+    {
+{% if parameter.isNullable %}
+        if ($this->{{ parameter.name }} === null) {
+            return;
+        }
+
+{% endif %}
+        $this->{{ parameter.name }}->prepareToUpload();
+    }
+
+    /**
+     * @ORM\PostUpdate
+     * @ORM\PostPersist
+     */
+    public function upload{{ parameter.forFunction }}(): void
+    {
+{% if parameter.isNullable %}
+        if ($this->{{ parameter.name }} === null) {
+            return;
+        }
+
+{% endif %}
+        $this->{{ parameter.name }}->upload();
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function remove{{ parameter.forFunction }}(): void
+    {
+{% if parameter.isNullable %}
+        if ($this->{{ parameter.name }} === null) {
+            return;
+        }
+
+{% endif %}
+        $this->{{ parameter.name }}->remove();
+    }
+
+{% endif %}
+{% endfor %}
+    public static function fromDataTransferObject({{ class.className.name }}DataTransferObject $dataTransferObject): self
+    {
+        if ($dataTransferObject->hasExisting{{ class.className.name }}()) {
+{% if class.parameters is empty %}
+            return $dataTransferObject->get{{ class.className.name }}Entity();
+{% else %}
+            ${{ class.className.forParameter }} = $dataTransferObject->get{{ class.className.name }}Entity();
+{% for parameter in class.parameters %}
+            ${{ class.className.forParameter }}->{{ parameter.name }} = $dataTransferObject->{{ parameter.name }};
+{% endfor %}
+
+            return ${{ class.className.forParameter }};
+{% endif %}
+        }
+
+{% if class.parameters is empty %}
+        return new self();
+{% else %}
+        return new self(
+{% for parameter in class.parameters %}
+            $dataTransferObject->{{ parameter.name }}{% if not loop.last %},
+{% endif %}
+{% endfor %}
+
+        );
+{% endif %}
+    }
+}

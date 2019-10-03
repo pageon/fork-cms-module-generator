@@ -5,6 +5,7 @@ namespace ModuleGenerator\Domain\Entity;
 use ModuleGenerator\CLI\Service\Generate\GeneratableClass;
 use ModuleGenerator\PhpGenerator\ClassName\ClassName;
 use ModuleGenerator\PhpGenerator\Parameter\Parameter;
+use ModuleGenerator\PhpGenerator\Parameter\ParameterDataTransferObject;
 
 final class Entity extends GeneratableClass
 {
@@ -44,7 +45,12 @@ final class Entity extends GeneratableClass
         return new self(
             ClassName::fromDataTransferObject($entityDataTransferObject->className),
             $entityDataTransferObject->tableName,
-            $entityDataTransferObject->parameters
+            array_map(
+                function (ParameterDataTransferObject $parameterDataTransferObject): Parameter {
+                    return Parameter::fromDataTransferObject($parameterDataTransferObject);
+                },
+                $entityDataTransferObject->parameters
+            )
         );
     }
 }

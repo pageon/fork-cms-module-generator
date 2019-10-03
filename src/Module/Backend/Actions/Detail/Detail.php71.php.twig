@@ -1,0 +1,30 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Backend\Core\Engine\Base\ActionEdit;
+use {{ class.entityClassName.forUseStatement }};
+use {{ class.entityClassName.forUseStatement }}Repository;
+
+final class {{ class.className }} extends ActionEdit
+{
+    public function execute(): void
+    {
+        parent::execute();
+
+        ${{ class.entityClassName.forParameter }} = $this->get{{ class.entityClassName }}();
+
+        if (!${{ class.entityClassName.forParameter }} instanceof {{ class.entityClassName }}) {
+            $this->redirect($this->getBackLink(['error' => 'non-existing']));
+        }
+
+        $this->template->assign('{{ class.entityClassName.forParameter }}', ${{ class.entityClassName.forParameter }});
+        $this->parse();
+        $this->display();
+    }
+
+    private function get{{ class.entityClassName }}(): ?{{ class.entityClassName }}
+    {
+        return $this->get({{ class.entityClassName }}Repository::class)->find($this->getRequest()->query->getInt('id'));
+    }
+}

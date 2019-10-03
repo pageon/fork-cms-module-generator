@@ -1,0 +1,22 @@
+{%- verbatim -%}
+{% extends 'Layout/Templates/base.html.twig' %}
+{% import 'Layout/Templates/macros.html.twig' as macro %}
+
+{% block actionbar %}{% endblock %}
+
+{% block content %}
+  <h2>{{ {% endverbatim %}{{ file.entityClassName.forParameter }}{%- verbatim -%}.title }}</h2>
+  <div class="row fork-module-actions">
+    <div class="col-md-12">
+      <div class="btn-toolbar">
+        <div class="btn-group" role="group">
+          {% if show{%- endverbatim %}{{ file.moduleName }}{{ file.entityClassName }}{%- verbatim -%}Delete %}
+            {{ macro.buttonIcon('', 'plus-square', 'lbl.Delete'|trans|ucfirst, 'btn-danger', {"type":"button", "data-toggle":"modal", "data-target":"#confirmDelete"}) }}
+          {% endif %}
+          {{ macro.buttonIcon(geturl('{%- endverbatim %}{{ file.entityClassName }}{%- verbatim -%}Index'), 'times', 'lbl.Cancel'|trans|ucfirst, 'btn-default') }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{%- endverbatim %}

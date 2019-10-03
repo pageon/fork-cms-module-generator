@@ -3,3 +3,4 @@ composer.phar
 /app/cache/*
 /app/logs/*
 /app/settings.yml
+/composer.lock

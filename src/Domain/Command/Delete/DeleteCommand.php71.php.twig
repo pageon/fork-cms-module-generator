@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use {{ class.entityClassName.forUseStatement }};
+
+final class {{ class.className.name }}
+{
+    /** @var {{ class.entityClassName.name }} */
+    private ${{ class.entityClassName.forParameter }};
+
+    public function __construct({{ class.entityClassName.name }} ${{ class.entityClassName.forParameter }})
+    {
+        $this->{{ class.entityClassName.forParameter }} = ${{ class.entityClassName.forParameter }};
+    }
+
+    public function get{{ class.entityClassName.name }}(): {{ class.entityClassName.name }}
+    {
+        return $this->{{ class.entityClassName.forParameter }};
+    }
+}

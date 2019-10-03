@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Frontend\Core\Engine\Base\Widget;
+
+final class {{ class.className }} extends Widget
+{
+    public function execute(): void
+    {
+        parent::execute();
+
+        $this->loadTemplate();
+
+        $this->template->assign('hello', 'hello world');
+    }
+}

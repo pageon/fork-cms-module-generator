@@ -1,5 +1,15 @@
-doctrine:
+{% if not file.append %}doctrine:
   dbal:
     types:
   orm:
     mappings:
+{% endif %}
+{% for entity in file.entities %}
+
+      {{ entity.tableName }}:
+        type: annotation
+        is_bundle: false
+        dir: "%kernel.project_dir%/src/{{ entity.className.namespace|replace({'\\': '/'}) }}"
+        alias: {{ entity.tableName }}
+        prefix: {{ entity.className.namespace }}
+{% endfor %}

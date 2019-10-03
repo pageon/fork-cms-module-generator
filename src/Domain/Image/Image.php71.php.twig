@@ -1,0 +1,27 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Common\Doctrine\ValueObject\AbstractImage;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+
+class {{ class.className.name }} extends AbstractImage
+{
+    /**
+     * @var UploadedFile
+     *
+     * @Assert\File(
+{% if class.maxFileSize %}     *     maxSize = "{{ class.maxFileSize }}",
+{% endif %}
+     *     mimeTypes = {{ class.mimeTypes|raw }},
+     *     mimeTypesMessage = "{{ class.mimeTypeErrorMessage }}"
+     * )
+     */
+    protected $file;
+
+    protected function getUploadDir(): string
+    {
+        return '{{ class.uploadDirectory }}';
+    }
+}

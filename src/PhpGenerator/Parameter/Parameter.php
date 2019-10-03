@@ -32,9 +32,23 @@ final class Parameter
         return $this->dbalType;
     }
 
+    public function getDbalTypeName(): string
+    {
+        if ($this->dbalType->isImage() || $this->dbalType->isFile()) {
+            return mb_strtolower($this->name);
+        }
+
+        return $this->dbalType;
+    }
+
     public function isNullable(): bool
     {
         return $this->nullable;
+    }
+
+    public function getForFunction(): string
+    {
+        return ucfirst($this->getName());
     }
 
     public static function fromDataTransferObject(ParameterDataTransferObject $parameterDataTransferObject): self

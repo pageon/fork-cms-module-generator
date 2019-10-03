@@ -1,0 +1,49 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Backend\Core\Engine\Base\ActionDelete;
+use Backend\Core\Engine\Model as BackendModel;
+use Backend\Form\Type\DeleteType;
+use {{ class.entityClassName.namespace }}\Command\Delete{{ class.entityClassName.name }};
+use {{ class.entityClassName.namespace }}\{{ class.entityClassName.name }};
+use {{ class.entityClassName.namespace }}\{{ class.entityClassName.name }}Repository;
+
+final class {{ class.className }} extends ActionDelete
+{
+    public function execute(): void
+    {
+        ${{ class.entityClassName.forParameter }} = $this->get{{ class.entityClassName.name }}();
+        if (!${{ class.entityClassName.forParameter }} instanceof {{ class.entityClassName.name }}) {
+            $this->redirect($this->getBackLink(['error' => 'non-existing']));
+
+            return;
+        }
+
+        $this->get('command_bus')->handle(new Delete{{ class.entityClassName.name }}(${{ class.entityClassName.forParameter }}));
+
+        $this->redirect($this->getBackLink(['report' => 'deleted', 'var' => ${{ class.entityClassName.forParameter }}->getTitle()]));
+    }
+
+    private function getBackLink(array $parameters = []): string
+    {
+        return BackendModel::createUrlForAction(
+            '{{ class.entityClassName.name }}Index',
+            null,
+            null,
+            $parameters
+        );
+    }
+
+    private function get{{ class.entityClassName.name }}(): ?{{ class.entityClassName.name }}
+    {
+        $deleteForm = $this->createForm(DeleteType::class, null, ['module' => $this->getModule()]);
+        $deleteForm->handleRequest($this->getRequest());
+
+        if (!$deleteForm->isSubmitted() || !$deleteForm->isValid()) {
+            return null;
+        }
+
+        return $this->get({{ class.entityClassName.name }}Repository::class)->find($deleteForm->getData()['id']);
+    }
+}

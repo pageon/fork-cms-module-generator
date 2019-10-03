@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Common\Doctrine\ValueObject\AbstractFile;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+
+class {{ class.className.name }} extends AbstractFile
+{
+    /**
+     * @var UploadedFile
+     *
+     * @Assert\File({% if class.maxFileSize %}maxSize = "{{ class.maxFileSize }}"{% endif %})
+     */
+    protected $file;
+
+    protected function getUploadDir(): string
+    {
+        return '{{ class.uploadDirectory }}';
+    }
+}

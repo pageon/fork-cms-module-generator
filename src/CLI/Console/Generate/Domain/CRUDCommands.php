@@ -3,13 +3,16 @@
 namespace ModuleGenerator\CLI\Console\Generate\Domain;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
+use ModuleGenerator\CLI\Service\Generate\GeneratableClass;
 use ModuleGenerator\Domain\Command\Create\CreateCommand;
 use ModuleGenerator\Domain\Command\Create\CreateCommandHandler;
+use ModuleGenerator\Domain\Command\CRUDCommandDataTransferObject;
 use ModuleGenerator\Domain\Command\CRUDCommandsType;
 use ModuleGenerator\Domain\Command\Delete\DeleteCommand;
 use ModuleGenerator\Domain\Command\Delete\DeleteCommandHandler;
 use ModuleGenerator\Domain\Command\Update\UpdateCommand;
 use ModuleGenerator\Domain\Command\Update\UpdateCommandHandler;
+use ModuleGenerator\Domain\ServiceConfiguration\CommandHandlerServiceConfiguration;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -28,28 +31,88 @@ final class CRUDCommands extends GenerateCommand
         parent::execute($input, $output);
 
         $CRUDCommandsDataTransferObject = $this->getFormData(CRUDCommandsType::class);
+
+        $this->generateCreateCommandComponents($CRUDCommandsDataTransferObject);
+
+        $this->generateDeleteCommandComponents($CRUDCommandsDataTransferObject);
+
+        $this->generateUpdateCommandComponents($CRUDCommandsDataTransferObject);
+    }
+
+    /**
+     * @return mixed
+     */
+    private function generateCreateCommandComponents(
+        CRUDCommandDataTransferObject $CRUDCommandsDataTransferObject
+    ): void {
+        $createCommand = CreateCommand::fromDataTransferObject($CRUDCommandsDataTransferObject);
         $this->generateService->generateClass(
-            CreateCommand::fromDataTransferObject($CRUDCommandsDataTransferObject),
+            $createCommand,
             $this->getTargetPhpVersion()
         );
+
+        $createCommandHandler = CreateCommandHandler::fromDataTransferObject($CRUDCommandsDataTransferObject);
         $this->generateService->generateClass(
-            CreateCommandHandler::fromDataTransferObject($CRUDCommandsDataTransferObject),
+            $createCommandHandler,
             $this->getTargetPhpVersion()
         );
+
+        $this->generateCommandHandlerConfiguration($createCommandHandler, $createCommand);
+    }
+
+    private function generateDeleteCommandComponents(
+        CRUDCommandDataTransferObject $CRUDCommandsDataTransferObject
+    ): void {
+        $deleteCommand = DeleteCommand::fromDataTransferObject($CRUDCommandsDataTransferObject);
         $this->generateService->generateClass(
-            DeleteCommand::fromDataTransferObject($CRUDCommandsDataTransferObject),
+            $deleteCommand,
             $this->getTargetPhpVersion()
         );
+
+        $deleteCommandHandler = DeleteCommandHandler::fromDataTransferObject($CRUDCommandsDataTransferObject);
         $this->generateService->generateClass(
-            DeleteCommandHandler::fromDataTransferObject($CRUDCommandsDataTransferObject),
+            $deleteCommandHandler,
             $this->getTargetPhpVersion()
         );
+
+        $this->generateCommandHandlerConfiguration($deleteCommandHandler, $deleteCommand);
+    }
+
+    protected function generateUpdateCommandComponents(
+        CRUDCommandDataTransferObject $CRUDCommandsDataTransferObject
+    ): void {
+        $updateCommand = UpdateCommand::fromDataTransferObject($CRUDCommandsDataTransferObject);
         $this->generateService->generateClass(
-            UpdateCommand::fromDataTransferObject($CRUDCommandsDataTransferObject),
+            $updateCommand,
             $this->getTargetPhpVersion()
         );
+
+        $updateCommandHandler = UpdateCommandHandler::fromDataTransferObject($CRUDCommandsDataTransferObject);
         $this->generateService->generateClass(
-            UpdateCommandHandler::fromDataTransferObject($CRUDCommandsDataTransferObject),
+            $updateCommandHandler,
+            $this->getTargetPhpVersion()
+        );
+
+        $this->generateCommandHandlerConfiguration($updateCommandHandler, $updateCommand);
+    }
+
+    private function generateCommandHandlerConfiguration(
+        GeneratableClass $commandHandler,
+        GeneratableClass $command
+    ): void {
+        $this->generateService->generateCommandServiceConfiguration(
+            new CommandHandlerServiceConfiguration(
+                $commandHandler,
+                [
+                    "@doctrine.orm.entity_manager",
+                ],
+                [
+                    [
+                        "name" => "command_handler",
+                        "handles" => $command->getClassName()->getForUseStatement(),
+                    ],
+                ]
+            ),
             $this->getTargetPhpVersion()
         );
     }

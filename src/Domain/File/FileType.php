@@ -20,8 +20,8 @@ final class FileType extends AbstractType
                 'maxFileSize',
                 TextType::class,
                 [
-                    'label' => 'Max file size',
-                    'data' => $options['max_file_size'],
+                    'label' => 'Max file size (optional)',
+                    'required' => false,
                 ]
             );
     }
@@ -31,7 +31,6 @@ final class FileType extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => FileDataTransferObject::class,
-                'max_file_size' => '2M',
             ]
         );
     }

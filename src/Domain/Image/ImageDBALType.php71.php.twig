@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Common\Doctrine\Type\AbstractImageType;
+use Common\Doctrine\ValueObject\AbstractImage;
+
+class {{ class.className.name }} extends AbstractImageType
+{
+    protected function createFromString(string $fileName): AbstractImage
+    {
+        return {{ class.imageClassName.name }}::fromString($fileName);
+    }
+
+    public function getName(): string
+    {
+        return '{{ class.name }}';
+    }
+}

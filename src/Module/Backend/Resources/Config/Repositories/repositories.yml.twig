@@ -1,1 +1,10 @@
-services:
+{% if not file.append %}services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+{% endif %}
+{% for repository in file.repositories %}
+
+  {{ repository }}:
+{% endfor %}

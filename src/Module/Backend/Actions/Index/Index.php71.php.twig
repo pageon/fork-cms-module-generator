@@ -1,0 +1,20 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Backend\Core\Engine\Base\ActionIndex;
+use Backend\Core\Language\Locale;
+use {{ class.entityClassName.namespace }}\{{ class.entityClassName }}DataGrid;
+
+final class {{ class.className }} extends ActionIndex
+{
+    public function execute(): void
+    {
+        parent::execute();
+
+        $this->template->assign('dataGrid', {{ class.entityClassName }}DataGrid::getHtml(Locale::workingLocale()));
+
+        $this->parse();
+        $this->display();
+    }
+}

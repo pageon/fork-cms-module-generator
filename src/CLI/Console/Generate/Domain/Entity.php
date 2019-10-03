@@ -3,8 +3,12 @@
 namespace ModuleGenerator\CLI\Console\Generate\Domain;
 
 use ModuleGenerator\CLI\Console\GenerateCommand;
+use ModuleGenerator\Domain\DataTransferObject\DataTransferObject;
 use ModuleGenerator\Domain\Entity\Entity as EntityClass;
 use ModuleGenerator\Domain\Entity\EntityType;
+use ModuleGenerator\Domain\FormType\FormType;
+use ModuleGenerator\Module\Backend\Resources\Config\Doctrine\Doctrine;
+use ModuleGenerator\PhpGenerator\ModuleName\ModuleName;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -30,6 +34,25 @@ final class Entity extends GenerateCommand
             $this->getFormData(EntityType::class, ['form-interactor' => $formInteractor])
         );
 
-        $this->generateService->generateClass($entity, $this->getTargetPhpVersion());
+        $this->generateService->generateClasses(
+            [$entity, new DataTransferObject($entity), new FormType($entity)],
+            $this->getTargetPhpVersion()
+        );
+
+        $moduleName = $this->extractModuleName($entity->getClassName()->getNamespace());
+        if ($moduleName instanceof ModuleName) {
+            $this->generateService->generateFile(
+                new Doctrine(
+                    $moduleName,
+                    [$entity],
+                    true
+                ),
+                $this->getTargetPhpVersion()
+            );
+        }
+
+        (new Repository($this->generateService))->setTargetPhpVersion($this->getTargetPhpVersion())->createRepository(
+            $entity->getClassName()
+        );
     }
 }

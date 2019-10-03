@@ -1,0 +1,27 @@
+<?php
+
+namespace {{ class.className.namespace }};
+
+use Common\ModulesSettings;
+
+final class {{ class.className.name }}
+{
+    private const MODULE_NAME = '{{ class.moduleName }}';
+
+    /** @var ModulesSettings */
+    private $modulesSettings;
+
+    public function __construct(ModulesSettings $modulesSettings)
+    {
+        $this->modulesSettings = $modulesSettings;
+    }
+
+    public function handle({{ class.commandClassName.name }} ${{ class.commandClassName.forParameter }}): void
+    {
+{% if class.settings is not empty %}
+  {% for setting in class.settings %}
+      $this->modulesSettings->set(self::MODULE_NAME, '{{ setting.name }}', ${{ class.commandClassName.forParameter }}->{{ setting.name }});
+  {% endfor -%}
+{% endif %}
+  }
+}
