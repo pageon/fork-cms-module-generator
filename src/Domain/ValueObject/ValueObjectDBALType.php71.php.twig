@@ -12,8 +12,12 @@ final class {{ class.className.name }} extends StringType
         return '{{ class.name }}';
     }
 
-    public function convertToPHPValue(${{ class.className.forParameter }}, AbstractPlatform $platform): {{ class.valueObjectClassName.name }}
+    public function convertToPHPValue(${{ class.className.forParameter }}, AbstractPlatform $platform): ?{{ class.valueObjectClassName.name }}
     {
+        if (${{ class.className.forParameter }} === null) {
+            return null;
+        }
+
         return new {{ class.valueObjectClassName.name }}(${{ class.className.forParameter }});
     }
 
