@@ -12,8 +12,12 @@ final class MyValueObjectDBALType extends StringType
         return 'myvalueobject';
     }
 
-    public function convertToPHPValue($myValueObjectDBALType, AbstractPlatform $platform): MyValueObject
+    public function convertToPHPValue($myValueObjectDBALType, AbstractPlatform $platform): ?MyValueObject
     {
+        if ($myValueObjectDBALType === null) {
+            return null;
+        }
+
         return new MyValueObject($myValueObjectDBALType);
     }
 
