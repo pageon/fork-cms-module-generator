@@ -10,6 +10,12 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query\Expr\Join;
 
+/**
+ * @method MyEntity|null find($id, $lockMode = null, $lockVersion = null)
+ * @method MyEntity|null findOneBy(array $criteria, array $orderBy = null)
+ * @method MyEntity[] findAll()
+ * @method MyEntity[] findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
 class MyEntityRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
