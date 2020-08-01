@@ -1,5 +1,5 @@
 {
-    "name": "sumocoders/fork-cms-module-generator",
+    "name": "pageon/fork-cms-module-generator",
     "description": "The generator for Fork modules",
     "type": "application",
     "require": {
